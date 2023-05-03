@@ -16,3 +16,9 @@ C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Car
 C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Formularios.genruntimeconfig.cache
 C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\ref\Formularios.dll
 C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.Properties.Resources.resources
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\Entidades.dll
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\Entidades.pdb
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Formularios.csproj.CopyComplete
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.Form_MenuCliente.resources
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormHeladera.resources
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormComprar.resources

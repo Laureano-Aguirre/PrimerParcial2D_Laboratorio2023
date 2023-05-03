@@ -43,7 +43,7 @@
             // lb_LoginPassword
             // 
             this.lb_LoginPassword.AutoSize = true;
-            this.lb_LoginPassword.Location = new System.Drawing.Point(295, 316);
+            this.lb_LoginPassword.Location = new System.Drawing.Point(184, 274);
             this.lb_LoginPassword.Name = "lb_LoginPassword";
             this.lb_LoginPassword.Size = new System.Drawing.Size(67, 15);
             this.lb_LoginPassword.TabIndex = 0;
@@ -52,7 +52,7 @@
             // lb_LoginCorreo
             // 
             this.lb_LoginCorreo.AutoSize = true;
-            this.lb_LoginCorreo.Location = new System.Drawing.Point(295, 258);
+            this.lb_LoginCorreo.Location = new System.Drawing.Point(184, 216);
             this.lb_LoginCorreo.Name = "lb_LoginCorreo";
             this.lb_LoginCorreo.Size = new System.Drawing.Size(43, 15);
             this.lb_LoginCorreo.TabIndex = 1;
@@ -60,17 +60,18 @@
             // 
             // btn_LoginIngresar
             // 
-            this.btn_LoginIngresar.Location = new System.Drawing.Point(651, 378);
+            this.btn_LoginIngresar.Location = new System.Drawing.Point(495, 354);
             this.btn_LoginIngresar.Name = "btn_LoginIngresar";
             this.btn_LoginIngresar.Size = new System.Drawing.Size(85, 34);
             this.btn_LoginIngresar.TabIndex = 2;
             this.btn_LoginIngresar.Text = "Ingresar";
             this.btn_LoginIngresar.UseVisualStyleBackColor = true;
+            this.btn_LoginIngresar.Click += new System.EventHandler(this.btn_LoginIngresar_Click);
             // 
             // pb_Usuario
             // 
             this.pb_Usuario.Image = global::Form_Login.Properties.Resources.img_usuario;
-            this.pb_Usuario.Location = new System.Drawing.Point(350, 125);
+            this.pb_Usuario.Location = new System.Drawing.Point(239, 83);
             this.pb_Usuario.Name = "pb_Usuario";
             this.pb_Usuario.Size = new System.Drawing.Size(105, 103);
             this.pb_Usuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -79,7 +80,7 @@
             // 
             // txb_LoginCorreo
             // 
-            this.txb_LoginCorreo.Location = new System.Drawing.Point(295, 276);
+            this.txb_LoginCorreo.Location = new System.Drawing.Point(184, 234);
             this.txb_LoginCorreo.Name = "txb_LoginCorreo";
             this.txb_LoginCorreo.PlaceholderText = "Ingrese aqui";
             this.txb_LoginCorreo.Size = new System.Drawing.Size(217, 23);
@@ -87,7 +88,7 @@
             // 
             // txb_LoginPassword
             // 
-            this.txb_LoginPassword.Location = new System.Drawing.Point(295, 334);
+            this.txb_LoginPassword.Location = new System.Drawing.Point(184, 292);
             this.txb_LoginPassword.Name = "txb_LoginPassword";
             this.txb_LoginPassword.PasswordChar = '*';
             this.txb_LoginPassword.PlaceholderText = "Ingrese aqui";
@@ -96,7 +97,7 @@
             // 
             // btn_LoginVendedor
             // 
-            this.btn_LoginVendedor.Location = new System.Drawing.Point(295, 394);
+            this.btn_LoginVendedor.Location = new System.Drawing.Point(184, 352);
             this.btn_LoginVendedor.Name = "btn_LoginVendedor";
             this.btn_LoginVendedor.Size = new System.Drawing.Size(83, 31);
             this.btn_LoginVendedor.TabIndex = 6;
@@ -106,7 +107,7 @@
             // 
             // btn_LoginCliente
             // 
-            this.btn_LoginCliente.Location = new System.Drawing.Point(431, 394);
+            this.btn_LoginCliente.Location = new System.Drawing.Point(320, 352);
             this.btn_LoginCliente.Name = "btn_LoginCliente";
             this.btn_LoginCliente.Size = new System.Drawing.Size(81, 31);
             this.btn_LoginCliente.TabIndex = 7;
@@ -118,7 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(595, 421);
             this.Controls.Add(this.btn_LoginCliente);
             this.Controls.Add(this.btn_LoginVendedor);
             this.Controls.Add(this.txb_LoginPassword);

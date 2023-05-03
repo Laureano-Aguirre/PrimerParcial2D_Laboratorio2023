@@ -63,9 +63,40 @@ namespace Form_Login.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap img_carrito {
+            get {
+                object obj = ResourceManager.GetObject("img-carrito", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_carrito1 {
+            get {
+                object obj = ResourceManager.GetObject("img-carrito1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap img_usuario {
             get {
                 object obj = ResourceManager.GetObject("img-usuario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap png_transparent_computer_icons_shopping_cart_encapsulated_postscript_shopping_cart_angle_black_shopping {
+            get {
+                object obj = ResourceManager.GetObject("png-transparent-computer-icons-shopping-cart-encapsulated-postscript-shopping-car" +
+                        "t-angle-black-shopping", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

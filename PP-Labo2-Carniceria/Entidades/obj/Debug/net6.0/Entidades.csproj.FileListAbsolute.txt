@@ -1,0 +1,12 @@
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Entidades\obj\Debug\net6.0\Entidades.csproj.AssemblyReference.cache
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Entidades\obj\Debug\net6.0\Entidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Entidades\obj\Debug\net6.0\Entidades.AssemblyInfoInputs.cache
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Entidades\obj\Debug\net6.0\Entidades.AssemblyInfo.cs
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Entidades\obj\Debug\net6.0\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Entidades\bin\Debug\net6.0\Entidades.deps.json
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Entidades\bin\Debug\net6.0\Entidades.dll
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Entidades\bin\Debug\net6.0\Entidades.pdb
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Entidades\obj\Debug\net6.0\Entidades.dll
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Entidades\obj\Debug\net6.0\refint\Entidades.dll
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Entidades\obj\Debug\net6.0\Entidades.pdb
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Entidades\obj\Debug\net6.0\ref\Entidades.dll
