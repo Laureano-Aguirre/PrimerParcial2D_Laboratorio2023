@@ -8,26 +8,31 @@ namespace Entidades
 {
     public class Cliente:Persona
     {
-        private double monto;
+        private int monto;
 
         public Cliente(string correo, string password): base(correo, password)
         {
             this.correo = correo;
             this.password = password;
+            monto= 0;
             listaPersonas.Add(this);
         }
-        public Cliente(string correo, string password, double monto):base(correo,password)
+
+        public Cliente(string correo, string password,int monto):base(correo, password)
         {
-             this.monto = monto;
+            this.monto = monto;
         }
-        
+        public int Monto { get { return this.monto; } set { monto = value; } }
+        public string Correo { get { return this.correo; }}
+        public string Password { get { return this.password; }}
+
         /// <summary>
         /// Busca al cliente dentro de la lista de personas.
         /// </summary>
         /// <param name="correoCliente"></param>
         /// <param name="pass"></param>
         /// <returns></returns>
-        public static bool BuscarCliente(string correoCliente, string pass)
+        public static bool ValidarCliente(string correoCliente, string pass)
         {
             foreach (Persona persona in listaPersonas)
             {
@@ -39,6 +44,23 @@ namespace Entidades
             return false;
         }
 
+        /// <summary>
+        /// Busca al cliente, apsandole los parametros correo y clave, y si lo encuentra, devuelve al objeto de tipo cliente
+        /// </summary>
+        /// <param name="correo"></param>
+        /// <param name="pass"></param>
+        /// <returns></returns>
+        public Cliente BuscarCliente(string correo, string pass)
+        {
+            foreach (Persona persona in listaPersonas)
+            {
+                if (persona is Cliente cliente && cliente.correo == correo && cliente.password == pass)
+                {
+                    return cliente;
+                }
+            }
+            return null;
+        }
         public static void HardocdearClientes()
         {
             Cliente c1 = new Cliente("cliente1@gmail.com", "cliente1cliente");

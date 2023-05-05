@@ -13,11 +13,14 @@ namespace Form_Login
 {
     public partial class Form_MenuCliente : Form
     {
-        public Form_MenuCliente(string correo)
+        Cliente cAux;
+        public Form_MenuCliente(Cliente cliente)
         {
             InitializeComponent();
             Carne.CargarCortes();
-            lb_MenPrinBienvenido.Text = $"Bienvenido {correo}!";
+            Carne.AsignarPrecioPorKilo();
+            cAux = cliente;
+            lb_MenPrinBienvenido.Text = $"Bienvenido {cliente.Correo}!";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
@@ -85,7 +88,10 @@ namespace Form_Login
             }
             else
             {
-                FormComprar frmComprar = new FormComprar();
+
+                int.TryParse(txb_MenPrinMonto.Text, out int monto);
+                cAux.Monto = monto;
+                FormComprar frmComprar = new FormComprar(cAux);
                 frmComprar.Show();
                 this.Hide();
             }
@@ -93,9 +99,14 @@ namespace Form_Login
 
         private bool ValidarMonto()
         {
-            if(txb_MenPrinMonto is not null)
+
+            if (!(string.IsNullOrEmpty(txb_MenPrinMonto.Text)))
             {
-                return true;
+                if(int.TryParse(txb_MenPrinMonto.Text, out int num) && num>0)
+                {
+                    return true;
+                }
+                
             }
             return false;
         }

@@ -63,6 +63,26 @@ namespace Form_Login.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap img_bolsaCompras {
+            get {
+                object obj = ResourceManager.GetObject("img-bolsaCompras", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_bolsaCompras1 {
+            get {
+                object obj = ResourceManager.GetObject("img-bolsaCompras1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap img_carrito {
             get {
                 object obj = ResourceManager.GetObject("img-carrito", resourceCulture);
@@ -83,9 +103,49 @@ namespace Form_Login.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap img_mastercard {
+            get {
+                object obj = ResourceManager.GetObject("img-mastercard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_mastercard1 {
+            get {
+                object obj = ResourceManager.GetObject("img-mastercard1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_mercadopago {
+            get {
+                object obj = ResourceManager.GetObject("img-mercadopago", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap img_usuario {
             get {
                 object obj = ResourceManager.GetObject("img-usuario", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_visa {
+            get {
+                object obj = ResourceManager.GetObject("img-visa", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

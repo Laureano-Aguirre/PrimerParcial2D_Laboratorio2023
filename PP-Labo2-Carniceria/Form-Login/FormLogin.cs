@@ -93,9 +93,11 @@ namespace Form_Login
 
             if (ValidarDatos(correo, pass))
             {
-                if ((Cliente.BuscarCliente(correo, pass)) && btn_LoginCliente.DialogResult == DialogResult.OK)
+                if ((Cliente.ValidarCliente(correo, pass)) && btn_LoginCliente.DialogResult == DialogResult.OK)
                 {
-                    Form_MenuCliente frmMenuCliente = new Form_MenuCliente(correo);
+                    Cliente cliente = new Cliente(correo, pass);
+
+                    Form_MenuCliente frmMenuCliente = new Form_MenuCliente(cliente);
                     frmMenuCliente.Show();
                     this.Hide();
                 }

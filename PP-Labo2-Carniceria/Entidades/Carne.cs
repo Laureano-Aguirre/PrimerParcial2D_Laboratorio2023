@@ -1,22 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace Entidades
 {
     public class Carne
     {
-        static List<Carne> carnes = new List<Carne>();
-        string tipoDeCarne;
-
+        private static List<Carne> carnes = new List<Carne>();
+        private string tipoDeCarne;
+        private int precioPorKilo;
 
         public Carne(string tipoDeCarne)
         {
             this.tipoDeCarne = tipoDeCarne;
         }
 
+        static public List<Carne> ListaCarnes { get { return carnes; } }
+        public string TipoDeCarne { get { return this.tipoDeCarne; } }
         public static void CargarCortes()
         {
             carnes.Add(new Carne("Tira de asado"));
@@ -33,7 +31,7 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Los cortes de carne son: ");
-            foreach(Carne carne in carnes)
+            foreach (Carne carne in carnes)
             {
                 sb.AppendLine(carne.tipoDeCarne);
             }
@@ -45,5 +43,84 @@ namespace Entidades
             return carnes;
         }
 
+        public static void AsignarPrecioPorKilo()
+        {
+            foreach (Carne carne in carnes)
+            {
+                if (carne.tipoDeCarne == "Tira de asado")
+                {
+                    carne.precioPorKilo = 1800;
+                }
+                else if (carne.tipoDeCarne == "Colita de cuadril")
+                {
+                    carne.precioPorKilo = 2400;
+                }
+                else if (carne.tipoDeCarne == "Bola de lomo")
+                {
+                    carne.precioPorKilo = 2100;
+                }
+                else if (carne.tipoDeCarne == "Bife de chorizo")
+                {
+                    carne.precioPorKilo = 2800;
+                }
+                else if (carne.tipoDeCarne == "Ojo de bife")
+                {
+                    carne.precioPorKilo = 3000;
+                }
+                else if (carne.tipoDeCarne == "Entraña")
+                {
+                    carne.precioPorKilo = 2900;
+                }
+                else if (carne.tipoDeCarne == "Tortuguita")
+                {
+                    carne.precioPorKilo = 1100;
+                }
+                else if (carne.tipoDeCarne == "Falda")
+                {
+                    carne.precioPorKilo = 1000;
+                }
+            }
+        }
+
+        public static int CargarPrecioPorKilo(string tipoDeCorte)
+        {
+            int retorno = 0;
+
+            if (tipoDeCorte == "Tira de asado")
+            {
+                retorno = 1800;
+            }
+            else if (tipoDeCorte == "Colita de cuadril")
+            {
+                retorno = 2400;
+            }
+            else if (tipoDeCorte == "Bola de lomo")
+            {
+                retorno = 2100;
+            }
+            else if (tipoDeCorte == "Bife de chorizo")
+            {
+                retorno = 2800;
+            }
+            else if (tipoDeCorte == "Ojo de bife")
+            {
+                retorno = 3000;
+            }
+            else if (tipoDeCorte == "Entraña")
+            {
+                retorno = 2900;
+            }
+            else if (tipoDeCorte == "Tortuguita")
+            {
+                retorno = 1100;
+            }
+            else if (tipoDeCorte == "Falda")
+            {
+                retorno = 1000;
+            }
+            return retorno;
+        }
+
     }
 }
+
