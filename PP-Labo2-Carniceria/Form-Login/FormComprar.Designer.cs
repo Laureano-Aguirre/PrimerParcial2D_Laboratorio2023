@@ -44,10 +44,10 @@
             this.lb_CompraPrecioPorKilo = new System.Windows.Forms.Label();
             this.gpb_CompraKilos = new System.Windows.Forms.GroupBox();
             this.gpb_CompraMetodosDePago = new System.Windows.Forms.GroupBox();
+            this.pb_ComprarVisaDebito = new System.Windows.Forms.PictureBox();
+            this.pb_CompraDebitoMastercard = new System.Windows.Forms.PictureBox();
+            this.pb_CompraCreditoMastercard = new System.Windows.Forms.PictureBox();
             this.pb_CompraPagoVisa = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pb_CompraPagoMercadoPago = new System.Windows.Forms.PictureBox();
-            this.pb_CompraPagoMasterCard = new System.Windows.Forms.PictureBox();
             this.btn_CompraCredito = new System.Windows.Forms.Button();
             this.btn_CompraDebito = new System.Windows.Forms.Button();
             this.btn_CompraEfectivo = new System.Windows.Forms.Button();
@@ -59,16 +59,21 @@
             this.lb_CompraBifeChorizo = new System.Windows.Forms.Label();
             this.lb_CompraTortuguita = new System.Windows.Forms.Label();
             this.lb_CompraFalda = new System.Windows.Forms.Label();
+            this.rtb_ComprarCostoTotal = new System.Windows.Forms.RichTextBox();
+            this.lb_ComprarCostoTotal = new System.Windows.Forms.Label();
+            this.lb_CompraMontoInicial = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pb_BolsaCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_CompraKilos)).BeginInit();
             this.gb_CompraCortes.SuspendLayout();
             this.gpb_CompraPrecioPorKilo.SuspendLayout();
             this.gpb_CompraKilos.SuspendLayout();
             this.gpb_CompraMetodosDePago.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_ComprarVisaDebito)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_CompraDebitoMastercard)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_CompraCreditoMastercard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_CompraPagoVisa)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_CompraPagoMercadoPago)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_CompraPagoMasterCard)).BeginInit();
             this.SuspendLayout();
             // 
             // pb_BolsaCompras
@@ -103,8 +108,15 @@
             // 
             // nud_CompraKilos
             // 
+            this.nud_CompraKilos.DecimalPlaces = 1;
+            this.nud_CompraKilos.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
             this.nud_CompraKilos.Location = new System.Drawing.Point(15, 22);
             this.nud_CompraKilos.Name = "nud_CompraKilos";
+            this.nud_CompraKilos.ReadOnly = true;
             this.nud_CompraKilos.Size = new System.Drawing.Size(52, 23);
             this.nud_CompraKilos.TabIndex = 3;
             this.nud_CompraKilos.ValueChanged += new System.EventHandler(this.nud_CompraKilos_ValueChanged);
@@ -170,6 +182,7 @@
             this.cmb_CompraCortes.Name = "cmb_CompraCortes";
             this.cmb_CompraCortes.Size = new System.Drawing.Size(232, 23);
             this.cmb_CompraCortes.TabIndex = 0;
+            this.cmb_CompraCortes.SelectedIndexChanged += new System.EventHandler(this.cmb_CompraCortes_SelectedIndexChanged);
             this.cmb_CompraCortes.SelectedValueChanged += new System.EventHandler(this.cmb_CompraCortes_SelectedValueChanged);
             // 
             // rtb_CompraPrecioPorKilo
@@ -220,10 +233,10 @@
             // gpb_CompraMetodosDePago
             // 
             this.gpb_CompraMetodosDePago.BackColor = System.Drawing.Color.Transparent;
+            this.gpb_CompraMetodosDePago.Controls.Add(this.pb_ComprarVisaDebito);
+            this.gpb_CompraMetodosDePago.Controls.Add(this.pb_CompraDebitoMastercard);
+            this.gpb_CompraMetodosDePago.Controls.Add(this.pb_CompraCreditoMastercard);
             this.gpb_CompraMetodosDePago.Controls.Add(this.pb_CompraPagoVisa);
-            this.gpb_CompraMetodosDePago.Controls.Add(this.pictureBox1);
-            this.gpb_CompraMetodosDePago.Controls.Add(this.pb_CompraPagoMercadoPago);
-            this.gpb_CompraMetodosDePago.Controls.Add(this.pb_CompraPagoMasterCard);
             this.gpb_CompraMetodosDePago.Controls.Add(this.btn_CompraCredito);
             this.gpb_CompraMetodosDePago.Controls.Add(this.btn_CompraDebito);
             this.gpb_CompraMetodosDePago.Controls.Add(this.btn_CompraEfectivo);
@@ -233,6 +246,36 @@
             this.gpb_CompraMetodosDePago.TabIndex = 13;
             this.gpb_CompraMetodosDePago.TabStop = false;
             this.gpb_CompraMetodosDePago.Text = "Metodos de pago";
+            // 
+            // pb_ComprarVisaDebito
+            // 
+            this.pb_ComprarVisaDebito.Image = global::Form_Login.Properties.Resources.img_visa;
+            this.pb_ComprarVisaDebito.Location = new System.Drawing.Point(207, 56);
+            this.pb_ComprarVisaDebito.Name = "pb_ComprarVisaDebito";
+            this.pb_ComprarVisaDebito.Size = new System.Drawing.Size(20, 12);
+            this.pb_ComprarVisaDebito.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pb_ComprarVisaDebito.TabIndex = 22;
+            this.pb_ComprarVisaDebito.TabStop = false;
+            // 
+            // pb_CompraDebitoMastercard
+            // 
+            this.pb_CompraDebitoMastercard.Image = global::Form_Login.Properties.Resources.mastercard_4;
+            this.pb_CompraDebitoMastercard.Location = new System.Drawing.Point(207, 37);
+            this.pb_CompraDebitoMastercard.Name = "pb_CompraDebitoMastercard";
+            this.pb_CompraDebitoMastercard.Size = new System.Drawing.Size(13, 13);
+            this.pb_CompraDebitoMastercard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pb_CompraDebitoMastercard.TabIndex = 22;
+            this.pb_CompraDebitoMastercard.TabStop = false;
+            // 
+            // pb_CompraCreditoMastercard
+            // 
+            this.pb_CompraCreditoMastercard.Image = global::Form_Login.Properties.Resources.mastercard_4;
+            this.pb_CompraCreditoMastercard.Location = new System.Drawing.Point(323, 37);
+            this.pb_CompraCreditoMastercard.Name = "pb_CompraCreditoMastercard";
+            this.pb_CompraCreditoMastercard.Size = new System.Drawing.Size(13, 13);
+            this.pb_CompraCreditoMastercard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pb_CompraCreditoMastercard.TabIndex = 17;
+            this.pb_CompraCreditoMastercard.TabStop = false;
             // 
             // pb_CompraPagoVisa
             // 
@@ -244,40 +287,6 @@
             this.pb_CompraPagoVisa.TabIndex = 16;
             this.pb_CompraPagoVisa.TabStop = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox1.Image = global::Form_Login.Properties.Resources.img_mastercard1;
-            this.pictureBox1.Location = new System.Drawing.Point(323, 35);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pb_CompraPagoMercadoPago
-            // 
-            this.pb_CompraPagoMercadoPago.Image = global::Form_Login.Properties.Resources.img_mercadopago;
-            this.pb_CompraPagoMercadoPago.Location = new System.Drawing.Point(207, 56);
-            this.pb_CompraPagoMercadoPago.Name = "pb_CompraPagoMercadoPago";
-            this.pb_CompraPagoMercadoPago.Size = new System.Drawing.Size(20, 12);
-            this.pb_CompraPagoMercadoPago.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pb_CompraPagoMercadoPago.TabIndex = 14;
-            this.pb_CompraPagoMercadoPago.TabStop = false;
-            // 
-            // pb_CompraPagoMasterCard
-            // 
-            this.pb_CompraPagoMasterCard.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pb_CompraPagoMasterCard.BackColor = System.Drawing.SystemColors.Control;
-            this.pb_CompraPagoMasterCard.Image = global::Form_Login.Properties.Resources.img_mastercard1;
-            this.pb_CompraPagoMasterCard.Location = new System.Drawing.Point(207, 35);
-            this.pb_CompraPagoMasterCard.Name = "pb_CompraPagoMasterCard";
-            this.pb_CompraPagoMasterCard.Size = new System.Drawing.Size(15, 15);
-            this.pb_CompraPagoMasterCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pb_CompraPagoMasterCard.TabIndex = 14;
-            this.pb_CompraPagoMasterCard.TabStop = false;
-            // 
             // btn_CompraCredito
             // 
             this.btn_CompraCredito.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -287,6 +296,7 @@
             this.btn_CompraCredito.TabIndex = 2;
             this.btn_CompraCredito.Text = "Credito";
             this.btn_CompraCredito.UseVisualStyleBackColor = false;
+            this.btn_CompraCredito.Click += new System.EventHandler(this.btn_CompraCredito_Click);
             // 
             // btn_CompraDebito
             // 
@@ -297,6 +307,7 @@
             this.btn_CompraDebito.TabIndex = 1;
             this.btn_CompraDebito.Text = "Debito";
             this.btn_CompraDebito.UseVisualStyleBackColor = false;
+            this.btn_CompraDebito.Click += new System.EventHandler(this.btn_CompraDebito_Click);
             // 
             // btn_CompraEfectivo
             // 
@@ -311,7 +322,7 @@
             // lb_CompraColitaDeCuadril
             // 
             this.lb_CompraColitaDeCuadril.AutoSize = true;
-            this.lb_CompraColitaDeCuadril.BackColor = System.Drawing.Color.BurlyWood;
+            this.lb_CompraColitaDeCuadril.BackColor = System.Drawing.Color.Transparent;
             this.lb_CompraColitaDeCuadril.Location = new System.Drawing.Point(541, 149);
             this.lb_CompraColitaDeCuadril.Name = "lb_CompraColitaDeCuadril";
             this.lb_CompraColitaDeCuadril.Size = new System.Drawing.Size(38, 15);
@@ -321,7 +332,7 @@
             // lb_CompraEntrania
             // 
             this.lb_CompraEntrania.AutoSize = true;
-            this.lb_CompraEntrania.BackColor = System.Drawing.Color.BurlyWood;
+            this.lb_CompraEntrania.BackColor = System.Drawing.Color.Transparent;
             this.lb_CompraEntrania.Location = new System.Drawing.Point(541, 206);
             this.lb_CompraEntrania.Name = "lb_CompraEntrania";
             this.lb_CompraEntrania.Size = new System.Drawing.Size(38, 15);
@@ -331,7 +342,7 @@
             // lb_CompraTiraAsado
             // 
             this.lb_CompraTiraAsado.AutoSize = true;
-            this.lb_CompraTiraAsado.BackColor = System.Drawing.Color.BurlyWood;
+            this.lb_CompraTiraAsado.BackColor = System.Drawing.Color.Transparent;
             this.lb_CompraTiraAsado.Location = new System.Drawing.Point(541, 258);
             this.lb_CompraTiraAsado.Name = "lb_CompraTiraAsado";
             this.lb_CompraTiraAsado.Size = new System.Drawing.Size(38, 15);
@@ -341,7 +352,7 @@
             // lb_CompraBolaLomo
             // 
             this.lb_CompraBolaLomo.AutoSize = true;
-            this.lb_CompraBolaLomo.BackColor = System.Drawing.Color.BurlyWood;
+            this.lb_CompraBolaLomo.BackColor = System.Drawing.Color.Transparent;
             this.lb_CompraBolaLomo.Location = new System.Drawing.Point(541, 321);
             this.lb_CompraBolaLomo.Name = "lb_CompraBolaLomo";
             this.lb_CompraBolaLomo.Size = new System.Drawing.Size(38, 15);
@@ -351,7 +362,7 @@
             // lb_CompraOjoBife
             // 
             this.lb_CompraOjoBife.AutoSize = true;
-            this.lb_CompraOjoBife.BackColor = System.Drawing.Color.BurlyWood;
+            this.lb_CompraOjoBife.BackColor = System.Drawing.Color.Transparent;
             this.lb_CompraOjoBife.Location = new System.Drawing.Point(664, 206);
             this.lb_CompraOjoBife.Name = "lb_CompraOjoBife";
             this.lb_CompraOjoBife.Size = new System.Drawing.Size(38, 15);
@@ -361,7 +372,7 @@
             // lb_CompraBifeChorizo
             // 
             this.lb_CompraBifeChorizo.AutoSize = true;
-            this.lb_CompraBifeChorizo.BackColor = System.Drawing.Color.BurlyWood;
+            this.lb_CompraBifeChorizo.BackColor = System.Drawing.Color.Transparent;
             this.lb_CompraBifeChorizo.Location = new System.Drawing.Point(664, 149);
             this.lb_CompraBifeChorizo.Name = "lb_CompraBifeChorizo";
             this.lb_CompraBifeChorizo.Size = new System.Drawing.Size(38, 15);
@@ -371,7 +382,7 @@
             // lb_CompraTortuguita
             // 
             this.lb_CompraTortuguita.AutoSize = true;
-            this.lb_CompraTortuguita.BackColor = System.Drawing.Color.BurlyWood;
+            this.lb_CompraTortuguita.BackColor = System.Drawing.Color.Transparent;
             this.lb_CompraTortuguita.Location = new System.Drawing.Point(664, 258);
             this.lb_CompraTortuguita.Name = "lb_CompraTortuguita";
             this.lb_CompraTortuguita.Size = new System.Drawing.Size(38, 15);
@@ -381,18 +392,75 @@
             // lb_CompraFalda
             // 
             this.lb_CompraFalda.AutoSize = true;
-            this.lb_CompraFalda.BackColor = System.Drawing.Color.BurlyWood;
+            this.lb_CompraFalda.BackColor = System.Drawing.Color.Transparent;
             this.lb_CompraFalda.Location = new System.Drawing.Point(664, 321);
             this.lb_CompraFalda.Name = "lb_CompraFalda";
             this.lb_CompraFalda.Size = new System.Drawing.Size(38, 15);
             this.lb_CompraFalda.TabIndex = 21;
             this.lb_CompraFalda.Text = "label8";
             // 
+            // rtb_ComprarCostoTotal
+            // 
+            this.rtb_ComprarCostoTotal.BackColor = System.Drawing.Color.White;
+            this.rtb_ComprarCostoTotal.Location = new System.Drawing.Point(350, 451);
+            this.rtb_ComprarCostoTotal.Name = "rtb_ComprarCostoTotal";
+            this.rtb_ComprarCostoTotal.ReadOnly = true;
+            this.rtb_ComprarCostoTotal.Size = new System.Drawing.Size(100, 27);
+            this.rtb_ComprarCostoTotal.TabIndex = 22;
+            this.rtb_ComprarCostoTotal.Text = "";
+            // 
+            // lb_ComprarCostoTotal
+            // 
+            this.lb_ComprarCostoTotal.AutoSize = true;
+            this.lb_ComprarCostoTotal.BackColor = System.Drawing.Color.White;
+            this.lb_ComprarCostoTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lb_ComprarCostoTotal.Location = new System.Drawing.Point(375, 454);
+            this.lb_ComprarCostoTotal.Name = "lb_ComprarCostoTotal";
+            this.lb_ComprarCostoTotal.Size = new System.Drawing.Size(52, 21);
+            this.lb_ComprarCostoTotal.TabIndex = 23;
+            this.lb_ComprarCostoTotal.Text = "label1";
+            // 
+            // lb_CompraMontoInicial
+            // 
+            this.lb_CompraMontoInicial.AutoSize = true;
+            this.lb_CompraMontoInicial.BackColor = System.Drawing.Color.Transparent;
+            this.lb_CompraMontoInicial.Location = new System.Drawing.Point(372, 30);
+            this.lb_CompraMontoInicial.Name = "lb_CompraMontoInicial";
+            this.lb_CompraMontoInicial.Size = new System.Drawing.Size(59, 15);
+            this.lb_CompraMontoInicial.TabIndex = 24;
+            this.lb_CompraMontoInicial.Text = "Tu monto";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(325, 454);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(19, 21);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "$";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(368, 481);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 15);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Costo total";
+            // 
             // FormComprar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(823, 542);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lb_CompraMontoInicial);
+            this.Controls.Add(this.lb_ComprarCostoTotal);
+            this.Controls.Add(this.rtb_ComprarCostoTotal);
             this.Controls.Add(this.lb_CompraFalda);
             this.Controls.Add(this.lb_CompraTortuguita);
             this.Controls.Add(this.lb_CompraBifeChorizo);
@@ -424,10 +492,10 @@
             this.gpb_CompraKilos.ResumeLayout(false);
             this.gpb_CompraMetodosDePago.ResumeLayout(false);
             this.gpb_CompraMetodosDePago.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_ComprarVisaDebito)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_CompraDebitoMastercard)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_CompraCreditoMastercard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pb_CompraPagoVisa)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_CompraPagoMercadoPago)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_CompraPagoMasterCard)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -454,9 +522,6 @@
         private Button btn_CompraDebito;
         private Button btn_CompraEfectivo;
         private PictureBox pb_CompraPagoVisa;
-        private PictureBox pictureBox1;
-        private PictureBox pb_CompraPagoMercadoPago;
-        private PictureBox pb_CompraPagoMasterCard;
         private Label lb_CompraColitaDeCuadril;
         private Label lb_CompraEntrania;
         private Label lb_CompraTiraAsado;
@@ -465,5 +530,13 @@
         private Label lb_CompraBifeChorizo;
         private Label lb_CompraTortuguita;
         private Label lb_CompraFalda;
+        private PictureBox pb_CompraCreditoMastercard;
+        private PictureBox pb_CompraDebitoMastercard;
+        private PictureBox pb_ComprarVisaDebito;
+        private RichTextBox rtb_ComprarCostoTotal;
+        private Label lb_ComprarCostoTotal;
+        private Label lb_CompraMontoInicial;
+        private Label label1;
+        private Label label2;
     }
 }

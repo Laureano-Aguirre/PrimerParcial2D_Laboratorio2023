@@ -121,6 +121,13 @@ namespace Entidades
             return retorno;
         }
 
+        public static int CalcularCosto(decimal kilos, int precioPorKilo)
+        {
+            decimal precioFinal;
+
+            return (int)(precioFinal = kilos * precioPorKilo);
+        }
+
     }
 }
 

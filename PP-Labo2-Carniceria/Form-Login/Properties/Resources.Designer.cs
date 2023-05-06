@@ -123,6 +123,26 @@ namespace Form_Login.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap img_mastercard2 {
+            get {
+                object obj = ResourceManager.GetObject("img-mastercard2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_mastercard3 {
+            get {
+                object obj = ResourceManager.GetObject("img-mastercard3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap img_mercadopago {
             get {
                 object obj = ResourceManager.GetObject("img-mercadopago", resourceCulture);
@@ -146,6 +166,36 @@ namespace Form_Login.Properties {
         internal static System.Drawing.Bitmap img_visa {
             get {
                 object obj = ResourceManager.GetObject("img-visa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap img_visaCredito {
+            get {
+                object obj = ResourceManager.GetObject("img-visaCredito", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mastercard_4 {
+            get {
+                object obj = ResourceManager.GetObject("mastercard-4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mastercard_41 {
+            get {
+                object obj = ResourceManager.GetObject("mastercard-41", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
