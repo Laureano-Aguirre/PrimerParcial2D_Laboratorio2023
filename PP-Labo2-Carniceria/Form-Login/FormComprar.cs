@@ -5,9 +5,7 @@ namespace Form_Login
     public partial class FormComprar : Form
     {
         Cliente caux;
-        //List<Carne> listaAuxCarnes = Carne.ObtenerCortes();
-        static decimal costoFinal = 0;
-
+        decimal costoTotal = 0;
 
         public FormComprar(Cliente cliente)
         {
@@ -20,7 +18,7 @@ namespace Form_Login
             nud_CompraKilos.Maximum = 10;
             nud_CompraKilos.Value = 0M;
             nud_CompraKilos.Increment = 0.5M;
-            lb_ComprarCostoTotal.Text = "0";
+            lb_ComprarCostoParcial.Text = "0";
         }
 
         private void FormComprar_Load(object sender, EventArgs e)
@@ -64,6 +62,7 @@ namespace Form_Login
 
         private void cmb_CompraCortes_SelectedValueChanged(object sender, EventArgs e)
         {
+            nud_CompraKilos.Value = 0;
             lb_CompraPrecioPorKilo.Text = (Carne.CargarPrecioPorKilo(cmb_CompraCortes.Text)).ToString();
             lb_CompraPrecioPorKilo.Visible = true;
         }
@@ -71,67 +70,70 @@ namespace Form_Login
         private void nud_CompraKilos_ValueChanged(object sender, EventArgs e)
         {
             string corteCarne;
-            bool pudoCambiar = int.TryParse(lb_ComprarCostoTotal.Text, out int costoFinal);
+            bool pudoCambiar = int.TryParse(lb_ComprarCostoParcial.Text, out int costoFinal);
 
             corteCarne = cmb_CompraCortes.Text;
 
-            VisibilizarCortes(corteCarne);
-
             if (int.TryParse(lb_CompraPrecioPorKilo.Text, out int precioPorKilo))
             {
-                lb_ComprarCostoTotal.Text = (Carne.CalcularCosto(nud_CompraKilos.Value, precioPorKilo).ToString() + costoFinal);
+                lb_ComprarCostoParcial.Text = (Carne.CalcularCosto(nud_CompraKilos.Value, precioPorKilo)).ToString();
+
             }
         }
 
         private void VisibilizarCortes(string corte)
         {
-            if (corte == "Tira de asado")
+
+            foreach (Carne carne in Carne.ListaDeCompras)
             {
-                lb_CompraTiraAsado.Text = nud_CompraKilos.Value.ToString() + "KG" + cmb_CompraCortes.Text;
-                lb_CompraTiraAsado.Visible = true;
-                lb_CompraTiraAsado.BackColor = Color.FromArgb(191, 148, 113);
-            }
-            else if (corte == "Colita de cuadril")
-            {
-                lb_CompraColitaDeCuadril.Text = nud_CompraKilos.Value.ToString() + "KG" + cmb_CompraCortes.Text;
-                lb_CompraColitaDeCuadril.Visible = true;
-                lb_CompraColitaDeCuadril.BackColor = Color.FromArgb(191, 148, 113);
-            }
-            else if (corte == "Bola de lomo")
-            {
-                lb_CompraBolaLomo.Text = nud_CompraKilos.Value.ToString() + "KG" + cmb_CompraCortes.Text;
-                lb_CompraBolaLomo.Visible = true;
-                lb_CompraBolaLomo.BackColor = Color.FromArgb(191, 148, 113);
-            }
-            else if (corte == "Bife de chorizo")
-            {
-                lb_CompraBifeChorizo.Text = nud_CompraKilos.Value.ToString() + "KG" + cmb_CompraCortes.Text;
-                lb_CompraBifeChorizo.Visible = true;
-                lb_CompraBifeChorizo.BackColor = Color.FromArgb(191, 148, 113);
-            }
-            else if (corte == "Ojo de bife")
-            {
-                lb_CompraOjoBife.Text = nud_CompraKilos.Value.ToString() + "KG" + cmb_CompraCortes.Text;
-                lb_CompraOjoBife.Visible = true;
-                lb_CompraOjoBife.BackColor = Color.FromArgb(191, 148, 113);
-            }
-            else if (corte == "Entraña")
-            {
-                lb_CompraEntrania.Text = nud_CompraKilos.Value.ToString() + "KG" + cmb_CompraCortes.Text;
-                lb_CompraEntrania.Visible = true;
-                lb_CompraEntrania.BackColor = Color.FromArgb(191, 148, 113);
-            }
-            else if (corte == "Tortuguita")
-            {
-                lb_CompraTortuguita.Text = nud_CompraKilos.Value.ToString() + "KG" + cmb_CompraCortes.Text;
-                lb_CompraTortuguita.Visible = true;
-                lb_CompraTortuguita.BackColor = Color.FromArgb(191, 148, 113);
-            }
-            else if (corte == "Falda")
-            {
-                lb_CompraFalda.Text = nud_CompraKilos.Value.ToString() + "KG" + cmb_CompraCortes.Text;
-                lb_CompraFalda.Visible = true;
-                lb_CompraFalda.BackColor = Color.FromArgb(191, 148, 113);
+                if (corte == "Tira de asado")
+                {
+                    lb_CompraTiraAsado.Text = $"{carne.Kilos}KG {carne.TipoDeCarne}";
+                    lb_CompraTiraAsado.Visible = true;
+                    lb_CompraTiraAsado.BackColor = Color.FromArgb(191, 148, 113);
+                }
+                else if (corte == "Colita de cuadril")
+                {
+                    lb_CompraColitaDeCuadril.Text = $"{carne.Kilos}KG {carne.TipoDeCarne}";
+                    lb_CompraColitaDeCuadril.Visible = true;
+                    lb_CompraColitaDeCuadril.BackColor = Color.FromArgb(191, 148, 113);
+                }
+                else if (corte == "Bola de lomo")
+                {
+                    lb_CompraBolaLomo.Text = $"{carne.Kilos}KG {carne.TipoDeCarne}";
+                    lb_CompraBolaLomo.Visible = true;
+                    lb_CompraBolaLomo.BackColor = Color.FromArgb(191, 148, 113);
+                }
+                else if (corte == "Bife de chorizo")
+                {
+                    lb_CompraBifeChorizo.Text = $"{carne.Kilos}KG {carne.TipoDeCarne}";
+                    lb_CompraBifeChorizo.Visible = true;
+                    lb_CompraBifeChorizo.BackColor = Color.FromArgb(191, 148, 113);
+                }
+                else if (corte == "Ojo de bife")
+                {
+                    lb_CompraOjoBife.Text = $"{carne.Kilos}KG {carne.TipoDeCarne}";
+                    lb_CompraOjoBife.Visible = true;
+                    lb_CompraOjoBife.BackColor = Color.FromArgb(191, 148, 113);
+                }
+                else if (corte == "Entraña")
+                {
+                    lb_CompraEntrania.Text = $"{carne.Kilos}KG {carne.TipoDeCarne}";
+                    lb_CompraEntrania.Visible = true;
+                    lb_CompraEntrania.BackColor = Color.FromArgb(191, 148, 113);
+                }
+                else if (corte == "Tortuguita")
+                {
+                    lb_CompraTortuguita.Text = $"{carne.Kilos}KG {carne.TipoDeCarne}";
+                    lb_CompraTortuguita.Visible = true;
+                    lb_CompraTortuguita.BackColor = Color.FromArgb(191, 148, 113);
+                }
+                else if (corte == "Falda")
+                {
+                    lb_CompraFalda.Text = $"{carne.Kilos}KG {carne.TipoDeCarne}";
+                    lb_CompraFalda.Visible = true;
+                    lb_CompraFalda.BackColor = Color.FromArgb(191, 148, 113);
+                }
             }
         }
 
@@ -147,24 +149,25 @@ namespace Form_Login
             frmTarjeta.Show();
         }
 
-        private void cmb_CompraCortes_SelectedIndexChanged(object sender, EventArgs e)
+        private void btn_CompraAgregar_Click(object sender, EventArgs e)
         {
-            nud_CompraKilos.Value = 0;
+            
+            string tipoDeCarne = cmb_CompraCortes.SelectedItem.ToString();
+            decimal kilos = nud_CompraKilos.Value;
 
-            // Obtener el precio por kilo del nuevo corte seleccionado
-            int precioPorKiloNuevoCorte = Carne.CargarPrecioPorKilo(cmb_CompraCortes.Text);
+            int precioPorKilo = Carne.CargarPrecioPorKilo(tipoDeCarne);
+            int costo = Carne.CalcularCosto(kilos, precioPorKilo);
 
-            // Obtener el costo total actual
-            int costoTotalActual = int.Parse(lb_ComprarCostoTotal.Text);
+            costoTotal += costo;
 
-            // Calcular el costo total correspondiente al nuevo corte
-            int costoTotalNuevoCorte = Carne.CalcularCosto((int)nud_CompraKilos.Value, precioPorKiloNuevoCorte);
+            lb_ComprarCostoParcial.Text = costoTotal.ToString();
 
-            // Sumar el costo total actual con el costo total del nuevo corte
-            int costoTotal = costoTotalActual + costoTotalNuevoCorte;
-
-            // Actualizar el label lb_ComprarCostoTotal con el nuevo valor
-            lb_ComprarCostoTotal.Text = costoFinal.ToString();
+            Carne carne1 = new Carne(tipoDeCarne, kilos);
+            if(carne1.CargarCompra(carne1))
+            {
+                MessageBox.Show("Agregado al carrito.");
+            }
+            VisibilizarCortes(tipoDeCarne);
         }
     }
 }

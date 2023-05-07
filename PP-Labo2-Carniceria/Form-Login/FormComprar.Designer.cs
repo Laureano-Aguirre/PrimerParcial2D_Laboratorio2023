@@ -60,10 +60,15 @@
             this.lb_CompraTortuguita = new System.Windows.Forms.Label();
             this.lb_CompraFalda = new System.Windows.Forms.Label();
             this.rtb_ComprarCostoTotal = new System.Windows.Forms.RichTextBox();
-            this.lb_ComprarCostoTotal = new System.Windows.Forms.Label();
+            this.lb_ComprarCostoParcial = new System.Windows.Forms.Label();
             this.lb_CompraMontoInicial = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lb_CompraSignoPesoParcial = new System.Windows.Forms.Label();
+            this.lb_CompraCostoParcial = new System.Windows.Forms.Label();
+            this.btn_CompraAgregar = new System.Windows.Forms.Button();
+            this.lb_CompraCostoTotal = new System.Windows.Forms.Label();
+            this.lb_CompraSignoPesoTotal = new System.Windows.Forms.Label();
+            this.lb_CompraCostoTotalEnnZocalo = new System.Windows.Forms.Label();
+            this.rtb_CompraCostoTotal = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb_BolsaCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_CompraKilos)).BeginInit();
             this.gb_CompraCortes.SuspendLayout();
@@ -182,7 +187,6 @@
             this.cmb_CompraCortes.Name = "cmb_CompraCortes";
             this.cmb_CompraCortes.Size = new System.Drawing.Size(232, 23);
             this.cmb_CompraCortes.TabIndex = 0;
-            this.cmb_CompraCortes.SelectedIndexChanged += new System.EventHandler(this.cmb_CompraCortes_SelectedIndexChanged);
             this.cmb_CompraCortes.SelectedValueChanged += new System.EventHandler(this.cmb_CompraCortes_SelectedValueChanged);
             // 
             // rtb_CompraPrecioPorKilo
@@ -402,23 +406,23 @@
             // rtb_ComprarCostoTotal
             // 
             this.rtb_ComprarCostoTotal.BackColor = System.Drawing.Color.White;
-            this.rtb_ComprarCostoTotal.Location = new System.Drawing.Point(350, 451);
+            this.rtb_ComprarCostoTotal.Location = new System.Drawing.Point(265, 448);
             this.rtb_ComprarCostoTotal.Name = "rtb_ComprarCostoTotal";
             this.rtb_ComprarCostoTotal.ReadOnly = true;
             this.rtb_ComprarCostoTotal.Size = new System.Drawing.Size(100, 27);
             this.rtb_ComprarCostoTotal.TabIndex = 22;
             this.rtb_ComprarCostoTotal.Text = "";
             // 
-            // lb_ComprarCostoTotal
+            // lb_ComprarCostoParcial
             // 
-            this.lb_ComprarCostoTotal.AutoSize = true;
-            this.lb_ComprarCostoTotal.BackColor = System.Drawing.Color.White;
-            this.lb_ComprarCostoTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lb_ComprarCostoTotal.Location = new System.Drawing.Point(375, 454);
-            this.lb_ComprarCostoTotal.Name = "lb_ComprarCostoTotal";
-            this.lb_ComprarCostoTotal.Size = new System.Drawing.Size(52, 21);
-            this.lb_ComprarCostoTotal.TabIndex = 23;
-            this.lb_ComprarCostoTotal.Text = "label1";
+            this.lb_ComprarCostoParcial.AutoSize = true;
+            this.lb_ComprarCostoParcial.BackColor = System.Drawing.Color.White;
+            this.lb_ComprarCostoParcial.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lb_ComprarCostoParcial.Location = new System.Drawing.Point(290, 451);
+            this.lb_ComprarCostoParcial.Name = "lb_ComprarCostoParcial";
+            this.lb_ComprarCostoParcial.Size = new System.Drawing.Size(52, 21);
+            this.lb_ComprarCostoParcial.TabIndex = 23;
+            this.lb_ComprarCostoParcial.Text = "label1";
             // 
             // lb_CompraMontoInicial
             // 
@@ -430,36 +434,93 @@
             this.lb_CompraMontoInicial.TabIndex = 24;
             this.lb_CompraMontoInicial.Text = "Tu monto";
             // 
-            // label1
+            // lb_CompraSignoPesoParcial
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(325, 454);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(19, 21);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "$";
+            this.lb_CompraSignoPesoParcial.AutoSize = true;
+            this.lb_CompraSignoPesoParcial.BackColor = System.Drawing.Color.Transparent;
+            this.lb_CompraSignoPesoParcial.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lb_CompraSignoPesoParcial.Location = new System.Drawing.Point(240, 451);
+            this.lb_CompraSignoPesoParcial.Name = "lb_CompraSignoPesoParcial";
+            this.lb_CompraSignoPesoParcial.Size = new System.Drawing.Size(19, 21);
+            this.lb_CompraSignoPesoParcial.TabIndex = 25;
+            this.lb_CompraSignoPesoParcial.Text = "$";
             // 
-            // label2
+            // lb_CompraCostoParcial
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(368, 481);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 15);
-            this.label2.TabIndex = 26;
-            this.label2.Text = "Costo total";
+            this.lb_CompraCostoParcial.AutoSize = true;
+            this.lb_CompraCostoParcial.BackColor = System.Drawing.Color.Transparent;
+            this.lb_CompraCostoParcial.Location = new System.Drawing.Point(276, 478);
+            this.lb_CompraCostoParcial.Name = "lb_CompraCostoParcial";
+            this.lb_CompraCostoParcial.Size = new System.Drawing.Size(76, 15);
+            this.lb_CompraCostoParcial.TabIndex = 26;
+            this.lb_CompraCostoParcial.Text = "Costo parcial";
+            // 
+            // btn_CompraAgregar
+            // 
+            this.btn_CompraAgregar.Location = new System.Drawing.Point(138, 245);
+            this.btn_CompraAgregar.Name = "btn_CompraAgregar";
+            this.btn_CompraAgregar.Size = new System.Drawing.Size(60, 34);
+            this.btn_CompraAgregar.TabIndex = 27;
+            this.btn_CompraAgregar.Text = "Agregar";
+            this.btn_CompraAgregar.UseVisualStyleBackColor = true;
+            this.btn_CompraAgregar.Click += new System.EventHandler(this.btn_CompraAgregar_Click);
+            // 
+            // lb_CompraCostoTotal
+            // 
+            this.lb_CompraCostoTotal.AutoSize = true;
+            this.lb_CompraCostoTotal.BackColor = System.Drawing.Color.Transparent;
+            this.lb_CompraCostoTotal.Location = new System.Drawing.Point(466, 478);
+            this.lb_CompraCostoTotal.Name = "lb_CompraCostoTotal";
+            this.lb_CompraCostoTotal.Size = new System.Drawing.Size(65, 15);
+            this.lb_CompraCostoTotal.TabIndex = 31;
+            this.lb_CompraCostoTotal.Text = "Costo total";
+            // 
+            // lb_CompraSignoPesoTotal
+            // 
+            this.lb_CompraSignoPesoTotal.AutoSize = true;
+            this.lb_CompraSignoPesoTotal.BackColor = System.Drawing.Color.Transparent;
+            this.lb_CompraSignoPesoTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lb_CompraSignoPesoTotal.Location = new System.Drawing.Point(430, 451);
+            this.lb_CompraSignoPesoTotal.Name = "lb_CompraSignoPesoTotal";
+            this.lb_CompraSignoPesoTotal.Size = new System.Drawing.Size(19, 21);
+            this.lb_CompraSignoPesoTotal.TabIndex = 30;
+            this.lb_CompraSignoPesoTotal.Text = "$";
+            // 
+            // lb_CompraCostoTotalEnnZocalo
+            // 
+            this.lb_CompraCostoTotalEnnZocalo.AutoSize = true;
+            this.lb_CompraCostoTotalEnnZocalo.BackColor = System.Drawing.Color.White;
+            this.lb_CompraCostoTotalEnnZocalo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lb_CompraCostoTotalEnnZocalo.Location = new System.Drawing.Point(480, 451);
+            this.lb_CompraCostoTotalEnnZocalo.Name = "lb_CompraCostoTotalEnnZocalo";
+            this.lb_CompraCostoTotalEnnZocalo.Size = new System.Drawing.Size(52, 21);
+            this.lb_CompraCostoTotalEnnZocalo.TabIndex = 29;
+            this.lb_CompraCostoTotalEnnZocalo.Text = "label1";
+            // 
+            // rtb_CompraCostoTotal
+            // 
+            this.rtb_CompraCostoTotal.BackColor = System.Drawing.Color.White;
+            this.rtb_CompraCostoTotal.Location = new System.Drawing.Point(455, 448);
+            this.rtb_CompraCostoTotal.Name = "rtb_CompraCostoTotal";
+            this.rtb_CompraCostoTotal.ReadOnly = true;
+            this.rtb_CompraCostoTotal.Size = new System.Drawing.Size(100, 27);
+            this.rtb_CompraCostoTotal.TabIndex = 28;
+            this.rtb_CompraCostoTotal.Text = "";
             // 
             // FormComprar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(823, 542);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lb_CompraCostoTotal);
+            this.Controls.Add(this.lb_CompraSignoPesoTotal);
+            this.Controls.Add(this.lb_CompraCostoTotalEnnZocalo);
+            this.Controls.Add(this.rtb_CompraCostoTotal);
+            this.Controls.Add(this.btn_CompraAgregar);
+            this.Controls.Add(this.lb_CompraCostoParcial);
+            this.Controls.Add(this.lb_CompraSignoPesoParcial);
             this.Controls.Add(this.lb_CompraMontoInicial);
-            this.Controls.Add(this.lb_ComprarCostoTotal);
+            this.Controls.Add(this.lb_ComprarCostoParcial);
             this.Controls.Add(this.rtb_ComprarCostoTotal);
             this.Controls.Add(this.lb_CompraFalda);
             this.Controls.Add(this.lb_CompraTortuguita);
@@ -534,9 +595,14 @@
         private PictureBox pb_CompraDebitoMastercard;
         private PictureBox pb_ComprarVisaDebito;
         private RichTextBox rtb_ComprarCostoTotal;
-        private Label lb_ComprarCostoTotal;
+        private Label lb_ComprarCostoParcial;
         private Label lb_CompraMontoInicial;
-        private Label label1;
-        private Label label2;
+        private Label lb_CompraSignoPesoParcial;
+        private Label lb_CompraCostoParcial;
+        private Button btn_CompraAgregar;
+        private Label lb_CompraCostoTotal;
+        private Label lb_CompraSignoPesoTotal;
+        private Label lb_CompraCostoTotalEnnZocalo;
+        private RichTextBox rtb_CompraCostoTotal;
     }
 }

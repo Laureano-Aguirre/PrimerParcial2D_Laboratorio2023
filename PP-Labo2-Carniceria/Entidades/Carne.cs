@@ -5,16 +5,26 @@ namespace Entidades
     public class Carne
     {
         private static List<Carne> carnes = new List<Carne>();
+        private static List<Carne> listaDeCompras = new List<Carne>();
         private string tipoDeCarne;
         private int precioPorKilo;
+        private decimal kilos;
 
+        
         public Carne(string tipoDeCarne)
         {
             this.tipoDeCarne = tipoDeCarne;
         }
 
+        public Carne(string tipoDeCarne, decimal kilos) : this(tipoDeCarne)
+        {
+            this.kilos = kilos;
+        }
+
         static public List<Carne> ListaCarnes { get { return carnes; } }
+        static public List<Carne> ListaDeCompras { get { return listaDeCompras; } }
         public string TipoDeCarne { get { return this.tipoDeCarne; } }
+        public decimal Kilos { get { return this.kilos; } set { kilos = value; } }
         public static void CargarCortes()
         {
             carnes.Add(new Carne("Tira de asado"));
@@ -27,6 +37,11 @@ namespace Entidades
             carnes.Add(new Carne("Falda"));
         }
 
+        public bool CargarCompra(Carne carne)
+        {
+            listaDeCompras.Add(carne);
+            return true;
+        }
         public static string MostrarCortes()
         {
             StringBuilder sb = new StringBuilder();
@@ -126,6 +141,24 @@ namespace Entidades
             decimal precioFinal;
 
             return (int)(precioFinal = kilos * precioPorKilo);
+        }
+
+        public static decimal CalcularNuevoCosto(decimal costoAnterior, decimal costoNuevo)
+        {
+            return costoAnterior + costoNuevo;
+        }
+
+        public static string MostrarCompras()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Los cortes seleccionados son: ");
+            foreach (Carne carne in listaDeCompras)
+            {
+                sb.AppendLine($"{carne.tipoDeCarne}");
+                sb.AppendLine($"{carne.kilos.ToString()}");
+            }
+
+            return sb.ToString();
         }
 
     }
