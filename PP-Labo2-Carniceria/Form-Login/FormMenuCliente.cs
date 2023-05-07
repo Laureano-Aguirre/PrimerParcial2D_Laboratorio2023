@@ -18,7 +18,6 @@ namespace Form_Login
         {
             InitializeComponent();
             Carne.CargarCortes();
-            Carne.AsignarPrecioPorKilo();
             cAux = cliente;
             lb_MenPrinBienvenido.Text = $"Bienvenido {cliente.Correo}!";
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -89,7 +88,7 @@ namespace Form_Login
             else
             {
 
-                int.TryParse(txb_MenPrinMonto.Text, out int monto);
+                decimal.TryParse(txb_MenPrinMonto.Text, out decimal monto);
                 cAux.Monto = monto;
                 FormComprar frmComprar = new FormComprar(cAux);
                 frmComprar.Show();

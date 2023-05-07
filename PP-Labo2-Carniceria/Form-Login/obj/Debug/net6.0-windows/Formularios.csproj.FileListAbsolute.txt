@@ -23,3 +23,4 @@ C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Car
 C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormHeladera.resources
 C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormComprar.resources
 C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormTarjeta.resources
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormTicket.resources

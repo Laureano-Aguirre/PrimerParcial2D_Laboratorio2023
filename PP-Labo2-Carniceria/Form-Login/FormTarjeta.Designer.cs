@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTarjeta));
             this.lb_NumeroTarjeta = new System.Windows.Forms.Label();
             this.txb_NumeroTarjeta = new System.Windows.Forms.TextBox();
             this.lb_NombreTitTarjeta = new System.Windows.Forms.Label();
@@ -160,6 +161,7 @@
             this.btn_CancelarTarjeta.TabIndex = 12;
             this.btn_CancelarTarjeta.Text = "Cancelar";
             this.btn_CancelarTarjeta.UseVisualStyleBackColor = true;
+            this.btn_CancelarTarjeta.Click += new System.EventHandler(this.btn_CancelarTarjeta_Click);
             // 
             // FormTarjeta
             // 
@@ -179,8 +181,9 @@
             this.Controls.Add(this.lb_NombreTitTarjeta);
             this.Controls.Add(this.txb_NumeroTarjeta);
             this.Controls.Add(this.lb_NumeroTarjeta);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormTarjeta";
-            this.Text = "FormCredito";
+            this.Text = "Datos de tarjeta";
             this.Load += new System.EventHandler(this.FormTarjeta_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -13,13 +13,18 @@ using Entidades;
 
 namespace Form_Login
 {
+    
     public partial class FormTarjeta : Form
     {
         private PictureBox pb_tarjetaMastercard = new PictureBox();
         private PictureBox pb_tarjetaVisa = new PictureBox();
+        Cliente cliente;
         public FormTarjeta()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; 
+            this.MaximizeBox = false; 
+            this.MinimizeBox = false; 
             txb_NumeroTarjeta.TextChanged += new EventHandler(txb_NumeroTarjeta_TextChanged);
             ConfigarTarjetaMastercard();
             ConfigurarTarjetaVisa();
@@ -122,6 +127,16 @@ namespace Form_Login
                 lb_FechaVtoRealEnTarjeta.BackColor = Color.FromArgb(54, 66, 80);
                 lb_NombreEnTarjeta.BackColor = Color.FromArgb(54, 66, 80);
                 lb_NumeroEnTarjeta.BackColor = Color.FromArgb(54, 66, 80);
+            }
+        }
+
+        private void btn_CancelarTarjeta_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Esta seguro que desea cancelar el ingreso de los datos?\n" +
+                "Se borraran los datos.", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialog == DialogResult.Yes)
+            {
+                this.Close();
             }
         }
     }

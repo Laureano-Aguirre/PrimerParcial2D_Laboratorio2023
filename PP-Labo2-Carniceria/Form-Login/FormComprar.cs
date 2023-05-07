@@ -5,26 +5,30 @@ namespace Form_Login
     public partial class FormComprar : Form
     {
         Cliente caux;
-        decimal costoTotal = 0;
+        decimal costoParcial = 0;
 
         public FormComprar(Cliente cliente)
         {
             InitializeComponent();
-            caux = cliente;
+
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             pb_BolsaCompras.BackColor = Color.Transparent;
             nud_CompraKilos.Minimum = 0M;
             nud_CompraKilos.Maximum = 10;
             nud_CompraKilos.Value = 0M;
             nud_CompraKilos.Increment = 0.5M;
             lb_ComprarCostoParcial.Text = "0";
+            caux = cliente;
         }
 
         private void FormComprar_Load(object sender, EventArgs e)
         {
             this.BackgroundImage = Image.FromFile(@"imagenes\img-fondoCompra2.png");
             this.BackgroundImageLayout = ImageLayout.Stretch;
+
             lb_CompraMonto.Text = caux.Monto.ToString();
             lb_CompraPrecioPorKilo.Visible = false;
             lb_CompraBifeChorizo.Visible = false;
@@ -35,6 +39,9 @@ namespace Form_Login
             lb_CompraOjoBife.Visible = false;
             lb_CompraTiraAsado.Visible = false;
             lb_CompraTortuguita.Visible = false;
+            cmb_CompraCortes.DropDownStyle = ComboBoxStyle.DropDown;
+            cmb_CompraCortes.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmb_CompraCortes.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             foreach (Carne carne in Carne.ListaCarnes)
             {
@@ -70,7 +77,6 @@ namespace Form_Login
         private void nud_CompraKilos_ValueChanged(object sender, EventArgs e)
         {
             string corteCarne;
-            bool pudoCambiar = int.TryParse(lb_ComprarCostoParcial.Text, out int costoFinal);
 
             corteCarne = cmb_CompraCortes.Text;
 
@@ -151,23 +157,133 @@ namespace Form_Login
 
         private void btn_CompraAgregar_Click(object sender, EventArgs e)
         {
-            
-            string tipoDeCarne = cmb_CompraCortes.SelectedItem.ToString();
-            decimal kilos = nud_CompraKilos.Value;
-
-            int precioPorKilo = Carne.CargarPrecioPorKilo(tipoDeCarne);
-            int costo = Carne.CalcularCosto(kilos, precioPorKilo);
-
-            costoTotal += costo;
-
-            lb_ComprarCostoParcial.Text = costoTotal.ToString();
-
-            Carne carne1 = new Carne(tipoDeCarne, kilos);
-            if(carne1.CargarCompra(carne1))
+            if (ValidarCorte())
             {
-                MessageBox.Show("Agregado al carrito.");
+                if (ValidarKilo())
+                {
+                    string tipoDeCarne = cmb_CompraCortes.SelectedItem.ToString();
+                    decimal kilos = nud_CompraKilos.Value;
+
+                    int precioPorKilo = Carne.CargarPrecioPorKilo(tipoDeCarne);
+                    int costo = Carne.CalcularCosto(kilos, precioPorKilo);
+
+                    costoParcial += costo;
+                    lb_ComprarCostoParcial.Text = costoParcial.ToString();
+                    foreach(Carne carne2 in Carne.ListaCarnes)
+                    {
+                        if(tipoDeCarne == carne2.TipoDeCarne)
+                        {
+                            if(carne2.Stock>0 && carne2.Stock>=kilos)
+                            {
+                                Carne carne1 = new Carne(tipoDeCarne, kilos);
+                                if (carne1.CargarCompra(carne1))
+                                {
+                                    foreach (Carne carne in Carne.ListaCarnes)
+                                    {
+                                        if (carne1.TipoDeCarne == carne.TipoDeCarne)
+                                        {
+                                            carne.Stock = carne.Stock - kilos;
+                                            MessageBox.Show("Agregado al carrito.");
+
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Stock insuficiente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }                   
+                    VisibilizarCortes(tipoDeCarne);
+                }
+                else
+                {
+                    MessageBox.Show("Debe elegir la cantidad de kilos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            VisibilizarCortes(tipoDeCarne);
+            else
+            {
+                MessageBox.Show("Debe elegir un corte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+        }
+
+        private bool ValidarCorte()
+        {
+            bool retorno;
+
+            if (cmb_CompraCortes.SelectedIndex == -1)
+            {
+                retorno = false;
+            }
+            else
+            {
+                retorno = true;
+            }
+            return retorno;
+        }
+
+        private bool ValidarKilo()
+        {
+            bool retorno;
+
+            if (nud_CompraKilos.Value == 0)
+            {
+                retorno = false;
+            }
+            else
+            {
+                retorno = true;
+            }
+            return retorno;
+        }
+
+        private void btn_CompraPagar_Click(object sender, EventArgs e)
+        {
+            bool pudoCambiarMonto = decimal.TryParse(lb_CompraMonto.Text, out decimal monto);
+            bool pudoCambiarCostoFinal = decimal.TryParse(lb_ComprarCostoParcial.Text, out decimal costoFinal);
+            if (pudoCambiarMonto)
+            {
+                if (pudoCambiarCostoFinal)
+                {
+                    if (Carne.CalcularPago(monto, costoFinal) > 0)
+                    {
+                        if(btn_CompraEfectivo.TabIndex == 1)
+                        {
+                            FormTicket frmTicket = new FormTicket();
+                            frmTicket.Show();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void btn_CompraEfectivo_Click(object sender, EventArgs e)
+        {
+            bool pudoCambiarMonto = decimal.TryParse(lb_CompraMonto.Text, out decimal monto);
+            bool pudoCambiarCostoFinal = decimal.TryParse(lb_CompraCostoParcial.Text, out decimal costoFinal);
+            if (Carne.CalcularPago(monto, costoFinal) < 0)
+            {
+                MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
+                    "Por favor, ingrese un nuevo monto y vuelva a comprar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                this.Hide();
+                Form_MenuCliente frmMenuCliente = new Form_MenuCliente(caux);
+                frmMenuCliente.Show();
+
+            }
+            else
+            {
+                btn_CompraEfectivo.TabIndex = 1;
+            }
+        }
+
+        private void FormComprar_TextChanged(object sender, EventArgs e)
+        {
+            cmb_CompraCortes.DroppedDown = false;
+            cmb_CompraCortes.SelectionStart = cmb_CompraCortes.Text.Length;
+            cmb_CompraCortes.DroppedDown = true;
         }
     }
 }

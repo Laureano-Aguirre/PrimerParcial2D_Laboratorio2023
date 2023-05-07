@@ -8,7 +8,7 @@ namespace Entidades
 {
     public class Cliente:Persona
     {
-        private int monto;
+        private decimal monto;
 
         public Cliente(string correo, string password): base(correo, password)
         {
@@ -18,11 +18,11 @@ namespace Entidades
             listaPersonas.Add(this);
         }
 
-        public Cliente(string correo, string password,int monto):base(correo, password)
+        public Cliente(string correo, string password,decimal monto):base(correo, password)
         {
             this.monto = monto;
         }
-        public int Monto { get { return this.monto; } set { monto = value; } }
+        public decimal Monto { get { return this.monto; } set { monto = value; } }
         public string Correo { get { return this.correo; }}
         public string Password { get { return this.password; }}
 
