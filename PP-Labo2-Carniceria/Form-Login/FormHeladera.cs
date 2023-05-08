@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Entidades;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Entidades;
 
 namespace Form_Login
 {
@@ -35,6 +27,7 @@ namespace Form_Login
             VisibilizarCortes(bindingListaCarnes);
 
 
+
         }
 
         private void FormHeladera_FormClosing(object sender, FormClosingEventArgs e)
@@ -46,9 +39,9 @@ namespace Form_Login
         {
             DialogResult dialogResutl = MessageBox.Show("Esta seguro que desea cerrar el programa?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
-            if(dialogResutl == DialogResult.Yes)
+            if (dialogResutl == DialogResult.Yes)
             {
-                Application.Exit(); 
+                Application.Exit();
             }
         }
 
@@ -74,6 +67,22 @@ namespace Form_Login
 
                 // Agregar la fila al DataGridView
                 dataGridView1.Rows.Add(row);
+            }
+        }
+
+        private void stockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAgregar frmAgregar = new FormAgregar();
+            frmAgregar.Show();
+            this.Hide();
+        }
+
+        private void btn_HeladeraVender_Click(object sender, EventArgs e)
+        {
+            foreach(Carne carne in Carne.ListaCarnes)
+            {
+                MessageBox.Show($"corte: {carne.TipoDeCarne} \n" +
+                    $"stock: {carne.Stock}");
             }
         }
     }
