@@ -2,7 +2,7 @@
 
 namespace Entidades
 {
-    public class Persona
+    public abstract class Persona
     {
        protected string correo;
        protected string password;
@@ -14,15 +14,7 @@ namespace Entidades
             this.password = password;   
         }
 
+        public abstract string MostrarPersona(Persona persona);
 
-        
-        public string MostrarPersona()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine("");
-
-            return sb.ToString();
-        }
     }
 }

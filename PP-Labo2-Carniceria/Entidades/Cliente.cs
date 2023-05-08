@@ -6,25 +6,29 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Cliente:Persona
+    public sealed class Cliente:Persona
     {
         private decimal monto;
+        private decimal gasto;
 
         public Cliente(string correo, string password): base(correo, password)
         {
             this.correo = correo;
             this.password = password;
             monto= 0;
+            gasto = 0;
             listaPersonas.Add(this);
         }
 
-        public Cliente(string correo, string password,decimal monto):base(correo, password)
+        public Cliente(string correo, string password,decimal monto, decimal gasto):base(correo, password)
         {
             this.monto = monto;
+            this.gasto = gasto;
         }
         public decimal Monto { get { return this.monto; } set { monto = value; } }
         public string Correo { get { return this.correo; }}
         public string Password { get { return this.password; }}
+        public decimal Gasto { get { return this.gasto; } set { gasto = value; } }
 
         /// <summary>
         /// Busca al cliente dentro de la lista de personas.
@@ -68,7 +72,16 @@ namespace Entidades
             Cliente c3 = new Cliente("cliente3@gmail.com", "cliente3cliente");
             Cliente c4 = new Cliente("cliente4@gmail.com", "cliente4cliente");
 
+        }
 
+        public override string MostrarPersona(Persona persona)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            if(persona  is Cliente cliente)
+            sb.AppendLine($"Correo: {cliente.correo}");
+
+            return sb.ToString();
         }
     }
 }

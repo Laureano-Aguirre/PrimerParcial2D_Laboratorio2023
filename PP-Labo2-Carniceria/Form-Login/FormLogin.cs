@@ -17,6 +17,7 @@ namespace Form_Login
             lb_LoginPassword.Visible = false;
             Vendedor.HardcodearVendedores();
             Cliente.HardocdearClientes();
+            Carne.CargarCortes();
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -17,7 +17,6 @@ namespace Form_Login
         public Form_MenuCliente(Cliente cliente)
         {
             InitializeComponent();
-            Carne.CargarCortes();
             cAux = cliente;
             lb_MenPrinBienvenido.Text = $"Bienvenido {cliente.Correo}!";
             this.StartPosition = FormStartPosition.CenterScreen;
