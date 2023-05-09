@@ -42,7 +42,7 @@ namespace Form_Login
             rtb_TicketMostrar.SelectionAlignment = HorizontalAlignment.Center;
             rtb_TicketMostrar.AppendText("\n");
 
-            rtb_TicketMostrar.AppendText($"CORREO DEL USUARIO: {cAux.Correo}\n\n");
+            rtb_TicketMostrar.AppendText($"{cAux.MostrarPersona(cAux)}\n\n");
 
             foreach (Tarjeta tarjeta in Tarjeta.Tarjetas)
             {

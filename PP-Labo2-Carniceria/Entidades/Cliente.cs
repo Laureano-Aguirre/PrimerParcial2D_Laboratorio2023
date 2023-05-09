@@ -81,7 +81,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
             if(persona  is Cliente cliente)
-            sb.AppendLine($"Correo: {cliente.correo}");
+            sb.AppendLine($"CORRE DEL CLIENTE: {cliente.correo}");
 
             return sb.ToString();
         }
