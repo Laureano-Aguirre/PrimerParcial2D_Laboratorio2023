@@ -115,12 +115,12 @@ namespace Form_Login
         {
             string cardNum = txb_NumeroTarjeta.Text;
 
-            // regular expressions to match first digits of credit/debit cards
-            string visaRegex = "^4[0-9]{6,}$";
-            string mastercardRegex = "^5[1-5][0-9]{5,}$";
+            
+            string visaRegex = "^4[0-9]{6,}$"; //comienza con un cuatro, luego indica que debe haber minimo 6 numeros (del 0 al 9) y el $ indica que debe terminar con un caracter numerico
+            string mastercardRegex = "^5[1-5][0-9]{5,}$"; // comienza con un 5, seguido de numeros entre el 1 y el 5 (al menos 5 nnumeros)
 
-            // check if cardNum matches any of the regex patterns
-            if (Regex.IsMatch(cardNum, visaRegex))
+            
+            if (Regex.IsMatch(cardNum, visaRegex)) //chequea con un metodo del using RegularExpressions, si el numero de tarjeta ingresado, va coincidiendo con la expresion regular de VISA, en este caso
             {
                 pb_tarjetaVisa.Visible = true;
                 lb_FechaVtoEnTarjeta.BackColor = Color.FromArgb(0,64,120);

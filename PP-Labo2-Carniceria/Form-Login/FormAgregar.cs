@@ -88,7 +88,9 @@ namespace Form_Login
                 "Se borraran los datos.", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialog == DialogResult.Yes)
             {
-                this.Close();
+                FormHeladera frmHeladera = new FormHeladera();
+                frmHeladera.Show();
+                this.Hide();
             }
         }
         private void FormAgregar_FormClosing_1(object sender, FormClosingEventArgs e)
