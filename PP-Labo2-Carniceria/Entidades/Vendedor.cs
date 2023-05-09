@@ -34,6 +34,10 @@ namespace Entidades
             return false;
         }
 
+        /// <summary>
+        /// Muestra los metodos de pago, recorriendo el Enum
+        /// </summary>
+        /// <returns></returns>
         public static string MostrarMetodoDePago()
         {
             string mensaje = "Tipos de pago disponibles:\n";

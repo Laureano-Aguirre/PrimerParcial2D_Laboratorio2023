@@ -42,6 +42,9 @@ namespace Form_Login
             btn_LoginVendedor.DialogResult = DialogResult.OK;
         }
 
+        /// <summary>
+        /// Muestra y esconde los controladores
+        /// </summary>
         private void Visibilizacion()
         {
             txb_LoginCorreo.Visible = true;

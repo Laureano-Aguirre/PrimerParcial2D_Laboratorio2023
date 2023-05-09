@@ -62,15 +62,22 @@ namespace Form_Login
         {
             if(long.TryParse(txb_NumeroTarjeta.Text, out long numeroTarjeta))
             {
-                if(DateTime.TryParseExact(txb_FechaVtoTarjeta.Text, "MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fechaVto))
+                if(!(string.IsNullOrEmpty(txb_NombreTitTarjeta.Text)))
                 {
-                    Tarjeta tarjeta = new Tarjeta(numeroTarjeta, txb_NombreTitTarjeta.Text, fechaVto);
-                    this.Close();
+                    if (DateTime.TryParseExact(txb_FechaVtoTarjeta.Text, "MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fechaVto))
+                    {
+                        Tarjeta tarjeta = new Tarjeta(numeroTarjeta, txb_NombreTitTarjeta.Text, fechaVto);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Fecha de vencimiento incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Fecha de vencimiento incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    MessageBox.Show("Nombre de titular de tarjeta incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }  
             }
             else
             {

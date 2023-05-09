@@ -96,6 +96,9 @@ namespace Form_Login
             Application.Exit();
         }
 
+        /// <summary>
+        /// Configura los controladores
+        /// </summary>
         public void VisibilizacionYConfiguracionControladores()
         {
             lb_AgregarStock.Visible = false;
@@ -116,6 +119,10 @@ namespace Form_Login
             nud_AgregarStock.Value = 0M;
             nud_AgregarStock.Increment = 0.5M;
         }
+
+        /// <summary>
+        /// Chequea que se quiere agregar, si corte o stock. Luego, en caso de que sea corte, confirma que no exista uno ya con ese nombre, en caso de que no, lo agrega
+        /// </summary>
         private void AgregarCorteOStock()
         {
             if (rdb_AgregarStock.Checked == true)

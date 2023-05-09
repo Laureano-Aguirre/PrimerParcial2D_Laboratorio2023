@@ -91,6 +91,10 @@ namespace Form_Login
             }
         }
 
+        /// <summary>
+        /// Muestra y ubica los label
+        /// </summary>
+        /// <param name="corte"></param>
         private void VisibilizarCortes(string corte)
         {
 
@@ -216,6 +220,10 @@ namespace Form_Login
             }
         }
 
+        /// <summary>
+        ///Valida que se haya seleccionado un corte 
+        /// </summary>
+        /// <returns></returns>
         private bool ValidarCorte()
         {
             bool retorno;
@@ -231,6 +239,10 @@ namespace Form_Login
             return retorno;
         }
 
+        /// <summary>
+        /// Valida que se hayan elegido los kilos
+        /// </summary>
+        /// <returns></returns>
         private bool ValidarKilo()
         {
             bool retorno;
@@ -244,6 +256,43 @@ namespace Form_Login
                 retorno = true;
             }
             return retorno;
+        }
+
+        /// <summary>
+        /// Valida que el monto que ingreso el usuario, alcance para comprar los productos
+        /// </summary>
+        /// <param name="monto"></param>
+        /// <param name="costoFinal"></param>
+        private void ValidarPago(decimal monto, decimal costoFinal)
+        {
+            if (Carne.CalcularPago(monto, costoFinal) >= 0)
+            {
+                caux.Gasto = costoFinal;
+                if ((btn_CompraEfectivo.DialogResult == DialogResult.OK) || (btn_CompraCredito.DialogResult == DialogResult.OK) || (btn_CompraDebito.DialogResult == DialogResult.OK))
+                {
+                    DialogResult dialogresult = MessageBox.Show("Desea confirmar la compra?", "Confirmar compra", MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
+                    
+                    if(dialogresult == DialogResult.Yes)
+                    {
+                        FormTicket frmTicket = new FormTicket(caux);
+                        frmTicket.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Compra cancelada.", "Cancelacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
+            "Por favor, ingrese un nuevo monto y vuelva a comprar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                this.Hide();
+                Form_MenuCliente frmMenuCliente = new Form_MenuCliente(caux);
+                frmMenuCliente.Show();
+            }
         }
 
         private void btn_CompraPagar_Click(object sender, EventArgs e)
@@ -261,24 +310,7 @@ namespace Form_Login
                         {
                             if (pudoCambiarCostoFinal)
                             {
-                                if (Carne.CalcularPago(monto, costoFinal) >= 0)
-                                {
-                                    caux.Gasto = costoFinal;
-                                    if ((btn_CompraEfectivo.DialogResult==DialogResult.OK) || (btn_CompraCredito.DialogResult == DialogResult.OK) || (btn_CompraDebito.DialogResult == DialogResult.OK))
-                                    {
-                                        FormTicket frmTicket = new FormTicket(caux);
-                                        frmTicket.Show();
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
-                                "Por favor, ingrese un nuevo monto y vuelva a comprar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                                    this.Hide();
-                                    Form_MenuCliente frmMenuCliente = new Form_MenuCliente(caux);
-                                    frmMenuCliente.Show();
-                                }
+                                ValidarPago(monto, costoFinal);
                             }
                         }
                     }
@@ -348,5 +380,7 @@ namespace Form_Login
             cmb_CompraCortes.SelectionStart = cmb_CompraCortes.Text.Length;
             cmb_CompraCortes.DroppedDown = true;
         }
+
+
     }
 }

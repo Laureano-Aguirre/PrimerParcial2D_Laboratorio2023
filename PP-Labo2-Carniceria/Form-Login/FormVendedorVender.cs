@@ -142,6 +142,10 @@ namespace Form_Login
 
         }
 
+        /// <summary>
+        /// Valida que se haya elegido un corte
+        /// </summary>
+        /// <returns></returns>
         private bool ValidarCorte()
         {
             bool retorno;
@@ -157,6 +161,10 @@ namespace Form_Login
             return retorno;
         }
 
+        /// <summary>
+        /// Valida que se hayan elegido los kilos
+        /// </summary>
+        /// <returns></returns>
         private bool ValidarKilo()
         {
             bool retorno;

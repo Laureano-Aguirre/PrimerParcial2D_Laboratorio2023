@@ -95,6 +95,10 @@ namespace Form_Login
             }
         }
 
+        /// <summary>
+        /// Valida que el monto ingresado sea mayor que 0
+        /// </summary>
+        /// <returns></returns>
         private bool ValidarMonto()
         {
 

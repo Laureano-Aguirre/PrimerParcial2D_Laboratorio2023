@@ -51,6 +51,9 @@ namespace Form_Login
             ModificarStockOPrecio();
         }
 
+        /// <summary>
+        /// Modifica precio o stock, y puede hacer ambos a la vez.
+        /// </summary>
         private void ModificarStockOPrecio()
         {
             bool pudoCambiarStock = int.TryParse(txb_ModificarStock.Text, out int stock);

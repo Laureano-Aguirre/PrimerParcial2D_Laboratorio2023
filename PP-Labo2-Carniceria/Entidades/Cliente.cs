@@ -82,11 +82,14 @@ namespace Entidades
 
             if(persona  is Cliente cliente)
             sb.AppendLine($"Correo: {cliente.correo}");
-            //sb.AppendLine($"Monto: {cliente.monto}");
 
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Recprre la lista de personas, y trae a los que son de tipo Cliente
+        /// </summary>
+        /// <returns></returns>
         public static string ListarClientes()
         {
             StringBuilder sb = new StringBuilder();
