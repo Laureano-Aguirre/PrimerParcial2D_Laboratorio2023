@@ -24,11 +24,13 @@ namespace Entidades
         {
             this.monto = monto;
             this.gasto = gasto;
+            listaPersonas.Add(this);
         }
         public decimal Monto { get { return this.monto; } set { monto = value; } }
         public string Correo { get { return this.correo; }}
         public string Password { get { return this.password; }}
         public decimal Gasto { get { return this.gasto; } set { gasto = value; } }
+
 
         /// <summary>
         /// Busca al cliente dentro de la lista de personas.
@@ -69,8 +71,8 @@ namespace Entidades
         {
             Cliente c1 = new Cliente("cliente1@gmail.com", "cliente1cliente");
             Cliente c2 = new Cliente("cliente2@gmail.com", "cliente2cliente");
-            Cliente c3 = new Cliente("cliente3@gmail.com", "cliente3cliente");
-            Cliente c4 = new Cliente("cliente4@gmail.com", "cliente4cliente");
+            Cliente c3 = new Cliente("cliente3@gmail.com", "cliente3cliente", 500, 0);
+            Cliente c4 = new Cliente("cliente4@gmail.com", "cliente4cliente", 10000, 0);
 
         }
 
@@ -80,6 +82,22 @@ namespace Entidades
 
             if(persona  is Cliente cliente)
             sb.AppendLine($"Correo: {cliente.correo}");
+            //sb.AppendLine($"Monto: {cliente.monto}");
+
+            return sb.ToString();
+        }
+
+        public static string ListarClientes()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach(Persona persona in listaPersonas)
+            {
+                if(persona is Cliente cliente)
+                {
+                    sb.AppendLine($"Correo: {cliente.correo} - Monto: {cliente.monto}");
+                }
+            }
 
             return sb.ToString();
         }

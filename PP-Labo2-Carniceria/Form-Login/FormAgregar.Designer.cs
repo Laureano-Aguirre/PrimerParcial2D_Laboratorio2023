@@ -29,151 +29,194 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAgregar));
-            label1 = new Label();
-            rdb_AgregarTipoDeCorte = new RadioButton();
-            rdb_AgregarStock = new RadioButton();
-            txb_AgregarTipoDeCorte = new TextBox();
-            lb_AgregarTipoDeCorte = new Label();
-            nud_AgregarStock = new NumericUpDown();
-            lb_AgregarStock = new Label();
-            lb_AgregarSeleccionarCorte = new Label();
-            btn_AgregarAgregar = new Button();
-            btn_AgregarCancelar = new Button();
-            cmb_AgregarSeleccionarCorte = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)nud_AgregarStock).BeginInit();
-            SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.rdb_AgregarTipoDeCorte = new System.Windows.Forms.RadioButton();
+            this.rdb_AgregarStock = new System.Windows.Forms.RadioButton();
+            this.txb_AgregarTipoDeCorte = new System.Windows.Forms.TextBox();
+            this.lb_AgregarTipoDeCorte = new System.Windows.Forms.Label();
+            this.nud_AgregarStock = new System.Windows.Forms.NumericUpDown();
+            this.lb_AgregarStock = new System.Windows.Forms.Label();
+            this.lb_AgregarSeleccionarCorte = new System.Windows.Forms.Label();
+            this.btn_AgregarAgregar = new System.Windows.Forms.Button();
+            this.btn_AgregarCancelar = new System.Windows.Forms.Button();
+            this.cmb_AgregarSeleccionarCorte = new System.Windows.Forms.ComboBox();
+            this.txb_AgregarStockNuevoCorte = new System.Windows.Forms.TextBox();
+            this.lb_AgregarStockNuevoCorte = new System.Windows.Forms.Label();
+            this.txb_AgregarPrecioXKiloCorte = new System.Windows.Forms.TextBox();
+            this.lb_AgregarPrecioXKiloCorte = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_AgregarStock)).BeginInit();
+            this.SuspendLayout();
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(22, 24);
-            label1.Name = "label1";
-            label1.Size = new Size(129, 17);
-            label1.TabIndex = 0;
-            label1.Text = "Que desea agregar?";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(22, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(129, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Que desea agregar?";
             // 
             // rdb_AgregarTipoDeCorte
             // 
-            rdb_AgregarTipoDeCorte.AutoSize = true;
-            rdb_AgregarTipoDeCorte.Location = new Point(22, 63);
-            rdb_AgregarTipoDeCorte.Name = "rdb_AgregarTipoDeCorte";
-            rdb_AgregarTipoDeCorte.Size = new Size(94, 19);
-            rdb_AgregarTipoDeCorte.TabIndex = 1;
-            rdb_AgregarTipoDeCorte.Text = "Tipo de corte";
-            rdb_AgregarTipoDeCorte.UseVisualStyleBackColor = true;
-            rdb_AgregarTipoDeCorte.CheckedChanged += rdb_AgregarTipoDeCorte_CheckedChanged;
+            this.rdb_AgregarTipoDeCorte.AutoSize = true;
+            this.rdb_AgregarTipoDeCorte.Location = new System.Drawing.Point(22, 63);
+            this.rdb_AgregarTipoDeCorte.Name = "rdb_AgregarTipoDeCorte";
+            this.rdb_AgregarTipoDeCorte.Size = new System.Drawing.Size(94, 19);
+            this.rdb_AgregarTipoDeCorte.TabIndex = 1;
+            this.rdb_AgregarTipoDeCorte.Text = "Tipo de corte";
+            this.rdb_AgregarTipoDeCorte.UseVisualStyleBackColor = true;
+            this.rdb_AgregarTipoDeCorte.CheckedChanged += new System.EventHandler(this.rdb_AgregarTipoDeCorte_CheckedChanged_1);
             // 
             // rdb_AgregarStock
             // 
-            rdb_AgregarStock.AutoSize = true;
-            rdb_AgregarStock.Location = new Point(243, 63);
-            rdb_AgregarStock.Name = "rdb_AgregarStock";
-            rdb_AgregarStock.Size = new Size(54, 19);
-            rdb_AgregarStock.TabIndex = 2;
-            rdb_AgregarStock.Text = "Stock";
-            rdb_AgregarStock.UseVisualStyleBackColor = true;
-            rdb_AgregarStock.CheckedChanged += rdb_AgregarStock_CheckedChanged;
+            this.rdb_AgregarStock.AutoSize = true;
+            this.rdb_AgregarStock.Location = new System.Drawing.Point(243, 63);
+            this.rdb_AgregarStock.Name = "rdb_AgregarStock";
+            this.rdb_AgregarStock.Size = new System.Drawing.Size(54, 19);
+            this.rdb_AgregarStock.TabIndex = 2;
+            this.rdb_AgregarStock.Text = "Stock";
+            this.rdb_AgregarStock.UseVisualStyleBackColor = true;
+            this.rdb_AgregarStock.CheckedChanged += new System.EventHandler(this.rdb_AgregarStock_CheckedChanged_1);
             // 
             // txb_AgregarTipoDeCorte
             // 
-            txb_AgregarTipoDeCorte.Location = new Point(12, 138);
-            txb_AgregarTipoDeCorte.Name = "txb_AgregarTipoDeCorte";
-            txb_AgregarTipoDeCorte.PlaceholderText = "Agregue aqui";
-            txb_AgregarTipoDeCorte.Size = new Size(139, 23);
-            txb_AgregarTipoDeCorte.TabIndex = 3;
+            this.txb_AgregarTipoDeCorte.Location = new System.Drawing.Point(12, 138);
+            this.txb_AgregarTipoDeCorte.Name = "txb_AgregarTipoDeCorte";
+            this.txb_AgregarTipoDeCorte.PlaceholderText = "Ingrese aqui";
+            this.txb_AgregarTipoDeCorte.Size = new System.Drawing.Size(139, 23);
+            this.txb_AgregarTipoDeCorte.TabIndex = 3;
             // 
             // lb_AgregarTipoDeCorte
             // 
-            lb_AgregarTipoDeCorte.AutoSize = true;
-            lb_AgregarTipoDeCorte.Location = new Point(12, 120);
-            lb_AgregarTipoDeCorte.Name = "lb_AgregarTipoDeCorte";
-            lb_AgregarTipoDeCorte.Size = new Size(159, 15);
-            lb_AgregarTipoDeCorte.TabIndex = 4;
-            lb_AgregarTipoDeCorte.Text = "Agregue aquí el nuevo corte:";
+            this.lb_AgregarTipoDeCorte.AutoSize = true;
+            this.lb_AgregarTipoDeCorte.Location = new System.Drawing.Point(12, 120);
+            this.lb_AgregarTipoDeCorte.Name = "lb_AgregarTipoDeCorte";
+            this.lb_AgregarTipoDeCorte.Size = new System.Drawing.Size(159, 15);
+            this.lb_AgregarTipoDeCorte.TabIndex = 4;
+            this.lb_AgregarTipoDeCorte.Text = "Agregue aquí el nuevo corte:";
             // 
             // nud_AgregarStock
             // 
-            nud_AgregarStock.DecimalPlaces = 1;
-            nud_AgregarStock.Location = new Point(68, 299);
-            nud_AgregarStock.Name = "nud_AgregarStock";
-            nud_AgregarStock.Size = new Size(68, 23);
-            nud_AgregarStock.TabIndex = 5;
+            this.nud_AgregarStock.DecimalPlaces = 1;
+            this.nud_AgregarStock.Location = new System.Drawing.Point(68, 299);
+            this.nud_AgregarStock.Name = "nud_AgregarStock";
+            this.nud_AgregarStock.Size = new System.Drawing.Size(68, 23);
+            this.nud_AgregarStock.TabIndex = 5;
             // 
             // lb_AgregarStock
             // 
-            lb_AgregarStock.AutoSize = true;
-            lb_AgregarStock.Location = new Point(12, 281);
-            lb_AgregarStock.Name = "lb_AgregarStock";
-            lb_AgregarStock.Size = new Size(182, 15);
-            lb_AgregarStock.TabIndex = 6;
-            lb_AgregarStock.Text = "Agregue aquí para reponer stock:";
+            this.lb_AgregarStock.AutoSize = true;
+            this.lb_AgregarStock.Location = new System.Drawing.Point(12, 281);
+            this.lb_AgregarStock.Name = "lb_AgregarStock";
+            this.lb_AgregarStock.Size = new System.Drawing.Size(182, 15);
+            this.lb_AgregarStock.TabIndex = 6;
+            this.lb_AgregarStock.Text = "Agregue aquí para reponer stock:";
             // 
             // lb_AgregarSeleccionarCorte
             // 
-            lb_AgregarSeleccionarCorte.AutoSize = true;
-            lb_AgregarSeleccionarCorte.Location = new Point(12, 200);
-            lb_AgregarSeleccionarCorte.Name = "lb_AgregarSeleccionarCorte";
-            lb_AgregarSeleccionarCorte.Size = new Size(134, 15);
-            lb_AgregarSeleccionarCorte.TabIndex = 8;
-            lb_AgregarSeleccionarCorte.Text = "Seleccione aquí el corte:";
+            this.lb_AgregarSeleccionarCorte.AutoSize = true;
+            this.lb_AgregarSeleccionarCorte.Location = new System.Drawing.Point(12, 200);
+            this.lb_AgregarSeleccionarCorte.Name = "lb_AgregarSeleccionarCorte";
+            this.lb_AgregarSeleccionarCorte.Size = new System.Drawing.Size(134, 15);
+            this.lb_AgregarSeleccionarCorte.TabIndex = 8;
+            this.lb_AgregarSeleccionarCorte.Text = "Seleccione aquí el corte:";
             // 
             // btn_AgregarAgregar
             // 
-            btn_AgregarAgregar.BackColor = Color.YellowGreen;
-            btn_AgregarAgregar.Location = new Point(257, 365);
-            btn_AgregarAgregar.Name = "btn_AgregarAgregar";
-            btn_AgregarAgregar.Size = new Size(81, 36);
-            btn_AgregarAgregar.TabIndex = 9;
-            btn_AgregarAgregar.Text = "Agregar";
-            btn_AgregarAgregar.UseVisualStyleBackColor = false;
-            btn_AgregarAgregar.Click += btn_AgregarAgregar_Click;
+            this.btn_AgregarAgregar.BackColor = System.Drawing.Color.YellowGreen;
+            this.btn_AgregarAgregar.Location = new System.Drawing.Point(310, 365);
+            this.btn_AgregarAgregar.Name = "btn_AgregarAgregar";
+            this.btn_AgregarAgregar.Size = new System.Drawing.Size(81, 36);
+            this.btn_AgregarAgregar.TabIndex = 9;
+            this.btn_AgregarAgregar.Text = "Agregar";
+            this.btn_AgregarAgregar.UseVisualStyleBackColor = false;
+            this.btn_AgregarAgregar.Click += new System.EventHandler(this.btn_AgregarAgregar_Click_1);
             // 
             // btn_AgregarCancelar
             // 
-            btn_AgregarCancelar.BackColor = Color.RosyBrown;
-            btn_AgregarCancelar.Location = new Point(12, 365);
-            btn_AgregarCancelar.Name = "btn_AgregarCancelar";
-            btn_AgregarCancelar.Size = new Size(81, 36);
-            btn_AgregarCancelar.TabIndex = 10;
-            btn_AgregarCancelar.Text = "Cancelar";
-            btn_AgregarCancelar.UseVisualStyleBackColor = false;
-            btn_AgregarCancelar.Click += btn_AgregarCancelar_Click;
+            this.btn_AgregarCancelar.BackColor = System.Drawing.Color.RosyBrown;
+            this.btn_AgregarCancelar.Location = new System.Drawing.Point(12, 365);
+            this.btn_AgregarCancelar.Name = "btn_AgregarCancelar";
+            this.btn_AgregarCancelar.Size = new System.Drawing.Size(81, 36);
+            this.btn_AgregarCancelar.TabIndex = 10;
+            this.btn_AgregarCancelar.Text = "Cancelar";
+            this.btn_AgregarCancelar.UseVisualStyleBackColor = false;
+            this.btn_AgregarCancelar.Click += new System.EventHandler(this.btn_AgregarCancelar_Click_1);
             // 
             // cmb_AgregarSeleccionarCorte
             // 
-            cmb_AgregarSeleccionarCorte.FormattingEnabled = true;
-            cmb_AgregarSeleccionarCorte.Location = new Point(12, 218);
-            cmb_AgregarSeleccionarCorte.Name = "cmb_AgregarSeleccionarCorte";
-            cmb_AgregarSeleccionarCorte.Size = new Size(139, 23);
-            cmb_AgregarSeleccionarCorte.TabIndex = 11;
+            this.cmb_AgregarSeleccionarCorte.FormattingEnabled = true;
+            this.cmb_AgregarSeleccionarCorte.Location = new System.Drawing.Point(12, 218);
+            this.cmb_AgregarSeleccionarCorte.Name = "cmb_AgregarSeleccionarCorte";
+            this.cmb_AgregarSeleccionarCorte.Size = new System.Drawing.Size(139, 23);
+            this.cmb_AgregarSeleccionarCorte.TabIndex = 11;
+            // 
+            // txb_AgregarStockNuevoCorte
+            // 
+            this.txb_AgregarStockNuevoCorte.Location = new System.Drawing.Point(230, 138);
+            this.txb_AgregarStockNuevoCorte.Name = "txb_AgregarStockNuevoCorte";
+            this.txb_AgregarStockNuevoCorte.PlaceholderText = "Ingrese aqui";
+            this.txb_AgregarStockNuevoCorte.Size = new System.Drawing.Size(100, 23);
+            this.txb_AgregarStockNuevoCorte.TabIndex = 12;
+            // 
+            // lb_AgregarStockNuevoCorte
+            // 
+            this.lb_AgregarStockNuevoCorte.AutoSize = true;
+            this.lb_AgregarStockNuevoCorte.Location = new System.Drawing.Point(230, 120);
+            this.lb_AgregarStockNuevoCorte.Name = "lb_AgregarStockNuevoCorte";
+            this.lb_AgregarStockNuevoCorte.Size = new System.Drawing.Size(124, 15);
+            this.lb_AgregarStockNuevoCorte.TabIndex = 13;
+            this.lb_AgregarStockNuevoCorte.Text = "Agregue aquí el stock:";
+            // 
+            // txb_AgregarPrecioXKiloCorte
+            // 
+            this.txb_AgregarPrecioXKiloCorte.Location = new System.Drawing.Point(230, 218);
+            this.txb_AgregarPrecioXKiloCorte.Name = "txb_AgregarPrecioXKiloCorte";
+            this.txb_AgregarPrecioXKiloCorte.PlaceholderText = "Ingrese aqui";
+            this.txb_AgregarPrecioXKiloCorte.Size = new System.Drawing.Size(100, 23);
+            this.txb_AgregarPrecioXKiloCorte.TabIndex = 14;
+            // 
+            // lb_AgregarPrecioXKiloCorte
+            // 
+            this.lb_AgregarPrecioXKiloCorte.AutoSize = true;
+            this.lb_AgregarPrecioXKiloCorte.Location = new System.Drawing.Point(230, 200);
+            this.lb_AgregarPrecioXKiloCorte.Name = "lb_AgregarPrecioXKiloCorte";
+            this.lb_AgregarPrecioXKiloCorte.Size = new System.Drawing.Size(172, 15);
+            this.lb_AgregarPrecioXKiloCorte.TabIndex = 15;
+            this.lb_AgregarPrecioXKiloCorte.Text = "Agregue aquí el precio por kilo:";
             // 
             // FormAgregar
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(350, 413);
-            Controls.Add(cmb_AgregarSeleccionarCorte);
-            Controls.Add(btn_AgregarCancelar);
-            Controls.Add(btn_AgregarAgregar);
-            Controls.Add(lb_AgregarSeleccionarCorte);
-            Controls.Add(lb_AgregarStock);
-            Controls.Add(nud_AgregarStock);
-            Controls.Add(lb_AgregarTipoDeCorte);
-            Controls.Add(txb_AgregarTipoDeCorte);
-            Controls.Add(rdb_AgregarStock);
-            Controls.Add(rdb_AgregarTipoDeCorte);
-            Controls.Add(label1);
-            Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "FormAgregar";
-            Text = "Agregar";
-            FormClosing += FormAgregar_FormClosing;
-            Load += FormAgregar_Load;
-            Shown += FormAgregar_Shown;
-            ((System.ComponentModel.ISupportInitialize)nud_AgregarStock).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(403, 413);
+            this.Controls.Add(this.lb_AgregarPrecioXKiloCorte);
+            this.Controls.Add(this.txb_AgregarPrecioXKiloCorte);
+            this.Controls.Add(this.lb_AgregarStockNuevoCorte);
+            this.Controls.Add(this.txb_AgregarStockNuevoCorte);
+            this.Controls.Add(this.cmb_AgregarSeleccionarCorte);
+            this.Controls.Add(this.btn_AgregarCancelar);
+            this.Controls.Add(this.btn_AgregarAgregar);
+            this.Controls.Add(this.lb_AgregarSeleccionarCorte);
+            this.Controls.Add(this.lb_AgregarStock);
+            this.Controls.Add(this.nud_AgregarStock);
+            this.Controls.Add(this.lb_AgregarTipoDeCorte);
+            this.Controls.Add(this.txb_AgregarTipoDeCorte);
+            this.Controls.Add(this.rdb_AgregarStock);
+            this.Controls.Add(this.rdb_AgregarTipoDeCorte);
+            this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FormAgregar";
+            this.Text = "Agregar";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAgregar_FormClosing_1);
+            this.Load += new System.EventHandler(this.FormAgregar_Load_1);
+            this.Shown += new System.EventHandler(this.FormAgregar_Shown_1);
+            ((System.ComponentModel.ISupportInitialize)(this.nud_AgregarStock)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
@@ -189,5 +232,9 @@
         private Button btn_AgregarAgregar;
         private Button btn_AgregarCancelar;
         private ComboBox cmb_AgregarSeleccionarCorte;
+        private TextBox txb_AgregarStockNuevoCorte;
+        private Label lb_AgregarStockNuevoCorte;
+        private TextBox txb_AgregarPrecioXKiloCorte;
+        private Label lb_AgregarPrecioXKiloCorte;
     }
 }

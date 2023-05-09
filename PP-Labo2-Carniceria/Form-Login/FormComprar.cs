@@ -163,7 +163,7 @@ namespace Form_Login
 
         private void btn_CompraAgregar_Click(object sender, EventArgs e)
         {
-            btn_CompraAgregar.DialogResult = DialogResult.OK;
+            
             if (ValidarCorte())
             {
                 if (ValidarKilo())
@@ -191,7 +191,7 @@ namespace Form_Login
                                         {
                                             carne.Stock = carne.Stock - kilos;
                                             MessageBox.Show("Agregado al carrito.");
-
+                                            btn_CompraAgregar.DialogResult = DialogResult.OK;
                                         }
                                     }
                                 }
@@ -270,6 +270,15 @@ namespace Form_Login
                                         frmTicket.Show();
                                     }
                                 }
+                                else
+                                {
+                                    MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
+                                "Por favor, ingrese un nuevo monto y vuelva a comprar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                                    this.Hide();
+                                    Form_MenuCliente frmMenuCliente = new Form_MenuCliente(caux);
+                                    frmMenuCliente.Show();
+                                }
                             }
                         }
                     }
@@ -293,7 +302,7 @@ namespace Form_Login
         private void btn_CompraEfectivo_Click(object sender, EventArgs e)
         {
             bool pudoCambiarMonto = decimal.TryParse(lb_CompraMonto.Text, out decimal monto);
-            bool pudoCambiarCostoFinal = decimal.TryParse(lb_CompraCostoParcial.Text, out decimal costoFinal);
+            bool pudoCambiarCostoFinal = decimal.TryParse(lb_ComprarCostoParcial.Text, out decimal costoFinal);
 
             if(ValidarCorte())
             {
@@ -301,6 +310,7 @@ namespace Form_Login
                 {
                     if(btn_CompraAgregar.DialogResult == DialogResult.OK)
                     {
+                        
                         if (Carne.CalcularPago(monto, costoFinal) < 0)
                         {
                             MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
@@ -309,7 +319,6 @@ namespace Form_Login
                             this.Hide();
                             Form_MenuCliente frmMenuCliente = new Form_MenuCliente(caux);
                             frmMenuCliente.Show();
-
                         }
                         else
                         {

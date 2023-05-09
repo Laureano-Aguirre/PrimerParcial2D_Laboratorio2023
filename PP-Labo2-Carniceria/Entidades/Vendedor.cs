@@ -9,12 +9,6 @@ namespace Entidades
 
     public sealed class Vendedor : Persona
     {
-        public enum ETipoDePago
-        {
-            Efectivo,
-            Credito,
-            Debito
-        }
 
         public Vendedor(string correo, string password) : base(correo, password)
         {
@@ -43,7 +37,7 @@ namespace Entidades
         public static string MostrarMetodoDePago()
         {
             string mensaje = "Tipos de pago disponibles:\n";
-            foreach (Vendedor.ETipoDePago tipo in Enum.GetValues(typeof(Vendedor.ETipoDePago)))
+            foreach (ETipoDePago tipo in Enum.GetValues(typeof(ETipoDePago)))
             {
                 mensaje += tipo.ToString() + "\n";
             }

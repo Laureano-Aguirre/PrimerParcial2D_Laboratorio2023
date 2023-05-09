@@ -14,6 +14,8 @@ namespace Entidades
             this.password = password;   
         }
 
+        public static List<Persona> ListaPersonas { get { return listaPersonas; } }
+
         public abstract string MostrarPersona(Persona persona);
 
     }

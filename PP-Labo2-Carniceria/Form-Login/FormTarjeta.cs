@@ -22,7 +22,8 @@ namespace Form_Login
         public FormTarjeta()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.FixedSingle; 
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false; 
             this.MinimizeBox = false; 
             txb_NumeroTarjeta.TextChanged += new EventHandler(txb_NumeroTarjeta_TextChanged);

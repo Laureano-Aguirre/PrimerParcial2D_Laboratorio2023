@@ -8,9 +8,11 @@ namespace Form_Login
         public FormHeladera()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
-        private void FormHeladera_Load(object sender, EventArgs e)
+        private void FormHeladera_Load_1(object sender, EventArgs e)
         {
             this.BackgroundImage = Image.FromFile(@"imagenes\img-Heladera2.png");
             this.BackgroundImageLayout = ImageLayout.Stretch;
@@ -20,22 +22,19 @@ namespace Form_Login
 
             // Agregar las columnas manualmente
             dataGridView1.Columns.Add("TipoDeCarne", "Tipo de carne");
-            dataGridView1.Columns.Add("Stock", "Stock (en kilos)");
             dataGridView1.Columns.Add("PrecioPorKilo", "Precio por kilo");
+            dataGridView1.Columns.Add("Stock", "Stock (en kilos)");
             BindingList<Carne> bindingListaCarnes = new BindingList<Carne>(Carne.ListaCarnes);
 
             VisibilizarCortes(bindingListaCarnes);
-
-
-
         }
 
-        private void FormHeladera_FormClosing(object sender, FormClosingEventArgs e)
+        private void FormHeladera_FormClosing_1(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
 
-        private void btn_HeladeraSalir_Click(object sender, EventArgs e)
+        private void btn_HeladeraSalir_Click_1(object sender, EventArgs e)
         {
             DialogResult dialogResutl = MessageBox.Show("Esta seguro que desea cerrar el programa?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
 
@@ -43,6 +42,13 @@ namespace Form_Login
             {
                 Application.Exit();
             }
+        }
+
+        private void stockToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            FormAgregar frmAgregar = new FormAgregar();
+            frmAgregar.Show();
+            this.Hide();
         }
 
         private void VisibilizarCortes(BindingList<Carne> bindingListaCarnes)
@@ -57,33 +63,31 @@ namespace Form_Login
                 tipoDeCarneCell.Value = carne.TipoDeCarne;
                 row.Cells.Add(tipoDeCarneCell);
 
-                var stockCell = new DataGridViewTextBoxCell();
-                stockCell.Value = carne.Stock;
-                row.Cells.Add(stockCell);
-
                 var precioPorKiloCell = new DataGridViewTextBoxCell();
                 precioPorKiloCell.Value = carne.PrecioPorKilo;
                 row.Cells.Add(precioPorKiloCell);
+
+                var stockCell = new DataGridViewTextBoxCell();
+                stockCell.Value = carne.Stock;
+                row.Cells.Add(stockCell);
 
                 // Agregar la fila al DataGridView
                 dataGridView1.Rows.Add(row);
             }
         }
 
-        private void stockToolStripMenuItem_Click(object sender, EventArgs e)
+        private void precioPorKiloToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormAgregar frmAgregar = new FormAgregar();
-            frmAgregar.Show();
+            FormModificarProducto frmModificarProducto = new FormModificarProducto();
+            frmModificarProducto.Show();
             this.Hide();
         }
 
         private void btn_HeladeraVender_Click(object sender, EventArgs e)
         {
-            foreach(Carne carne in Carne.ListaCarnes)
-            {
-                MessageBox.Show($"corte: {carne.TipoDeCarne} \n" +
-                    $"stock: {carne.Stock}");
-            }
+            FormVendedorVender frmVender = new FormVendedorVender();
+            frmVender.Show();
+            this.Hide();
         }
     }
 }

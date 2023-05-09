@@ -33,8 +33,7 @@ namespace Entidades
         public string TipoDeCarne { get { return this.tipoDeCarne; } }
         public decimal Kilos { get { return this.kilos; } set { kilos = value; } }
         public decimal Stock { get { return this.stock; } set { stock = value; } }
-
-        public int PrecioPorKilo { get { return this.precioPorKilo; } }
+        public int PrecioPorKilo { get { return this.precioPorKilo; } set { precioPorKilo = value; } }
         public static void CargarCortes()
         {
             carnes.Add(new Carne("Tira de asado", 1800, 20));
@@ -103,6 +102,13 @@ namespace Entidades
         public static decimal CalcularPago(decimal monto, decimal costoTotal)
         {
             return monto - costoTotal;
+        }
+
+        public static bool CargarTipoDeCorte(string corte, int precioPorKilo, decimal stock)
+        {
+            ListaCarnes.Add(new Carne(corte, precioPorKilo, stock));
+
+            return true;
         }
     }
 }
