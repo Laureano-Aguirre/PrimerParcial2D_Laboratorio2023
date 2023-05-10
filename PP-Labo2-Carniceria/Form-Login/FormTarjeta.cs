@@ -25,7 +25,8 @@ namespace Form_Login
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false; 
-            this.MinimizeBox = false; 
+            this.MinimizeBox = false;
+            txb_NumeroTarjeta.MaxLength = 16;
             txb_NumeroTarjeta.TextChanged += new EventHandler(txb_NumeroTarjeta_TextChanged);
             ConfigarTarjetaMastercard();
             ConfigurarTarjetaVisa();
@@ -62,22 +63,29 @@ namespace Form_Login
         {
             if(long.TryParse(txb_NumeroTarjeta.Text, out long numeroTarjeta))
             {
-                if(!(string.IsNullOrEmpty(txb_NombreTitTarjeta.Text)))
+                if(txb_NumeroTarjeta.Text.Length == 16)
                 {
-                    if (DateTime.TryParseExact(txb_FechaVtoTarjeta.Text, "MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fechaVto))
+                    if (!(string.IsNullOrEmpty(txb_NombreTitTarjeta.Text)))
                     {
-                        Tarjeta tarjeta = new Tarjeta(numeroTarjeta, txb_NombreTitTarjeta.Text, fechaVto);
-                        this.Close();
+                        if (DateTime.TryParseExact(txb_FechaVtoTarjeta.Text, "MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fechaVto))
+                        {
+                            Tarjeta tarjeta = new Tarjeta(numeroTarjeta, txb_NombreTitTarjeta.Text, fechaVto);
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Fecha de vencimiento incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Fecha de vencimiento incorrecta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Nombre de titular de tarjeta incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Nombre de titular de tarjeta incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }  
+                    MessageBox.Show("Numero de tarjeta incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }                  
             }
             else
             {
@@ -147,5 +155,8 @@ namespace Form_Login
                 this.Close();
             }
         }
+
+        
+
     }
 }
