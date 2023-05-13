@@ -34,7 +34,7 @@
             // 
             // rtb_TicketMostrar
             // 
-            this.rtb_TicketMostrar.Location = new System.Drawing.Point(12, 12);
+            this.rtb_TicketMostrar.Location = new System.Drawing.Point(0, 0);
             this.rtb_TicketMostrar.Name = "rtb_TicketMostrar";
             this.rtb_TicketMostrar.Size = new System.Drawing.Size(348, 396);
             this.rtb_TicketMostrar.TabIndex = 0;
@@ -45,11 +45,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(437, 471);
+            this.ClientSize = new System.Drawing.Size(348, 396);
             this.Controls.Add(this.rtb_TicketMostrar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormTicket";
             this.Text = "Ticket";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormTicket_FormClosing);
             this.Load += new System.EventHandler(this.FormTicket_Load);
             this.ResumeLayout(false);
 

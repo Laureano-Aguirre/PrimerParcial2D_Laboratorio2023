@@ -79,7 +79,7 @@ namespace Entidades
         public override string MostrarPersona(Persona persona)
         {
             StringBuilder sb = new StringBuilder();
-
+            
             if(persona  is Cliente cliente)
             sb.AppendLine($"CORRE DEL CLIENTE: {cliente.correo}");
 

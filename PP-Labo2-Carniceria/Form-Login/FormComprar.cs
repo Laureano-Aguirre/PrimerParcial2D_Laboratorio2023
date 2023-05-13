@@ -4,6 +4,7 @@ namespace Form_Login
 {
     public partial class FormComprar : Form
     {
+        Tarjeta tarjetaAux;
         Cliente caux;
         decimal costoParcial = 0;
 
@@ -65,6 +66,7 @@ namespace Form_Login
                 "Puede perder todo lo que seleccionó.", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialog == DialogResult.Yes)
             {
+                Carne.LimpiarListaCompras();
                 Form_MenuCliente form_MenuCliente = new Form_MenuCliente(caux);
                 form_MenuCliente.Show();
                 this.Hide();
@@ -153,21 +155,58 @@ namespace Form_Login
 
         private void btn_CompraCredito_Click(object sender, EventArgs e)
         {
-            btn_CompraCredito.DialogResult = DialogResult.OK;
-            FormTarjeta frmTarjeta = new FormTarjeta();
-            frmTarjeta.Show();
+            if (ValidarMetodoPagoTarjeta())
+            {
+                MessageBox.Show("Selecciono pagar con tarjeta de credito.", "Cancelacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btn_CompraCredito.DialogResult = DialogResult.OK;
+                btn_CompraEfectivo.DialogResult = DialogResult.None;
+                btn_CompraDebito.DialogResult = DialogResult.None;
+                FormTarjeta frmTarjeta = new FormTarjeta();
+                frmTarjeta.Show();
+                foreach(Tarjeta tarjeta in Tarjeta.Tarjetas)
+                {
+                    tarjetaAux = tarjeta;
+                    break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
+                                "Por favor, ingrese un nuevo monto y vuelva a comprar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Carne.LimpiarListaCompras();
+                this.Hide();
+                Form_MenuCliente frmMenuCliente = new Form_MenuCliente(caux);
+                frmMenuCliente.Show();
+            }
+
         }
 
         private void btn_CompraDebito_Click(object sender, EventArgs e)
         {
-            btn_CompraDebito.DialogResult = DialogResult.OK;
-            FormTarjeta frmTarjeta = new FormTarjeta();
-            frmTarjeta.Show();
+
+            if(ValidarMetodoPagoTarjeta())
+            {
+                MessageBox.Show("Selecciono pagar con tarjeta de debito.", "Cancelacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btn_CompraDebito.DialogResult = DialogResult.OK;
+                btn_CompraEfectivo.DialogResult = DialogResult.None;
+                btn_CompraCredito.DialogResult = DialogResult.None;
+                FormTarjeta frmTarjeta = new FormTarjeta();
+                frmTarjeta.Show();
+            }
+            else
+            {
+                MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
+                                "Por favor, ingrese un nuevo monto y vuelva a comprar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Carne.LimpiarListaCompras();
+                this.Hide();
+                Form_MenuCliente frmMenuCliente = new Form_MenuCliente(caux);
+                frmMenuCliente.Show();
+            }
         }
 
         private void btn_CompraAgregar_Click(object sender, EventArgs e)
         {
-            
+
             if (ValidarCorte())
             {
                 if (ValidarKilo())
@@ -270,9 +309,9 @@ namespace Form_Login
                 caux.Gasto = costoFinal;
                 if ((btn_CompraEfectivo.DialogResult == DialogResult.OK) || (btn_CompraCredito.DialogResult == DialogResult.OK) || (btn_CompraDebito.DialogResult == DialogResult.OK))
                 {
-                    DialogResult dialogresult = MessageBox.Show("Desea confirmar la compra?", "Confirmar compra", MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
-                    
-                    if(dialogresult == DialogResult.Yes)
+                    DialogResult dialogresult = MessageBox.Show("Desea confirmar la compra?", "Confirmar compra", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                    if (dialogresult == DialogResult.Yes)
                     {
                         FormTicket frmTicket = new FormTicket(caux);
                         frmTicket.Show();
@@ -281,18 +320,48 @@ namespace Form_Login
                     {
                         MessageBox.Show("Compra cancelada.", "Cancelacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    
+
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un metodo de pago.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             else
             {
                 MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
             "Por favor, ingrese un nuevo monto y vuelva a comprar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                Carne.LimpiarListaCompras();
                 this.Hide();
                 Form_MenuCliente frmMenuCliente = new Form_MenuCliente(caux);
                 frmMenuCliente.Show();
             }
+        }
+
+        private bool ValidarMetodoPagoTarjeta()
+        {
+            bool retorno = false;
+            bool pudoCambiarMonto = decimal.TryParse(lb_CompraMonto.Text, out decimal monto);
+            bool pudoCambiarCostoFinal = decimal.TryParse(lb_ComprarCostoParcial.Text, out decimal costoFinal);
+            if (ValidarCorte())
+            {
+                if (ValidarKilo())
+                {
+                    if (btn_CompraAgregar.DialogResult == DialogResult.OK)
+                    {
+                        if (Carne.CalcularPago(monto, costoFinal) < 0)
+                        {
+                            retorno = false;
+                        }
+                        else
+                        {
+                            retorno = true;
+                        }
+                    }
+                }
+            }
+
+            return retorno;
         }
 
         private void btn_CompraPagar_Click(object sender, EventArgs e)
@@ -336,25 +405,29 @@ namespace Form_Login
             bool pudoCambiarMonto = decimal.TryParse(lb_CompraMonto.Text, out decimal monto);
             bool pudoCambiarCostoFinal = decimal.TryParse(lb_ComprarCostoParcial.Text, out decimal costoFinal);
 
-            if(ValidarCorte())
+            if (ValidarCorte())
             {
-                if(ValidarKilo())
+                if (ValidarKilo())
                 {
-                    if(btn_CompraAgregar.DialogResult == DialogResult.OK)
+                    if (btn_CompraAgregar.DialogResult == DialogResult.OK)
                     {
-                        
+
                         if (Carne.CalcularPago(monto, costoFinal) < 0)
                         {
                             MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
                                 "Por favor, ingrese un nuevo monto y vuelva a comprar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                            Carne.LimpiarListaCompras();
                             this.Hide();
                             Form_MenuCliente frmMenuCliente = new Form_MenuCliente(caux);
                             frmMenuCliente.Show();
                         }
                         else
                         {
+                            Tarjeta.BorrarTarjetas();
                             btn_CompraEfectivo.DialogResult = DialogResult.OK;
+                            btn_CompraCredito.DialogResult = DialogResult.None;
+                            btn_CompraDebito.DialogResult = DialogResult.None;
+                            MessageBox.Show("Selecciono pagar con efectivo.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     else

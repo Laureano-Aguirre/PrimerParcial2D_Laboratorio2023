@@ -40,10 +40,13 @@ namespace Form_Login
             rtb_TicketMostrar.AppendText("CARNICERIA LA BOCA\n");
             rtb_TicketMostrar.Select(0, "CARNICERIA LA BOCA\n".Length);
             rtb_TicketMostrar.SelectionAlignment = HorizontalAlignment.Center;
-            rtb_TicketMostrar.AppendText("\n");
+            rtb_TicketMostrar.AppendText("--------------------------------------------------------------------\n");
+            rtb_TicketMostrar.AppendText("DATOS DEL CLIENTE\n");
+            rtb_TicketMostrar.Select(rtb_TicketMostrar.TextLength - "DATOS DEL CLIENTE\n".Length, "DATOS DEL CLIENTE\n".Length);
+            rtb_TicketMostrar.SelectionAlignment = HorizontalAlignment.Center;
+            rtb_TicketMostrar.AppendText($"{cAux.MostrarPersona(cAux)}\n");
 
-            rtb_TicketMostrar.AppendText($"{cAux.MostrarPersona(cAux)}\n\n");
-
+            rtb_TicketMostrar.AppendText("--------------------------------------------------------------------\n");
             foreach (Tarjeta tarjeta in Tarjeta.Tarjetas)
             {
                 if (tarjeta != null)
@@ -53,6 +56,7 @@ namespace Form_Login
                     rtb_TicketMostrar.Select(rtb_TicketMostrar.TextLength - 1, "DATOS DE LA TARJETA\n".Length);
                     rtb_TicketMostrar.SelectionAlignment = HorizontalAlignment.Center;
                     rtb_TicketMostrar.AppendText($"{tarjeta.MostrarDatos(tarjeta.Nombre, tarjeta.Numero)}\n");
+                    rtb_TicketMostrar.AppendText("--------------------------------------------------------------------\n");
                     usoTarjeta = true;
                 }
             }
@@ -60,6 +64,7 @@ namespace Form_Login
             rtb_TicketMostrar.Select(rtb_TicketMostrar.TextLength - 1, "DETALLES DE LA COMPRA\n".Length);
             rtb_TicketMostrar.SelectionAlignment = HorizontalAlignment.Center;
             rtb_TicketMostrar.AppendText($"{Carne.MostrarCompras()}\n");
+            rtb_TicketMostrar.AppendText("--------------------------------------------------------------------\n");
             rtb_TicketMostrar.AppendText($"SUBTOTAL: {cAux.Gasto}\n");
             rtb_TicketMostrar.Select(rtb_TicketMostrar.TextLength - 1, $"SUBTOTAL: {cAux.Gasto}\n".Length);
             rtb_TicketMostrar.SelectionAlignment = HorizontalAlignment.Right;
@@ -79,6 +84,11 @@ namespace Form_Login
                 rtb_TicketMostrar.Select(rtb_TicketMostrar.TextLength - 1, $"TOTAL: {cAux.Gasto}\n".Length);
                 rtb_TicketMostrar.SelectionAlignment = HorizontalAlignment.Right;
             }
+        }
+
+        private void FormTicket_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

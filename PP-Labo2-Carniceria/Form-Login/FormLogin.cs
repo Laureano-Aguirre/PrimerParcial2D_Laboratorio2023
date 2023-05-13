@@ -13,6 +13,7 @@ namespace Form_Login
             txb_LoginCorreo.Visible = false;
             txb_LoginPassword.Visible = false;
             btn_LoginIngresar.Visible = false;
+            btn_LoginAtras.Visible = false;
             lb_LoginCorreo.Visible = false;
             lb_LoginPassword.Visible = false;
             Vendedor.HardcodearVendedores();
@@ -22,7 +23,7 @@ namespace Form_Login
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.BackgroundImage = Image.FromFile(@"imagenes\img-nombreLogin.png");
+            this.BackgroundImage = Image.FromFile(@"imagenes\img-login.png");
             this.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
@@ -51,6 +52,7 @@ namespace Form_Login
             txb_LoginPassword.Visible = true;
             btn_LoginCliente.Visible = false;
             btn_LoginVendedor.Visible = false;
+            btn_LoginAtras.Visible = true;
             btn_LoginIngresar.Visible = true;
             lb_LoginCorreo.Visible = true;
             lb_LoginPassword.Visible = true;
@@ -118,6 +120,18 @@ namespace Form_Login
             }
         }
 
-        
+        private void btn_LoginAtras_Click(object sender, EventArgs e)
+        {
+            
+            pb_Usuario.Visible = false;
+            txb_LoginCorreo.Visible = false;
+            txb_LoginPassword.Visible = false;
+            btn_LoginIngresar.Visible = false;
+            btn_LoginAtras.Visible = false;
+            btn_LoginCliente.Visible = true;
+            btn_LoginVendedor.Visible = true;
+            lb_LoginCorreo.Visible = false;
+            lb_LoginPassword.Visible = false;
+        }
     }
 }

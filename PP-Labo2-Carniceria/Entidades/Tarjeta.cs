@@ -30,6 +30,11 @@ namespace Entidades
             tarjetas.Add(tarjeta);
            
         }
+
+        public static void BorrarTarjetas()
+        {
+            tarjetas.Clear();
+        }
         public string MostrarDatos(string nombreTitular, long numero)
         {
             StringBuilder sb = new StringBuilder();

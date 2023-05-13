@@ -163,6 +163,16 @@ namespace Form_Login.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap img_usuarioNuevo {
+            get {
+                object obj = ResourceManager.GetObject("img-usuarioNuevo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap img_visa {
             get {
                 object obj = ResourceManager.GetObject("img-visa", resourceCulture);

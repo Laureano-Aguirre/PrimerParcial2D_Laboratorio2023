@@ -51,6 +51,11 @@ namespace Entidades
             listaDeCompras.Add(carne);
             return true;
         }
+
+        public static void LimpiarListaCompras()
+        {
+            listaDeCompras.Clear();
+        }
         public static string MostrarCortes()
         {
             StringBuilder sb = new StringBuilder();

@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using Entidades;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Text.RegularExpressions;
-using Entidades;
 
 namespace Form_Login
 {
-    
+
     public partial class FormTarjeta : Form
     {
         private PictureBox pb_tarjetaMastercard = new PictureBox();
@@ -24,7 +15,7 @@ namespace Form_Login
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false; 
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             txb_NumeroTarjeta.MaxLength = 16;
             txb_NumeroTarjeta.TextChanged += new EventHandler(txb_NumeroTarjeta_TextChanged);
@@ -36,7 +27,7 @@ namespace Form_Login
 
         private void FormTarjeta_Load(object sender, EventArgs e)
         {
-            Visibilidad(); 
+            Visibilidad();
         }
 
         private void txb_NumeroTarjeta_TextChanged(object sender, EventArgs e)
@@ -48,7 +39,7 @@ namespace Form_Login
 
         private void txb_NombreTitTarjeta_TextChanged(object sender, EventArgs e)
         {
-            lb_NombreEnTarjeta.Text=txb_NombreTitTarjeta.Text;
+            lb_NombreEnTarjeta.Text = txb_NombreTitTarjeta.Text;
             lb_NombreEnTarjeta.Visible = true;
         }
 
@@ -61,13 +52,18 @@ namespace Form_Login
 
         private void btn_AceptarTarjeta_Click(object sender, EventArgs e)
         {
-            if(long.TryParse(txb_NumeroTarjeta.Text, out long numeroTarjeta))
+            string cardNum = txb_NumeroTarjeta.Text;
+            string visaRegex = "^4[0-9]{6,}$";
+            string mastercardRegex = "^5[1-5][0-9]{5,}$";
+
+            Regex regex = new Regex("^[A-Z\\s]+$");
+            if (long.TryParse(txb_NumeroTarjeta.Text, out long numeroTarjeta) && txb_NumeroTarjeta.Text.Length == 16 && (Regex.IsMatch(cardNum, visaRegex) || Regex.IsMatch(cardNum, mastercardRegex)))
             {
-                if(txb_NumeroTarjeta.Text.Length == 16)
+                if (!(string.IsNullOrEmpty(txb_NombreTitTarjeta.Text)))
                 {
-                    if (!(string.IsNullOrEmpty(txb_NombreTitTarjeta.Text)))
+                    if (regex.Match(txb_NombreTitTarjeta.Text).Success)
                     {
-                        if (DateTime.TryParseExact(txb_FechaVtoTarjeta.Text, "MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fechaVto))
+                        if (DateTime.TryParseExact(txb_FechaVtoTarjeta.Text, "MM/yy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fechaVto) && FechaValida(fechaVto))
                         {
                             Tarjeta tarjeta = new Tarjeta(numeroTarjeta, txb_NombreTitTarjeta.Text, fechaVto);
                             this.Close();
@@ -79,19 +75,19 @@ namespace Form_Login
                     }
                     else
                     {
-                        MessageBox.Show("Nombre de titular de tarjeta incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Debe ingresar unicamente letras en el nombre del titular.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Numero de tarjeta incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }                  
+                    MessageBox.Show("Nombre de titular de tarjeta incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
                 MessageBox.Show("Numero de tarjeta incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
         }
 
         private void Visibilidad()
@@ -115,7 +111,7 @@ namespace Form_Login
         {
             pb_tarjetaVisa.Image = Image.FromFile(@"imagenes\img-visaCredito.png");
             pb_tarjetaVisa.SizeMode = PictureBoxSizeMode.AutoSize;
-            pb_tarjetaVisa.Location = new Point(69,-30);
+            pb_tarjetaVisa.Location = new Point(69, -30);
             pb_tarjetaVisa.Visible = false;
         }
 
@@ -123,15 +119,15 @@ namespace Form_Login
         {
             string cardNum = txb_NumeroTarjeta.Text;
 
-            
+
             string visaRegex = "^4[0-9]{6,}$"; //comienza con un cuatro, luego indica que debe haber minimo 6 numeros (del 0 al 9) y el $ indica que debe terminar con un caracter numerico
             string mastercardRegex = "^5[1-5][0-9]{5,}$"; // comienza con un 5, seguido de numeros entre el 1 y el 5 (al menos 5 nnumeros)
 
-            
+
             if (Regex.IsMatch(cardNum, visaRegex)) //chequea con un metodo del using RegularExpressions, si el numero de tarjeta ingresado, va coincidiendo con la expresion regular de VISA, en este caso
             {
                 pb_tarjetaVisa.Visible = true;
-                lb_FechaVtoEnTarjeta.BackColor = Color.FromArgb(0,64,120);
+                lb_FechaVtoEnTarjeta.BackColor = Color.FromArgb(0, 64, 120);
                 lb_FechaVtoRealEnTarjeta.BackColor = Color.FromArgb(0, 64, 120);
                 lb_NombreEnTarjeta.BackColor = Color.FromArgb(0, 64, 120);
                 lb_NumeroEnTarjeta.BackColor = Color.FromArgb(0, 64, 120);
@@ -156,7 +152,19 @@ namespace Form_Login
             }
         }
 
-        
+        private bool FechaValida(DateTime fecha)
+        {
+            DateTime fechaActual = DateTime.Now;
+
+            if(fecha.CompareTo(fechaActual) < 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
     }
 }

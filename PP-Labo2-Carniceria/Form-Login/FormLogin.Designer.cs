@@ -32,17 +32,19 @@
             this.lb_LoginPassword = new System.Windows.Forms.Label();
             this.lb_LoginCorreo = new System.Windows.Forms.Label();
             this.btn_LoginIngresar = new System.Windows.Forms.Button();
-            this.pb_Usuario = new System.Windows.Forms.PictureBox();
             this.txb_LoginCorreo = new System.Windows.Forms.TextBox();
             this.txb_LoginPassword = new System.Windows.Forms.TextBox();
             this.btn_LoginVendedor = new System.Windows.Forms.Button();
             this.btn_LoginCliente = new System.Windows.Forms.Button();
+            this.btn_LoginAtras = new System.Windows.Forms.Button();
+            this.pb_Usuario = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb_Usuario)).BeginInit();
             this.SuspendLayout();
             // 
             // lb_LoginPassword
             // 
             this.lb_LoginPassword.AutoSize = true;
+            this.lb_LoginPassword.BackColor = System.Drawing.Color.Transparent;
             this.lb_LoginPassword.Location = new System.Drawing.Point(184, 274);
             this.lb_LoginPassword.Name = "lb_LoginPassword";
             this.lb_LoginPassword.Size = new System.Drawing.Size(67, 15);
@@ -52,6 +54,7 @@
             // lb_LoginCorreo
             // 
             this.lb_LoginCorreo.AutoSize = true;
+            this.lb_LoginCorreo.BackColor = System.Drawing.Color.Transparent;
             this.lb_LoginCorreo.Location = new System.Drawing.Point(184, 216);
             this.lb_LoginCorreo.Name = "lb_LoginCorreo";
             this.lb_LoginCorreo.Size = new System.Drawing.Size(43, 15);
@@ -60,23 +63,14 @@
             // 
             // btn_LoginIngresar
             // 
+            this.btn_LoginIngresar.BackColor = System.Drawing.Color.YellowGreen;
             this.btn_LoginIngresar.Location = new System.Drawing.Point(495, 354);
             this.btn_LoginIngresar.Name = "btn_LoginIngresar";
             this.btn_LoginIngresar.Size = new System.Drawing.Size(85, 34);
             this.btn_LoginIngresar.TabIndex = 2;
             this.btn_LoginIngresar.Text = "Ingresar";
-            this.btn_LoginIngresar.UseVisualStyleBackColor = true;
+            this.btn_LoginIngresar.UseVisualStyleBackColor = false;
             this.btn_LoginIngresar.Click += new System.EventHandler(this.btn_LoginIngresar_Click);
-            // 
-            // pb_Usuario
-            // 
-            this.pb_Usuario.Image = global::Form_Login.Properties.Resources.img_usuario;
-            this.pb_Usuario.Location = new System.Drawing.Point(239, 83);
-            this.pb_Usuario.Name = "pb_Usuario";
-            this.pb_Usuario.Size = new System.Drawing.Size(105, 103);
-            this.pb_Usuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pb_Usuario.TabIndex = 3;
-            this.pb_Usuario.TabStop = false;
             // 
             // txb_LoginCorreo
             // 
@@ -115,16 +109,39 @@
             this.btn_LoginCliente.UseVisualStyleBackColor = true;
             this.btn_LoginCliente.Click += new System.EventHandler(this.btn_LoginCliente_Click);
             // 
+            // btn_LoginAtras
+            // 
+            this.btn_LoginAtras.BackColor = System.Drawing.Color.RosyBrown;
+            this.btn_LoginAtras.Location = new System.Drawing.Point(12, 354);
+            this.btn_LoginAtras.Name = "btn_LoginAtras";
+            this.btn_LoginAtras.Size = new System.Drawing.Size(85, 34);
+            this.btn_LoginAtras.TabIndex = 8;
+            this.btn_LoginAtras.Text = "Atras";
+            this.btn_LoginAtras.UseVisualStyleBackColor = false;
+            this.btn_LoginAtras.Click += new System.EventHandler(this.btn_LoginAtras_Click);
+            // 
+            // pb_Usuario
+            // 
+            this.pb_Usuario.BackColor = System.Drawing.Color.Transparent;
+            this.pb_Usuario.Image = global::Form_Login.Properties.Resources.img_usuarioNuevo;
+            this.pb_Usuario.Location = new System.Drawing.Point(237, 103);
+            this.pb_Usuario.Name = "pb_Usuario";
+            this.pb_Usuario.Size = new System.Drawing.Size(103, 103);
+            this.pb_Usuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pb_Usuario.TabIndex = 9;
+            this.pb_Usuario.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(595, 421);
+            this.Controls.Add(this.pb_Usuario);
+            this.Controls.Add(this.btn_LoginAtras);
             this.Controls.Add(this.btn_LoginCliente);
             this.Controls.Add(this.btn_LoginVendedor);
             this.Controls.Add(this.txb_LoginPassword);
             this.Controls.Add(this.txb_LoginCorreo);
-            this.Controls.Add(this.pb_Usuario);
             this.Controls.Add(this.btn_LoginIngresar);
             this.Controls.Add(this.lb_LoginCorreo);
             this.Controls.Add(this.lb_LoginPassword);
@@ -143,10 +160,11 @@
         private Label lb_LoginPassword;
         private Label lb_LoginCorreo;
         private Button btn_LoginIngresar;
-        private PictureBox pb_Usuario;
         private TextBox txb_LoginCorreo;
         private TextBox txb_LoginPassword;
         private Button btn_LoginVendedor;
         private Button btn_LoginCliente;
+        private Button btn_LoginAtras;
+        private PictureBox pb_Usuario;
     }
 }
