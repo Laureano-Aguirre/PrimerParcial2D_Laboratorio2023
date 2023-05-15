@@ -109,7 +109,8 @@ namespace Form_Login
                 }
                 else if ((Vendedor.BuscarVendedor(correo, pass)) && btn_LoginVendedor.DialogResult == DialogResult.OK)
                 {
-                    FormHeladera frmHeladera = new FormHeladera();
+                    Vendedor vendedor = new Vendedor(correo, pass);
+                    FormHeladera frmHeladera = new FormHeladera(vendedor);
                     frmHeladera.Show();
                     this.Hide();
                 }

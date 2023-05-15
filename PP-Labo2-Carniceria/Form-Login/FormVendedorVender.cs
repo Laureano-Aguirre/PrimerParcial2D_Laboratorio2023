@@ -6,9 +6,11 @@ namespace Form_Login
     {
         decimal costoParcial = 0;
         static Cliente caux;
-        public FormVendedorVender()
+        Vendedor vAux;
+        public FormVendedorVender(Vendedor vendedor)
         {
             InitializeComponent();
+            vAux = vendedor;
             this.BackgroundImage = Image.FromFile(@"imagenes\img-fondoCompra2.png");
             this.BackgroundImageLayout = ImageLayout.Stretch;
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -24,6 +26,7 @@ namespace Form_Login
             nud_VenderKilos.Value = 0M;
             nud_VenderKilos.Increment = 0.5M;
             lb_VenderEnZocaloCostoParcial.Text = "0";
+            lb_VenderPrecioPorKilo.Visible = false;
             cmb_VenderSeleccionarCorte.DropDownStyle = ComboBoxStyle.DropDown;
             cmb_VenderSeleccionarCorte.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             cmb_VenderSeleccionarCorte.AutoCompleteSource = AutoCompleteSource.ListItems;
@@ -49,7 +52,7 @@ namespace Form_Login
 
             if (dialogResutl == DialogResult.Yes)
             {
-                FormHeladera frmHeladera = new FormHeladera();
+                FormHeladera frmHeladera = new FormHeladera(vAux);
                 frmHeladera.Show();
                 this.Hide();
             }
@@ -62,7 +65,7 @@ namespace Form_Login
 
         private void cmb_VenderSeleccionarCorte_SelectedValueChanged(object sender, EventArgs e)
         {
-            nud_VenderKilos.Value = 0;
+            nud_VenderKilos.Value = 0;    
             lb_VenderPrecioPorKilo.Text = (Carne.CargarPrecioPorKilo(cmb_VenderSeleccionarCorte.Text)).ToString();
             lb_VenderPrecioPorKilo.Visible = true;
         }
@@ -89,40 +92,7 @@ namespace Form_Login
                 {
                     if (ValidarKilo())
                     {
-                        string tipoDeCarne = cmb_VenderSeleccionarCorte.SelectedItem.ToString();
-                        decimal kilos = nud_VenderKilos.Value;
-
-                        int precioPorKilo = Carne.CargarPrecioPorKilo(tipoDeCarne);
-                        int costo = Carne.CalcularCosto(kilos, precioPorKilo);
-
-                        costoParcial += costo;
-                        lb_VenderEnZocaloCostoParcial.Text = costoParcial.ToString();
-                        foreach (Carne carne2 in Carne.ListaCarnes)
-                        {
-                            if (tipoDeCarne == carne2.TipoDeCarne)
-                            {
-                                if (carne2.Stock > 0 && carne2.Stock >= kilos)
-                                {
-                                    Carne carne1 = new Carne(tipoDeCarne, kilos);
-                                    if (carne1.CargarCompra(carne1))
-                                    {
-                                        foreach (Carne carne in Carne.ListaCarnes)
-                                        {
-                                            if (carne1.TipoDeCarne == carne.TipoDeCarne)
-                                            {
-                                                carne.Stock = carne.Stock - kilos;
-                                                MessageBox.Show("Agregado al carrito.");
-                                                rtb_VenderMostrarCompra.AppendText($"{carne1.Kilos}KG {carne1.TipoDeCarne}\n");
-                                            }
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Stock insuficiente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-                        }
+                        ValidarAgregar();
                     }
                     else
                     {
@@ -180,6 +150,46 @@ namespace Form_Login
             return retorno;
         }
 
+        /// <summary>
+        /// Valida el producto agregado, controlando que dicho producto tenga stock y se encuentre dentro de la lista de cortes.
+        /// </summary>
+        private void ValidarAgregar()
+        {
+            string tipoDeCarne = cmb_VenderSeleccionarCorte.SelectedItem.ToString();
+            decimal kilos = nud_VenderKilos.Value;
+
+            int precioPorKilo = Carne.CargarPrecioPorKilo(tipoDeCarne);
+            int costo = Carne.CalcularCosto(kilos, precioPorKilo);
+
+            costoParcial += costo;
+            lb_VenderEnZocaloCostoParcial.Text = costoParcial.ToString();
+            foreach (Carne carne2 in Carne.ListaCarnes)
+            {
+                if (tipoDeCarne == carne2.TipoDeCarne)
+                {
+                    if (carne2.Stock > 0 && carne2.Stock >= kilos)
+                    {
+                        Carne carne1 = new Carne(tipoDeCarne, kilos);
+                        if (carne1.CargarCompra(carne1))
+                        {
+                            foreach (Carne carne in Carne.ListaCarnes)
+                            {
+                                if (carne1.TipoDeCarne == carne.TipoDeCarne)
+                                {
+                                    carne.Stock = carne.Stock - kilos;
+                                    MessageBox.Show("Agregado al carrito.");
+                                    rtb_VenderMostrarCompra.AppendText($"{carne1.Kilos}KG {carne1.TipoDeCarne}\n");
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Stock insuficiente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
         private void btn_VenderEfectivo_Click(object sender, EventArgs e)
         {
             decimal monto = caux.Monto;
@@ -199,6 +209,7 @@ namespace Form_Login
                         else
                         {
                             btn_VenderEfectivo.DialogResult = DialogResult.OK;
+                            MessageBox.Show("Selecciono pagar con efectivo.", "Metodo de pago", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     else
@@ -222,6 +233,10 @@ namespace Form_Login
         {
             string correo = cmb_VenderSeleccionarCliente.Text;
 
+            cmb_VenderSeleccionarCorte.SelectedItem = null;
+            Carne.LimpiarListaCompras();
+            rtb_VenderMostrarCompra.Clear();
+            costoParcial = 0;            
             foreach (Persona persona in Persona.ListaPersonas)
             {
                 if (persona is Cliente cliente)
@@ -236,25 +251,38 @@ namespace Form_Login
 
         private void btn_VendedorVender_Click(object sender, EventArgs e)
         {
-            decimal monto = caux.Monto;
+            
             bool pudoCambiarCostoFinal = decimal.TryParse(lb_VenderEnZocaloCostoParcial.Text, out decimal costoFinal);
             if (!(string.IsNullOrEmpty(cmb_VenderSeleccionarCliente.Text)))
             {
+                decimal monto = caux.Monto;
                 if (ValidarCorte())
                 {
                     if (ValidarKilo())
                     {
                         if (btn_VenderAgregar.DialogResult == DialogResult.OK)
                         {
-                            if(pudoCambiarCostoFinal)
+                            if(btn_VenderEfectivo.DialogResult == DialogResult.OK)
                             {
-                                if (Carne.CalcularPago(monto, costoFinal) >= 0)
+                                if (pudoCambiarCostoFinal)
                                 {
-                                    caux.Gasto = costoFinal;
-                                    MessageBox.Show($"PRODUCTOS:{Carne.MostrarCompras()}\n" +
-                                        $"GASTO: {caux.Gasto}", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    if (Carne.CalcularPago(monto, costoFinal) >= 0)
+                                    {
+                                        caux.Gasto = costoFinal;
+                                        MessageBox.Show($"PRODUCTOS:{Carne.MostrarCompras()}\n" +
+                                            $"GASTO: {caux.Gasto}", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("No tiene monto suficiente para poder pagar.", "Sin saldo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
                                 }
                             }
+                            else
+                            {
+                                MessageBox.Show("Debe elegir un metodo de pago.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                            
                         }
                         else
                         {

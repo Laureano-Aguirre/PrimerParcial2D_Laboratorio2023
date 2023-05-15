@@ -4,9 +4,11 @@ namespace Form_Login
 {
     public partial class FormModificarProducto : Form
     {
-        public FormModificarProducto()
+        Vendedor vAux;
+        public FormModificarProducto(Vendedor vendedor)
         {
             InitializeComponent();
+            vAux = vendedor;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
@@ -95,7 +97,7 @@ namespace Form_Login
                 }
             }
 
-            FormHeladera frmHeladera = new FormHeladera();
+            FormHeladera frmHeladera = new FormHeladera(vAux);
             frmHeladera.Show();
             this.Hide();
         }

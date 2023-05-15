@@ -60,9 +60,8 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
             if(persona is Vendedor vendedor)
-            {
-                sb.AppendLine($"Correo: {vendedor.correo}");
-            }
+                sb.AppendLine($"{vendedor.correo}");
+            
 
             return sb.ToString();
         }

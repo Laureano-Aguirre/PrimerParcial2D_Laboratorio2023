@@ -1,21 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Entidades;
+﻿using Entidades;
+using System.Text.RegularExpressions;
+
 
 namespace Form_Login
 {
     public partial class FormAgregar : Form
     {
-        public FormAgregar()
+        Vendedor vAux;
+        public FormAgregar(Vendedor vendedor)
         {
             InitializeComponent();
+            vAux = vendedor;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -43,6 +38,13 @@ namespace Form_Login
             cmb_AgregarSeleccionarCorte.Visible = true;
             lb_AgregarStock.Visible = true;
             nud_AgregarStock.Visible = true;
+
+            lb_AgregarTipoDeCorte.Visible = false;
+            lb_AgregarStockNuevoCorte.Visible = false;
+            lb_AgregarPrecioXKiloCorte.Visible = false;
+            txb_AgregarTipoDeCorte.Visible = false;
+            txb_AgregarStockNuevoCorte.Visible = false;
+            txb_AgregarPrecioXKiloCorte.Visible = false;
         }
 
         private void rdb_AgregarTipoDeCorte_CheckedChanged_1(object sender, EventArgs e)
@@ -53,32 +55,22 @@ namespace Form_Login
             txb_AgregarTipoDeCorte.Visible = true;
             txb_AgregarStockNuevoCorte.Visible = true;
             txb_AgregarPrecioXKiloCorte.Visible = true;
-            lb_AgregarPrecioXKiloCorte.Visible = true;
+
+            lb_AgregarSeleccionarCorte.Visible = false;
+            cmb_AgregarSeleccionarCorte.Visible = false;
+            lb_AgregarStock.Visible = false;
+            nud_AgregarStock.Visible = false;
         }
 
         private void btn_AgregarAgregar_Click_1(object sender, EventArgs e)
         {
-            if (rdb_AgregarStock.Checked == true || rdb_AgregarTipoDeCorte.Checked == true)
+            if (ValidarAgregarStock())
             {
-                if (!(string.IsNullOrEmpty(cmb_AgregarSeleccionarCorte.Text)) || !(string.IsNullOrEmpty(txb_AgregarTipoDeCorte.Text)))
-                {
-                    if (nud_AgregarStock.Value != 0 || !(string.IsNullOrEmpty(txb_AgregarStockNuevoCorte.Text)))
-                    {
-                        AgregarCorteOStock();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Debe seleccionar la cantidad de stock que desea reponer o agregar al nuevo tipo de corte", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Debe seleccionar un tipo de carne", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                AgregarCorteOStock();
             }
-            else
+            else if (ValidarAgregarCorte())
             {
-                MessageBox.Show("Debe seleccionar un tipo de carne o stock.", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AgregarCorteOStock();
             }
         }
 
@@ -88,7 +80,7 @@ namespace Form_Login
                 "Se borraran los datos.", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialog == DialogResult.Yes)
             {
-                FormHeladera frmHeladera = new FormHeladera();
+                FormHeladera frmHeladera = new FormHeladera(vAux);
                 frmHeladera.Show();
                 this.Hide();
             }
@@ -127,47 +119,123 @@ namespace Form_Login
         /// </summary>
         private void AgregarCorteOStock()
         {
-            if (rdb_AgregarStock.Checked == true)
+            if (rdb_AgregarStock.Checked)
             {
                 foreach (Carne carne in Carne.ListaCarnes)
                 {
                     if (cmb_AgregarSeleccionarCorte.Text == carne.TipoDeCarne)
                     {
                         carne.Stock += nud_AgregarStock.Value;
-
-                        FormHeladera frmHeladera = new FormHeladera();
-                        this.Hide();
-                        frmHeladera.Show();
+                        MessageBox.Show("Stock agregado correctamente.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
                     }
                 }
             }
             else if (rdb_AgregarTipoDeCorte.Checked)
             {
+                bool corteExistente = false;
                 foreach (Carne carne in Carne.ListaCarnes)
                 {
-                    if (txb_AgregarTipoDeCorte.Text != carne.TipoDeCarne)
+                    if (carne.TipoDeCarne == txb_AgregarTipoDeCorte.Text)
                     {
-                        bool pudoCambiarPrecio = int.TryParse(txb_AgregarPrecioXKiloCorte.Text, out int precio);
-                        bool pudoCambiarStock = decimal.TryParse(txb_AgregarStockNuevoCorte.Text, out decimal stock);
-                        bool pudoCargarCorte = Carne.CargarTipoDeCorte(txb_AgregarTipoDeCorte.Text, precio, stock);
-                        if (pudoCargarCorte)
+                        corteExistente = true;
+                        break;
+                    }
+                }
+
+                if (corteExistente)
+                {
+                    MessageBox.Show("Ya existe un tipo de carne con ese nombre.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    bool pudoCambiarPrecio = int.TryParse(txb_AgregarPrecioXKiloCorte.Text, out int precio);
+                    bool pudoCambiarStock = decimal.TryParse(txb_AgregarStockNuevoCorte.Text, out decimal stock);
+                    bool pudoCargarCorte = Carne.CargarTipoDeCorte(txb_AgregarTipoDeCorte.Text, precio, stock);
+                    if (pudoCargarCorte)
+                    {
+                        MessageBox.Show("Tipo de corte agregado correctamente.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            FormHeladera frmHeladera = new FormHeladera(vAux);
+            this.Hide();
+            frmHeladera.Show();
+        }
+
+
+        /// <summary>
+        /// Valida el ingreso de datos a la hora de agregar stock
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidarAgregarStock()
+        {
+            if (rdb_AgregarStock.Checked == true)
+            {
+                if (!(string.IsNullOrEmpty(cmb_AgregarSeleccionarCorte.Text)))
+                {
+                    if (nud_AgregarStock.Value != 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Debe seleccionar una cantidad de stock.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar un tipo de corte.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Valida el ingreso de datos a la hora de agregar un nuevo corte, con sus respectivas caracteristicas.
+        /// </summary>
+        /// <returns></returns>
+        private bool ValidarAgregarCorte()
+        {
+            Regex regex = new Regex("^[a-zA-Z\\s]+$");
+            bool pudoCambiarStock = decimal.TryParse(txb_AgregarStockNuevoCorte.Text, out decimal stock);
+            bool pudoCambiarPrecioXKilo = decimal.TryParse(txb_AgregarPrecioXKiloCorte.Text, out decimal precioXKilo);
+            if (rdb_AgregarTipoDeCorte.Checked == true)
+            {
+                if (!(string.IsNullOrEmpty(txb_AgregarTipoDeCorte.Text)) && !(string.IsNullOrWhiteSpace(txb_AgregarTipoDeCorte.Text)) && regex.Match(txb_AgregarTipoDeCorte.Text).Success)
+                {
+                    if (!(string.IsNullOrEmpty(txb_AgregarStockNuevoCorte.Text)) && !(string.IsNullOrWhiteSpace(txb_AgregarStockNuevoCorte.Text)) && pudoCambiarStock == true)
+                    {
+                        if (!(string.IsNullOrEmpty(txb_AgregarPrecioXKiloCorte.Text)) && !(string.IsNullOrWhiteSpace(txb_AgregarPrecioXKiloCorte.Text)) && pudoCambiarPrecioXKilo == true)
                         {
-                            MessageBox.Show("Tipo de corte agregado correctamente.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            FormHeladera frmHeladera = new FormHeladera();
-                            this.Hide();
-                            frmHeladera.Show();
-                            break;
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("El el precio por kilo ingresado es invalido. Ingreselo nuevamente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return false;
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Ya existe un tipo de carne con ese nombre", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        FormHeladera frmHeladera = new FormHeladera();
-                        this.Hide();
-                        frmHeladera.Show();
-                        break;
+                        MessageBox.Show("El stock ingresado es invalido. Ingreselo nuevamente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
                     }
                 }
+                else
+                {
+                    MessageBox.Show("El tipo de corte seleccionado a agregar es invalido. Ingreselo nuevamente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
             }
         }
     }

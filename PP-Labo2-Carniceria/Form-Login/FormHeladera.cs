@@ -5,9 +5,11 @@ namespace Form_Login
 {
     public partial class FormHeladera : Form
     {
-        public FormHeladera()
+        Vendedor vAux;
+        public FormHeladera(Vendedor vendedor)
         {
             InitializeComponent();
+            vAux = vendedor;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
@@ -16,11 +18,9 @@ namespace Form_Login
         {
             this.BackgroundImage = Image.FromFile(@"imagenes\img-Heladera2.png");
             this.BackgroundImageLayout = ImageLayout.Stretch;
-
-            // Deshabilitar la generación automática de columnas
+            lb_HeladeraBiennvenida.Text = $"Bienvenido {vAux.MostrarPersona(vAux)} !";
             dataGridView1.AutoGenerateColumns = false;
 
-            // Agregar las columnas manualmente
             dataGridView1.Columns.Add("TipoDeCarne", "Tipo de carne");
             dataGridView1.Columns.Add("PrecioPorKilo", "Precio por kilo");
             dataGridView1.Columns.Add("Stock", "Stock (en kilos)");
@@ -46,7 +46,7 @@ namespace Form_Login
 
         private void stockToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            FormAgregar frmAgregar = new FormAgregar();
+            FormAgregar frmAgregar = new FormAgregar(vAux);
             frmAgregar.Show();
             this.Hide();
         }
@@ -78,14 +78,14 @@ namespace Form_Login
 
         private void precioPorKiloToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormModificarProducto frmModificarProducto = new FormModificarProducto();
+            FormModificarProducto frmModificarProducto = new FormModificarProducto(vAux);
             frmModificarProducto.Show();
             this.Hide();
         }
 
         private void btn_HeladeraVender_Click(object sender, EventArgs e)
         {
-            FormVendedorVender frmVender = new FormVendedorVender();
+            FormVendedorVender frmVender = new FormVendedorVender(vAux);
             frmVender.Show();
             this.Hide();
         }

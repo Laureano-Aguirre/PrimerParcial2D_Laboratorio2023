@@ -45,6 +45,7 @@
             // 
             // cmb_ModificarSeleccionarCarne
             // 
+            this.cmb_ModificarSeleccionarCarne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_ModificarSeleccionarCarne.FormattingEnabled = true;
             this.cmb_ModificarSeleccionarCarne.Location = new System.Drawing.Point(12, 46);
             this.cmb_ModificarSeleccionarCarne.Name = "cmb_ModificarSeleccionarCarne";
