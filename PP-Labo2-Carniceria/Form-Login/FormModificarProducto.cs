@@ -1,10 +1,13 @@
 ﻿using Entidades;
+using System.Media;
 
 namespace Form_Login
 {
     public partial class FormModificarProducto : Form
     {
         Vendedor vAux;
+        private SoundPlayer soundCancelar;
+        private SoundPlayer soundModificar;
         public FormModificarProducto(Vendedor vendedor)
         {
             InitializeComponent();
@@ -19,12 +22,17 @@ namespace Form_Login
                 "Se borraran los datos.", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialog == DialogResult.Yes)
             {
-                this.Close();
+                soundCancelar.Play();
+                FormHeladera frmHeladera = new FormHeladera(vAux);
+                frmHeladera.Show();
+                this.Hide();
             }
         }
 
         private void FormModificarProducto_Load(object sender, EventArgs e)
         {
+            soundModificar = new SoundPlayer(@"sonidos\sonido-vaca.wav");
+            soundCancelar = new SoundPlayer(@"sonidos\sonido-meVoy.wav");
             foreach (Carne carne in Carne.ListaCarnes)
             {
                 cmb_ModificarSeleccionarCarne.Items.Add(carne.TipoDeCarne);
@@ -73,6 +81,7 @@ namespace Form_Login
                 {
                     if (cmb_ModificarSeleccionarCarne.Text == carne.TipoDeCarne)
                     {
+                        soundModificar.Play();
                         carne.Stock = stock;
                         break;
                     }
@@ -91,6 +100,7 @@ namespace Form_Login
                 {
                     if (cmb_ModificarSeleccionarCarne.Text == carne.TipoDeCarne)
                     {
+                        soundModificar.Play();
                         carne.PrecioPorKilo = precio;
                         break;
                     }

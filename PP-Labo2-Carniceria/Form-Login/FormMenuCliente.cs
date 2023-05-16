@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,9 +15,12 @@ namespace Form_Login
     public partial class Form_MenuCliente : Form
     {
         Cliente cAux;
+        private SoundPlayer soundPlayer1;
+        private SoundPlayer soundPlayer2;
         public Form_MenuCliente(Cliente cliente)
         {
             InitializeComponent();
+
             cAux = cliente;
             lb_MenPrinBienvenido.Text = $"Bienvenido {cliente.Correo}!";
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -26,6 +30,8 @@ namespace Form_Login
         private void Form_MenuCliente_Load(object sender, EventArgs e)
         {
             this.BackgroundImage = Image.FromFile(@"imagenes\img-MenuPrincipalCliente.png");
+            soundPlayer1 = new SoundPlayer(@"sonidos\sonido-monedas.wav");
+            soundPlayer2 = new SoundPlayer(@"sonidos\sonido-meVoy.wav");
             this.BackgroundImageLayout = ImageLayout.Stretch;
             timer1.Interval = 1000;          
             timer1.Enabled = true;
@@ -33,7 +39,7 @@ namespace Form_Login
             lb_MenPrincMonto.BackColor = Color.Transparent;
             lb_MenuPrinHora.BackColor = Color.Transparent;
             lb_MenPrinBienvenido.BackColor = Color.Transparent;
-  
+            txb_MenPrinMonto.MaxLength = 6;
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -49,10 +55,13 @@ namespace Form_Login
 
         private void btn_MenPrinSalir_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("Desea salir de la aplicacion?","Precaucion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult resultado = MessageBox.Show("Desea cerrar sesion?","Precaucion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if(resultado == DialogResult.Yes)
             {
-                this.Close();
+                soundPlayer2.Play();
+                Form1 frmLogin = new Form1();
+                this.Hide();
+                frmLogin.Show();
             }
             
         }
@@ -86,7 +95,7 @@ namespace Form_Login
             }
             else
             {
-
+                soundPlayer1.Play();
                 decimal.TryParse(txb_MenPrinMonto.Text, out decimal monto);
                 cAux.Monto = monto;
                 FormComprar frmComprar = new FormComprar(cAux);

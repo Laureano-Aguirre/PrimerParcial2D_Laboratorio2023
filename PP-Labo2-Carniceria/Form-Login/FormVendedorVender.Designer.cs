@@ -120,6 +120,7 @@
             // 
             // cmb_VenderSeleccionarCorte
             // 
+            this.cmb_VenderSeleccionarCorte.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_VenderSeleccionarCorte.FormattingEnabled = true;
             this.cmb_VenderSeleccionarCorte.Location = new System.Drawing.Point(6, 22);
             this.cmb_VenderSeleccionarCorte.Name = "cmb_VenderSeleccionarCorte";

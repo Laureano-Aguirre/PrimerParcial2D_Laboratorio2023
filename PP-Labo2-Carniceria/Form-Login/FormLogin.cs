@@ -1,14 +1,24 @@
 using Entidades;
 using System.Text;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Media;
 
 namespace Form_Login
 {
+
     public partial class Form1 : Form
     {
+        private SoundPlayer soundPlayer1;
+        private SoundPlayer soundPlayer2;
         public Form1()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+
+            soundPlayer1 = new SoundPlayer(@"sonidos\sonido-vaca.wav");
+            soundPlayer2 = new SoundPlayer(@"sonidos\sonido-gallina.wav");
+
             pb_Usuario.Visible = false;
             txb_LoginCorreo.Visible = false;
             txb_LoginPassword.Visible = false;
@@ -19,17 +29,22 @@ namespace Form_Login
             Vendedor.HardcodearVendedores();
             Cliente.HardocdearClientes();
             Carne.CargarCortes();
+            Venta.HarcodearVentas();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             this.BackgroundImage = Image.FromFile(@"imagenes\img-login.png");
             this.BackgroundImageLayout = ImageLayout.Stretch;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            
+
         }
 
         private void btn_LoginCliente_Click(object sender, EventArgs e)
         {
             Visibilizacion();
+            soundPlayer1.Play();
             txb_LoginCorreo.Text = "cliente1@gmail.com";
             txb_LoginPassword.Text = "cliente1cliente";
             btn_LoginCliente.DialogResult = DialogResult.OK;
@@ -38,6 +53,7 @@ namespace Form_Login
         private void btn_LoginVendedor_Click(object sender, EventArgs e)
         {
             Visibilizacion();
+            soundPlayer2.Play();
             txb_LoginCorreo.Text = "vendedor1@gmail.com";
             txb_LoginPassword.Text = "vendedor1vendedor";
             btn_LoginVendedor.DialogResult = DialogResult.OK;
@@ -104,6 +120,7 @@ namespace Form_Login
                     Cliente cliente = new Cliente(correo, pass);
 
                     Form_MenuCliente frmMenuCliente = new Form_MenuCliente(cliente);
+                    soundPlayer1.Play();
                     frmMenuCliente.Show();
                     this.Hide();
                 }
@@ -111,6 +128,7 @@ namespace Form_Login
                 {
                     Vendedor vendedor = new Vendedor(correo, pass);
                     FormHeladera frmHeladera = new FormHeladera(vendedor);
+                    soundPlayer2.Play();
                     frmHeladera.Show();
                     this.Hide();
                 }
@@ -133,6 +151,11 @@ namespace Form_Login
             btn_LoginVendedor.Visible = true;
             lb_LoginCorreo.Visible = false;
             lb_LoginPassword.Visible = false;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

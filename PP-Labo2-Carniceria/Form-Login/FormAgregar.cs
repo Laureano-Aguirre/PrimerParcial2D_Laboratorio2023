@@ -1,4 +1,5 @@
 ﻿using Entidades;
+using System.Media;
 using System.Text.RegularExpressions;
 
 
@@ -7,6 +8,8 @@ namespace Form_Login
     public partial class FormAgregar : Form
     {
         Vendedor vAux;
+        private SoundPlayer soundCancelar;
+        private SoundPlayer soundAgregar;
         public FormAgregar(Vendedor vendedor)
         {
             InitializeComponent();
@@ -20,6 +23,8 @@ namespace Form_Login
         private void FormAgregar_Load_1(object sender, EventArgs e)
         {
             VisibilizacionYConfiguracionControladores();
+            soundAgregar = new SoundPlayer(@"sonidos\sonido-vaca.wav");
+            soundCancelar = new SoundPlayer(@"sonidos\sonido-meVoy.wav");
             foreach (Carne carne in Carne.ListaCarnes)
             {
                 cmb_AgregarSeleccionarCorte.Items.Add(carne.TipoDeCarne);
@@ -80,6 +85,7 @@ namespace Form_Login
                 "Se borraran los datos.", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialog == DialogResult.Yes)
             {
+                soundCancelar.Play();
                 FormHeladera frmHeladera = new FormHeladera(vAux);
                 frmHeladera.Show();
                 this.Hide();
@@ -126,6 +132,7 @@ namespace Form_Login
                     if (cmb_AgregarSeleccionarCorte.Text == carne.TipoDeCarne)
                     {
                         carne.Stock += nud_AgregarStock.Value;
+                        soundAgregar.Play();
                         MessageBox.Show("Stock agregado correctamente.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
                     }
@@ -154,6 +161,7 @@ namespace Form_Login
                     bool pudoCargarCorte = Carne.CargarTipoDeCorte(txb_AgregarTipoDeCorte.Text, precio, stock);
                     if (pudoCargarCorte)
                     {
+                        soundAgregar.Play();
                         MessageBox.Show("Tipo de corte agregado correctamente.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

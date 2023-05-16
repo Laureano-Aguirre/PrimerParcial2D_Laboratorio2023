@@ -36,6 +36,7 @@
             // 
             this.rtb_TicketMostrar.Location = new System.Drawing.Point(0, 0);
             this.rtb_TicketMostrar.Name = "rtb_TicketMostrar";
+            this.rtb_TicketMostrar.ReadOnly = true;
             this.rtb_TicketMostrar.Size = new System.Drawing.Size(348, 396);
             this.rtb_TicketMostrar.TabIndex = 0;
             this.rtb_TicketMostrar.Text = "";

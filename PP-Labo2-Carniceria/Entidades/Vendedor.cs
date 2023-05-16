@@ -9,7 +9,6 @@ namespace Entidades
 
     public sealed class Vendedor : Persona
     {
-
         public Vendedor(string correo, string password) : base(correo, password)
         {
             this.correo = correo;

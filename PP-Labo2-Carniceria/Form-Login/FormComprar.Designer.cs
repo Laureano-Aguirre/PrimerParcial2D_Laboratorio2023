@@ -51,20 +51,13 @@
             this.btn_CompraCredito = new System.Windows.Forms.Button();
             this.btn_CompraDebito = new System.Windows.Forms.Button();
             this.btn_CompraEfectivo = new System.Windows.Forms.Button();
-            this.lb_CompraColitaDeCuadril = new System.Windows.Forms.Label();
-            this.lb_CompraEntrania = new System.Windows.Forms.Label();
-            this.lb_CompraTiraAsado = new System.Windows.Forms.Label();
-            this.lb_CompraBolaLomo = new System.Windows.Forms.Label();
-            this.lb_CompraOjoBife = new System.Windows.Forms.Label();
-            this.lb_CompraBifeChorizo = new System.Windows.Forms.Label();
-            this.lb_CompraTortuguita = new System.Windows.Forms.Label();
-            this.lb_CompraFalda = new System.Windows.Forms.Label();
             this.rtb_ComprarCostoTotal = new System.Windows.Forms.RichTextBox();
             this.lb_ComprarCostoParcial = new System.Windows.Forms.Label();
             this.lb_CompraMontoInicial = new System.Windows.Forms.Label();
             this.lb_CompraSignoPesoParcial = new System.Windows.Forms.Label();
             this.lb_CompraCostoParcial = new System.Windows.Forms.Label();
             this.btn_CompraAgregar = new System.Windows.Forms.Button();
+            this.rtb_CompraListaCompras = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pb_BolsaCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nud_CompraKilos)).BeginInit();
             this.gb_CompraCortes.SuspendLayout();
@@ -321,86 +314,6 @@
             this.btn_CompraEfectivo.UseVisualStyleBackColor = false;
             this.btn_CompraEfectivo.Click += new System.EventHandler(this.btn_CompraEfectivo_Click);
             // 
-            // lb_CompraColitaDeCuadril
-            // 
-            this.lb_CompraColitaDeCuadril.AutoSize = true;
-            this.lb_CompraColitaDeCuadril.BackColor = System.Drawing.Color.Transparent;
-            this.lb_CompraColitaDeCuadril.Location = new System.Drawing.Point(541, 149);
-            this.lb_CompraColitaDeCuadril.Name = "lb_CompraColitaDeCuadril";
-            this.lb_CompraColitaDeCuadril.Size = new System.Drawing.Size(38, 15);
-            this.lb_CompraColitaDeCuadril.TabIndex = 14;
-            this.lb_CompraColitaDeCuadril.Text = "label1";
-            // 
-            // lb_CompraEntrania
-            // 
-            this.lb_CompraEntrania.AutoSize = true;
-            this.lb_CompraEntrania.BackColor = System.Drawing.Color.Transparent;
-            this.lb_CompraEntrania.Location = new System.Drawing.Point(541, 206);
-            this.lb_CompraEntrania.Name = "lb_CompraEntrania";
-            this.lb_CompraEntrania.Size = new System.Drawing.Size(38, 15);
-            this.lb_CompraEntrania.TabIndex = 15;
-            this.lb_CompraEntrania.Text = "label2";
-            // 
-            // lb_CompraTiraAsado
-            // 
-            this.lb_CompraTiraAsado.AutoSize = true;
-            this.lb_CompraTiraAsado.BackColor = System.Drawing.Color.Transparent;
-            this.lb_CompraTiraAsado.Location = new System.Drawing.Point(541, 258);
-            this.lb_CompraTiraAsado.Name = "lb_CompraTiraAsado";
-            this.lb_CompraTiraAsado.Size = new System.Drawing.Size(38, 15);
-            this.lb_CompraTiraAsado.TabIndex = 16;
-            this.lb_CompraTiraAsado.Text = "label3";
-            // 
-            // lb_CompraBolaLomo
-            // 
-            this.lb_CompraBolaLomo.AutoSize = true;
-            this.lb_CompraBolaLomo.BackColor = System.Drawing.Color.Transparent;
-            this.lb_CompraBolaLomo.Location = new System.Drawing.Point(541, 321);
-            this.lb_CompraBolaLomo.Name = "lb_CompraBolaLomo";
-            this.lb_CompraBolaLomo.Size = new System.Drawing.Size(38, 15);
-            this.lb_CompraBolaLomo.TabIndex = 17;
-            this.lb_CompraBolaLomo.Text = "label4";
-            // 
-            // lb_CompraOjoBife
-            // 
-            this.lb_CompraOjoBife.AutoSize = true;
-            this.lb_CompraOjoBife.BackColor = System.Drawing.Color.Transparent;
-            this.lb_CompraOjoBife.Location = new System.Drawing.Point(664, 206);
-            this.lb_CompraOjoBife.Name = "lb_CompraOjoBife";
-            this.lb_CompraOjoBife.Size = new System.Drawing.Size(38, 15);
-            this.lb_CompraOjoBife.TabIndex = 18;
-            this.lb_CompraOjoBife.Text = "label5";
-            // 
-            // lb_CompraBifeChorizo
-            // 
-            this.lb_CompraBifeChorizo.AutoSize = true;
-            this.lb_CompraBifeChorizo.BackColor = System.Drawing.Color.Transparent;
-            this.lb_CompraBifeChorizo.Location = new System.Drawing.Point(664, 149);
-            this.lb_CompraBifeChorizo.Name = "lb_CompraBifeChorizo";
-            this.lb_CompraBifeChorizo.Size = new System.Drawing.Size(38, 15);
-            this.lb_CompraBifeChorizo.TabIndex = 19;
-            this.lb_CompraBifeChorizo.Text = "label6";
-            // 
-            // lb_CompraTortuguita
-            // 
-            this.lb_CompraTortuguita.AutoSize = true;
-            this.lb_CompraTortuguita.BackColor = System.Drawing.Color.Transparent;
-            this.lb_CompraTortuguita.Location = new System.Drawing.Point(664, 258);
-            this.lb_CompraTortuguita.Name = "lb_CompraTortuguita";
-            this.lb_CompraTortuguita.Size = new System.Drawing.Size(38, 15);
-            this.lb_CompraTortuguita.TabIndex = 20;
-            this.lb_CompraTortuguita.Text = "label7";
-            // 
-            // lb_CompraFalda
-            // 
-            this.lb_CompraFalda.AutoSize = true;
-            this.lb_CompraFalda.BackColor = System.Drawing.Color.Transparent;
-            this.lb_CompraFalda.Location = new System.Drawing.Point(664, 321);
-            this.lb_CompraFalda.Name = "lb_CompraFalda";
-            this.lb_CompraFalda.Size = new System.Drawing.Size(38, 15);
-            this.lb_CompraFalda.TabIndex = 21;
-            this.lb_CompraFalda.Text = "label8";
-            // 
             // rtb_ComprarCostoTotal
             // 
             this.rtb_ComprarCostoTotal.BackColor = System.Drawing.Color.White;
@@ -463,25 +376,27 @@
             this.btn_CompraAgregar.UseVisualStyleBackColor = true;
             this.btn_CompraAgregar.Click += new System.EventHandler(this.btn_CompraAgregar_Click);
             // 
+            // rtb_CompraListaCompras
+            // 
+            this.rtb_CompraListaCompras.Location = new System.Drawing.Point(560, 161);
+            this.rtb_CompraListaCompras.Name = "rtb_CompraListaCompras";
+            this.rtb_CompraListaCompras.ReadOnly = true;
+            this.rtb_CompraListaCompras.Size = new System.Drawing.Size(183, 166);
+            this.rtb_CompraListaCompras.TabIndex = 28;
+            this.rtb_CompraListaCompras.Text = "";
+            // 
             // FormComprar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(823, 542);
+            this.Controls.Add(this.rtb_CompraListaCompras);
             this.Controls.Add(this.btn_CompraAgregar);
             this.Controls.Add(this.lb_CompraCostoParcial);
             this.Controls.Add(this.lb_CompraSignoPesoParcial);
             this.Controls.Add(this.lb_CompraMontoInicial);
             this.Controls.Add(this.lb_ComprarCostoParcial);
             this.Controls.Add(this.rtb_ComprarCostoTotal);
-            this.Controls.Add(this.lb_CompraFalda);
-            this.Controls.Add(this.lb_CompraTortuguita);
-            this.Controls.Add(this.lb_CompraBifeChorizo);
-            this.Controls.Add(this.lb_CompraOjoBife);
-            this.Controls.Add(this.lb_CompraBolaLomo);
-            this.Controls.Add(this.lb_CompraTiraAsado);
-            this.Controls.Add(this.lb_CompraEntrania);
-            this.Controls.Add(this.lb_CompraColitaDeCuadril);
             this.Controls.Add(this.gpb_CompraMetodosDePago);
             this.Controls.Add(this.gpb_CompraKilos);
             this.Controls.Add(this.gpb_CompraPrecioPorKilo);
@@ -536,14 +451,6 @@
         private Button btn_CompraDebito;
         private Button btn_CompraEfectivo;
         private PictureBox pb_CompraPagoVisa;
-        private Label lb_CompraColitaDeCuadril;
-        private Label lb_CompraEntrania;
-        private Label lb_CompraTiraAsado;
-        private Label lb_CompraBolaLomo;
-        private Label lb_CompraOjoBife;
-        private Label lb_CompraBifeChorizo;
-        private Label lb_CompraTortuguita;
-        private Label lb_CompraFalda;
         private PictureBox pb_CompraCreditoMastercard;
         private PictureBox pb_CompraDebitoMastercard;
         private PictureBox pb_ComprarVisaDebito;
@@ -553,5 +460,6 @@
         private Label lb_CompraSignoPesoParcial;
         private Label lb_CompraCostoParcial;
         private Button btn_CompraAgregar;
+        private RichTextBox rtb_CompraListaCompras;
     }
 }

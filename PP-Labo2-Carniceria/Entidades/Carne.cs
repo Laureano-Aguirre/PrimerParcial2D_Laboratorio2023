@@ -67,10 +67,6 @@ namespace Entidades
 
             return sb.ToString();
         }
-        public static List<Carne> ObtenerCortes()
-        {
-            return carnes;
-        }
 
         public static int CargarPrecioPorKilo(string corte)
         {

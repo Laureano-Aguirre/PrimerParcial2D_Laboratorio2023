@@ -54,3 +54,4 @@ C:\Users\Administrador\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP
 C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormAgregar.resources
 C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormModificarProducto.resources
 C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormVendedorVender.resources
+C:\Users\Lau\Desktop\PRIMER PARCIAL\PrimerParcial2D_Laboratorio2023\PP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormFacturacion.resources

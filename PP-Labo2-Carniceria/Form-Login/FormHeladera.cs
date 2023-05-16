@@ -1,11 +1,14 @@
 ﻿using Entidades;
 using System.ComponentModel;
+using System.Media;
 
 namespace Form_Login
 {
     public partial class FormHeladera : Form
     {
         Vendedor vAux;
+        private SoundPlayer soundCancelar;
+        private SoundPlayer soundVender;
         public FormHeladera(Vendedor vendedor)
         {
             InitializeComponent();
@@ -20,6 +23,8 @@ namespace Form_Login
             this.BackgroundImageLayout = ImageLayout.Stretch;
             lb_HeladeraBiennvenida.Text = $"Bienvenido {vAux.MostrarPersona(vAux)} !";
             dataGridView1.AutoGenerateColumns = false;
+            soundVender = new SoundPlayer(@"sonidos\sonido-monedas.wav");
+            soundCancelar = new SoundPlayer(@"sonidos\sonido-meVoy.wav");
 
             dataGridView1.Columns.Add("TipoDeCarne", "Tipo de carne");
             dataGridView1.Columns.Add("PrecioPorKilo", "Precio por kilo");
@@ -40,6 +45,7 @@ namespace Form_Login
 
             if (dialogResutl == DialogResult.Yes)
             {
+                soundCancelar.Play();
                 Application.Exit();
             }
         }
@@ -54,14 +60,12 @@ namespace Form_Login
         private void VisibilizarCortes(BindingList<Carne> bindingListaCarnes)
         {
             foreach (Carne carne in bindingListaCarnes)
-            {
-                // Crear una nueva fila para el DataGridView
-                var row = new DataGridViewRow();
+            {               
+                var row = new DataGridViewRow();    // creo las filas para el datagridview
 
-                // Agregar las celdas a la fila
                 var tipoDeCarneCell = new DataGridViewTextBoxCell();
                 tipoDeCarneCell.Value = carne.TipoDeCarne;
-                row.Cells.Add(tipoDeCarneCell);
+                row.Cells.Add(tipoDeCarneCell);     //agrego las celdas a las filas
 
                 var precioPorKiloCell = new DataGridViewTextBoxCell();
                 precioPorKiloCell.Value = carne.PrecioPorKilo;
@@ -70,9 +74,8 @@ namespace Form_Login
                 var stockCell = new DataGridViewTextBoxCell();
                 stockCell.Value = carne.Stock;
                 row.Cells.Add(stockCell);
-
-                // Agregar la fila al DataGridView
-                dataGridView1.Rows.Add(row);
+              
+                dataGridView1.Rows.Add(row);        //agrego las filas al datagridview
             }
         }
 
@@ -85,9 +88,16 @@ namespace Form_Login
 
         private void btn_HeladeraVender_Click(object sender, EventArgs e)
         {
+            soundVender.Play();
             FormVendedorVender frmVender = new FormVendedorVender(vAux);
             frmVender.Show();
             this.Hide();
+        }
+
+        private void historialDeFacturacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormFacturacion frmFacturacion = new FormFacturacion();
+            frmFacturacion.ShowDialog();
         }
     }
 }

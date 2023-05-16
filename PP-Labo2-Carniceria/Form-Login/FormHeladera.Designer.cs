@@ -34,6 +34,8 @@
             this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.precioPorKiloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.historialDeFacturacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btn_HeladeraVender = new System.Windows.Forms.Button();
             this.btn_HeladeraSalir = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -46,7 +48,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.agregarToolStripMenuItem,
-            this.modificarToolStripMenuItem});
+            this.modificarToolStripMenuItem,
+            this.verToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(684, 24);
@@ -83,6 +86,21 @@
             this.precioPorKiloToolStripMenuItem.Text = "Producto";
             this.precioPorKiloToolStripMenuItem.Click += new System.EventHandler(this.precioPorKiloToolStripMenuItem_Click);
             // 
+            // verToolStripMenuItem
+            // 
+            this.verToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.historialDeFacturacionToolStripMenuItem});
+            this.verToolStripMenuItem.Name = "verToolStripMenuItem";
+            this.verToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+            this.verToolStripMenuItem.Text = "Ver";
+            // 
+            // historialDeFacturacionToolStripMenuItem
+            // 
+            this.historialDeFacturacionToolStripMenuItem.Name = "historialDeFacturacionToolStripMenuItem";
+            this.historialDeFacturacionToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.historialDeFacturacionToolStripMenuItem.Text = "Historial de facturacion";
+            this.historialDeFacturacionToolStripMenuItem.Click += new System.EventHandler(this.historialDeFacturacionToolStripMenuItem_Click);
+            // 
             // btn_HeladeraVender
             // 
             this.btn_HeladeraVender.BackColor = System.Drawing.Color.YellowGreen;
@@ -110,6 +128,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(95, 92);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(360, 270);
             this.dataGridView1.TabIndex = 3;
@@ -160,5 +179,7 @@
         private ToolStripMenuItem modificarToolStripMenuItem;
         private ToolStripMenuItem precioPorKiloToolStripMenuItem;
         private Label lb_HeladeraBiennvenida;
+        private ToolStripMenuItem verToolStripMenuItem;
+        private ToolStripMenuItem historialDeFacturacionToolStripMenuItem;
     }
 }
