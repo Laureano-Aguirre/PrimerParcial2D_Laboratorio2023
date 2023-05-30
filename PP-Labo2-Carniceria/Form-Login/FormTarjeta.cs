@@ -56,10 +56,22 @@ namespace Form_Login
             string visaRegex = "^4[0-9]{6,}$";
             string mastercardRegex = "^5[1-5][0-9]{5,}$";
 
+            ValidarTarjeta(cardNum, visaRegex, mastercardRegex);
+
+        }
+
+        /// <summary>
+        /// Valida el ingreso de los datos de la tarjeta, tanto de los datos propios de la tarjeta, como de que banco es la tarjeta
+        /// </summary>
+        /// <param name="cardNum"></param>
+        /// <param name="visaRegex"></param>
+        /// <param name="masterCardRegex"></param>
+        private void ValidarTarjeta(string cardNum, string visaRegex, string mastercardRegex)
+        {
             Regex regex = new Regex("^[A-Z\\s]+$");
             if (long.TryParse(txb_NumeroTarjeta.Text, out long numeroTarjeta) && txb_NumeroTarjeta.Text.Length == 16 && (Regex.IsMatch(cardNum, visaRegex) || Regex.IsMatch(cardNum, mastercardRegex)))
             {
-                if (!(string.IsNullOrEmpty(txb_NombreTitTarjeta.Text)))
+                if (!(string.IsNullOrEmpty(txb_NombreTitTarjeta.Text)) && !(string.IsNullOrWhiteSpace(txb_NombreTitTarjeta.Text)))
                 {
                     if (regex.Match(txb_NombreTitTarjeta.Text).Success)
                     {
@@ -87,9 +99,7 @@ namespace Form_Login
             {
                 MessageBox.Show("Numero de tarjeta incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-
         private void Visibilidad()
         {
             lb_FechaVtoEnTarjeta.Visible = false;

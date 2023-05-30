@@ -23,6 +23,7 @@ namespace Form_Login
         private void FormAgregar_Load_1(object sender, EventArgs e)
         {
             VisibilizacionYConfiguracionControladores();
+            cmb_AgregarSeleccionarCorte.DropDownStyle = ComboBoxStyle.DropDownList;
             soundAgregar = new SoundPlayer(@"sonidos\sonido-vaca.wav");
             soundCancelar = new SoundPlayer(@"sonidos\sonido-meVoy.wav");
             foreach (Carne carne in Carne.ListaCarnes)
@@ -182,15 +183,26 @@ namespace Form_Login
             {
                 if (!(string.IsNullOrEmpty(cmb_AgregarSeleccionarCorte.Text)))
                 {
-                    if (nud_AgregarStock.Value != 0)
+                    foreach(Carne carne in Carne.ListaCarnes)
                     {
-                        return true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Debe seleccionar una cantidad de stock.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return false;
-                    }
+                        if(carne.TipoDeCarne == cmb_AgregarSeleccionarCorte.Text)
+                        {
+                            if (nud_AgregarStock.Value != 0)
+                            {
+                                return true;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Debe seleccionar una cantidad de stock.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Corte de carne ingresado invalido, ingreselo nuevamente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return false;
+                        }
+                    }     
                 }
                 else
                 {
@@ -202,6 +214,7 @@ namespace Form_Login
             {
                 return false;
             }
+            return false;
         }
 
         /// <summary>

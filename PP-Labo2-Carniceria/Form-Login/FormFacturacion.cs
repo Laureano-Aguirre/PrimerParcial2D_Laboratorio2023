@@ -32,6 +32,10 @@ namespace Form_Login
             VisibilizarVentas(bindingListaVentas);
         }
 
+        /// <summary>
+        /// Crea y arma el DataGridView
+        /// </summary>
+        /// <param name="bindingListaVentas"></param>
         private void VisibilizarVentas(BindingList<Venta> bindingListaVentas)
         {
             foreach (Venta venta in bindingListaVentas)
