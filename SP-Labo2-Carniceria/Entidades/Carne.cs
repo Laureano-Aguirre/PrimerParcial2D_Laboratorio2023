@@ -100,11 +100,6 @@ namespace Entidades
             return sb.ToString();
         }
 
-        public static decimal CalcularPago(decimal monto, decimal costoTotal)
-        {
-            return monto - costoTotal;
-        }
-
         public static bool CargarTipoDeCorte(string corte, int precioPorKilo, decimal stock)
         {
             ListaCarnes.Add(new Carne(corte, precioPorKilo, stock));

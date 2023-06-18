@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lau\\Desktop\\PRIMER PARCIAL\\PrimerParcial2D_Laboratorio2023\\PP-Labo2-Carniceria\\Entidades\\Entidades.csproj": {}
+    "C:\\Users\\Lau\\Desktop\\PRIMER PARCIAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lau\\Desktop\\PRIMER PARCIAL\\PrimerParcial2D_Laboratorio2023\\PP-Labo2-Carniceria\\Entidades\\Entidades.csproj": {
+    "C:\\Users\\Lau\\Desktop\\PRIMER PARCIAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lau\\Desktop\\PRIMER PARCIAL\\PrimerParcial2D_Laboratorio2023\\PP-Labo2-Carniceria\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\Lau\\Desktop\\PRIMER PARCIAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj",
         "projectName": "Entidades",
-        "projectPath": "C:\\Users\\Lau\\Desktop\\PRIMER PARCIAL\\PrimerParcial2D_Laboratorio2023\\PP-Labo2-Carniceria\\Entidades\\Entidades.csproj",
+        "projectPath": "C:\\Users\\Lau\\Desktop\\PRIMER PARCIAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj",
         "packagesPath": "C:\\Users\\Lau\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lau\\Desktop\\PRIMER PARCIAL\\PrimerParcial2D_Laboratorio2023\\PP-Labo2-Carniceria\\Entidades\\obj\\",
+        "outputPath": "C:\\Users\\Lau\\Desktop\\PRIMER PARCIAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lau\\AppData\\Roaming\\NuGet\\NuGet.Config",

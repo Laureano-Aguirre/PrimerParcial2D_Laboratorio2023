@@ -307,7 +307,7 @@ namespace Form_Login
                 {
                     if (pudoCambiarCostoFinal)
                     {
-                        if (Carne.CalcularPago(monto, costoFinal) >= 0)
+                        if (Venta.CalcularPago(monto, costoFinal) >= 0)
                         {
                             Venta venta = new Venta(caux.Correo, caux.Monto, costoFinal);
                             if (venta.CargarVenta(venta))
@@ -350,7 +350,7 @@ namespace Form_Login
         {
             if (btn_VenderAgregar.DialogResult == DialogResult.OK)
             {
-                if (Carne.CalcularPago(monto, costoFinal) < 0)
+                if (Venta.CalcularPago(monto, costoFinal) < 0)
                 {
                     MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
                         "Por favor, elija otro cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);

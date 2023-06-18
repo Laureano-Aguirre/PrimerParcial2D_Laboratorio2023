@@ -136,7 +136,7 @@ namespace Form_Login
                     if (btn_CompraAgregar.DialogResult == DialogResult.OK)
                     {
 
-                        if (Carne.CalcularPago(monto, costoFinal) < 0)
+                        if (Venta.CalcularPago(monto, costoFinal) < 0)
                         {
                             MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
                                 "Por favor, ingrese un nuevo monto y vuelva a comprar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -363,7 +363,7 @@ namespace Form_Login
         /// <param name="costoFinal"></param>
         private void ValidarPago(decimal monto, decimal costoFinal)
         {
-            if (Carne.CalcularPago(monto, costoFinal) >= 0)
+            if (Venta.CalcularPago(monto, costoFinal) >= 0)
             {
                 caux.Gasto = costoFinal;
                 if ((btn_CompraEfectivo.DialogResult == DialogResult.OK) || (btn_CompraCredito.DialogResult == DialogResult.OK) || (btn_CompraDebito.DialogResult == DialogResult.OK))
@@ -409,7 +409,7 @@ namespace Form_Login
                 {
                     if (btn_CompraAgregar.DialogResult == DialogResult.OK)
                     {
-                        if (Carne.CalcularPago(monto, costoFinal) < 0)
+                        if (Venta.CalcularPago(monto, costoFinal) < 0)
                         {                    
                             retorno = -1;
                         }

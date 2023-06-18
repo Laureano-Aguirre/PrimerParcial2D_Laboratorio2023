@@ -13,11 +13,15 @@ namespace Entidades
         private decimal montoCliente;
         private decimal gastoCliente;
 
-        public Venta(string correoCliente, decimal montoCliente, decimal gastoCliente)
+        public Venta(decimal montoCliente, decimal gastoCliente)
         {
-            this.correoCliente = correoCliente;
             this.montoCliente = montoCliente;
             this.gastoCliente = gastoCliente;
+        }
+
+        public Venta(string correoCliente, decimal montoCliente, decimal gastoCliente) : this(montoCliente, gastoCliente)
+        {
+            this.correoCliente = correoCliente;    
         }
 
         public static List<Venta> ListaVentas { get { return listaVentas; } }
@@ -36,6 +40,11 @@ namespace Entidades
         {
             listaVentas.Add(venta);
             return true;
+        }
+
+        public static decimal CalcularPago(decimal monto, decimal costoTotal)
+        {
+            return monto - costoTotal;
         }
     }
 }
