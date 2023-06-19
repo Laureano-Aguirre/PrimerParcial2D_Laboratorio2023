@@ -52,10 +52,10 @@ namespace Entidades
 
         public static void HardocdearClientes()
         {
-            Cliente c1 = new Cliente("cliente1@gmail.com", "cliente1cliente");
-            Cliente c2 = new Cliente("cliente2@gmail.com", "cliente2cliente", 500, 0);
-            Cliente c3 = new Cliente("cliente3@gmail.com", "cliente3cliente", 5000, 0);
-            Cliente c4 = new Cliente("cliente4@gmail.com", "cliente4cliente", 100000, 0);
+            Cliente c1 = new Cliente("cliente1@gmail.com", "Cliente1cliente*");
+            Cliente c2 = new Cliente("cliente2@gmail.com", "Cliente2cliente$", 500, 0);
+            Cliente c3 = new Cliente("cliente3@gmail.com", "Cliente3cliente*", 5000, 0);
+            Cliente c4 = new Cliente("cliente4@gmail.com", "Cliente4cliente#", 100000, 0);
 
         }
 
