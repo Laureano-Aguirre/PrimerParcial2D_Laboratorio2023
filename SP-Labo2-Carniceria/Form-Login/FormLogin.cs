@@ -46,7 +46,7 @@ namespace Form_Login
             Visibilizacion();
             soundPlayer1.Play();
             txb_LoginCorreo.Text = "cliente1@gmail.com";
-            txb_LoginPassword.Text = "cliente1cliente";
+            txb_LoginPassword.Text = "Cliente1cliente*";
             btn_LoginCliente.DialogResult = DialogResult.OK;
         }
 
@@ -55,7 +55,7 @@ namespace Form_Login
             Visibilizacion();
             soundPlayer2.Play();
             txb_LoginCorreo.Text = "vendedor1@gmail.com";
-            txb_LoginPassword.Text = "vendedor1vendedor";
+            txb_LoginPassword.Text = "Vendedor1vendedor*";
             btn_LoginVendedor.DialogResult = DialogResult.OK;
         }
 
@@ -113,30 +113,45 @@ namespace Form_Login
             //Cliente cAux = new Cliente(correo, pass);
             //Vendedor vAux = new Vendedor(correo, pass);
 
-            if (ValidarDatos(correo, pass))
+            try
             {
-                if ((Cliente.ValidarCliente(correo, pass)) && btn_LoginCliente.DialogResult == DialogResult.OK)
+                if (ValidarDatos(correo, pass))
                 {
-                    Cliente cliente = new Cliente(correo, pass);
+                    if (StringExtension.ContarMinusculas(pass) == 1 && StringExtension.ContarMayusculas(pass) == 1 && StringExtension.ContarCaracteresEspeciales(pass) == 1)
+                    {
+                        if ((Cliente.ValidarCliente(correo, pass)) && btn_LoginCliente.DialogResult == DialogResult.OK)
+                        {
+                            Cliente cliente = new Cliente(correo, pass);
 
-                    Form_MenuCliente frmMenuCliente = new Form_MenuCliente(cliente);
-                    soundPlayer1.Play();
-                    frmMenuCliente.Show();
-                    this.Hide();
-                }
-                else if ((Vendedor.BuscarVendedor(correo, pass)) && btn_LoginVendedor.DialogResult == DialogResult.OK)
-                {
-                    Vendedor vendedor = new Vendedor(correo, pass);
-                    FormHeladera frmHeladera = new FormHeladera(vendedor);
-                    soundPlayer2.Play();
-                    frmHeladera.Show();
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Usuario incorrecto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Form_MenuCliente frmMenuCliente = new Form_MenuCliente(cliente);
+                            soundPlayer1.Play();
+                            frmMenuCliente.Show();
+                            this.Hide();
+                        }
+                        else if ((Vendedor.BuscarVendedor(correo, pass)) && btn_LoginVendedor.DialogResult == DialogResult.OK)
+                        {
+                            Vendedor vendedor = new Vendedor(correo, pass);
+                            FormHeladera frmHeladera = new FormHeladera(vendedor);
+                            soundPlayer2.Play();
+                            frmHeladera.Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            throw new Exception ("usuario incorrecto.");
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception ("contraseña incorrecta.");                        
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+            
         }
 
         private void btn_LoginAtras_Click(object sender, EventArgs e)

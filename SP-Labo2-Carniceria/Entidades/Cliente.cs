@@ -10,7 +10,7 @@ namespace Entidades
     {
         private decimal monto;
         private decimal gasto;
-        private static Generics<Cliente, Carne> carritoCompra = new Generics<Cliente, Carne>();
+        private List<Carne> listaDeCompras;
 
         public Cliente(string correo, string password): base(correo, password)
         {
@@ -18,6 +18,7 @@ namespace Entidades
             this.password = password;
             monto= 0;
             gasto = 0;
+            listaDeCompras = new List<Carne>();
             listaPersonas.Add(this);
         }
 
@@ -25,12 +26,15 @@ namespace Entidades
         {
             this.monto = monto;
             this.gasto = gasto;
+            listaDeCompras = new List<Carne>();
             listaPersonas.Add(this);
         }
         public decimal Monto { get { return this.monto; } set { monto = value; } }
         public string Correo { get { return this.correo; }}
         public string Password { get { return this.password; }}
         public decimal Gasto { get { return this.gasto; } set { gasto = value; } }
+
+        public List<Carne> ListaDeCompras { get => listaDeCompras; } 
 
 
         /// <summary>
@@ -88,23 +92,57 @@ namespace Entidades
             return sb.ToString();
         }
 
-        public void AgregarAlCarrito(Cliente cliente, Carne carne)
-        {
-            carritoCompra.Add(cliente, carne);
-        }
-
-        public static string MostrarCarritoCompras()
+        public static string MostrarCompra(Cliente cliente)
         {
             StringBuilder sb = new StringBuilder();
-
-            foreach (Tuple<Cliente, Carne> tuple in carritoCompra)
+            sb.AppendLine("PRODUCTOS: ");
+            foreach (Carne carne in cliente.ListaDeCompras)
             {
-                sb.AppendLine($"CLIENTE: {tuple.Item1.Correo} \n " +
-                    $"COMPRA:\n" +
-                    $"{tuple.Item2.Kilos}KG de {tuple.Item2.TipoDeCarne}");
-            }
 
+                sb.AppendLine($"-{carne.Kilos.ToString()}KG {carne.TipoDeCarne}");
+            }
             return sb.ToString();
+        }     
+
+        public static string MostrarVentas()
+        {
+
+            StringBuilder sb = new StringBuilder();
+
+            foreach (Persona persona in listaPersonas)
+            {
+                if (persona is Cliente cliente)
+                {
+                    if (cliente.ListaDeCompras.Count > 0)
+                    {
+                        sb.AppendLine($"Correo: {cliente.correo}");
+                        sb.AppendLine(MostrarCompra(cliente));
+                    }
+                }
+            }
+            return sb.ToString();
+
         }
+
+        public bool CargarCompra(Carne carne)
+        {
+            if (monto >= carne.PrecioPorKilo)
+            {
+                listaDeCompras.Add(carne);
+                monto -= carne.PrecioPorKilo;
+                gasto += carne.PrecioPorKilo;
+                return true;
+            }
+            return false;
+        }
+
+        public static void LimpiarListaCompras(Cliente cliente)
+        {
+            if(cliente.ListaDeCompras.Count > 0)
+            {
+                cliente.ListaDeCompras.Clear();
+            }         
+        }
+
     }
 }

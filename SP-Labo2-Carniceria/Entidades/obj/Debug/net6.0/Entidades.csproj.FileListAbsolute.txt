@@ -34,3 +34,4 @@ C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carnicer
 C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Entidades\obj\Debug\net6.0\refint\Entidades.dll
 C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Entidades\obj\Debug\net6.0\Entidades.pdb
 C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Entidades\obj\Debug\net6.0\ref\Entidades.dll
+C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Entidades\obj\Debug\net6.0\Entidades.csproj.ResolveComReference.cache

@@ -68,11 +68,14 @@ namespace Form_Login
                 "Puede perder todo lo que seleccionó.", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialog == DialogResult.Yes)
             {
-                Carne.LimpiarListaCompras();
-                Form_MenuCliente form_MenuCliente = new Form_MenuCliente(caux);
-                soundCancelar.Play();
-                form_MenuCliente.Show();
-                this.Hide();
+                if (caux != null)
+                {
+                    Cliente.LimpiarListaCompras(caux);
+                    Form_MenuCliente form_MenuCliente = new Form_MenuCliente(caux);
+                    soundCancelar.Play();
+                    form_MenuCliente.Show();
+                    this.Hide();
+                }   
             }
         }
 
@@ -140,7 +143,7 @@ namespace Form_Login
                         {
                             MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
                                 "Por favor, ingrese un nuevo monto y vuelva a comprar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            Carne.LimpiarListaCompras();
+                            Cliente.LimpiarListaCompras(caux);
                             this.Hide();
                             Form_MenuCliente frmMenuCliente = new Form_MenuCliente(caux);
                             frmMenuCliente.Show();
@@ -192,7 +195,7 @@ namespace Form_Login
             {
                 MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
                                 "Por favor, ingrese un nuevo monto y vuelva a comprar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                Carne.LimpiarListaCompras();
+                Cliente.LimpiarListaCompras(caux);
                 this.Hide();
                 Form_MenuCliente frmMenuCliente = new Form_MenuCliente(caux);
                 frmMenuCliente.Show();
@@ -217,7 +220,7 @@ namespace Form_Login
             {
                 MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
                                 "Por favor, ingrese un nuevo monto y vuelva a comprar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                Carne.LimpiarListaCompras();
+                Cliente.LimpiarListaCompras(caux);
                 this.Hide();
                 Form_MenuCliente frmMenuCliente = new Form_MenuCliente(caux);
                 frmMenuCliente.Show();
@@ -318,7 +321,8 @@ namespace Form_Login
                     if (carne2.Stock > 0 && carne2.Stock >= kilos)
                     {
                         Carne carne1 = new Carne(tipoDeCarne, kilos);
-                        if (carne1.CargarCompra(carne1))
+                        caux.CargarCompra(carne1);
+                        if (caux.CargarCompra(carne1))
                         {
                             foreach (Carne carne in Carne.ListaCarnes)
                             {
@@ -391,7 +395,7 @@ namespace Form_Login
             {
                 MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
             "Por favor, ingrese un nuevo monto y vuelva a comprar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                Carne.LimpiarListaCompras();
+                Cliente.LimpiarListaCompras(caux);
                 this.Hide();
                 Form_MenuCliente frmMenuCliente = new Form_MenuCliente(caux);
                 frmMenuCliente.Show();

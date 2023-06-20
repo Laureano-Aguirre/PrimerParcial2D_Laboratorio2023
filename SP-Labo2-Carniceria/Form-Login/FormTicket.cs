@@ -29,13 +29,13 @@ namespace Form_Login
 
         private void FormTicket_Load(object sender, EventArgs e)
         {
-            MostrarRichTextBox();
+            MostrarRichTextBox(cAux);
         }
 
         /// <summary>
         /// Agrupa todo el codigo dentro de este metodo, para no cargar tanto el LOAD.s
         /// </summary>
-        private void MostrarRichTextBox()
+        private void MostrarRichTextBox(Cliente cliente)
         {
             rtb_TicketMostrar.AppendText("CARNICERIA LA BOCA\n");
             rtb_TicketMostrar.Select(0, "CARNICERIA LA BOCA\n".Length);
@@ -60,14 +60,23 @@ namespace Form_Login
                     usoTarjeta = true;
                 }
             }
+
+            List<Carne> carnes = cliente.ListaDeCompras.Distinct().ToList(); // Eliminar duplicados de la lista de compras
+
             rtb_TicketMostrar.AppendText("DETALLES DE LA COMPRA\n");
             rtb_TicketMostrar.Select(rtb_TicketMostrar.TextLength - 1, "DETALLES DE LA COMPRA\n".Length);
             rtb_TicketMostrar.SelectionAlignment = HorizontalAlignment.Center;
-            rtb_TicketMostrar.AppendText($"{Carne.MostrarCompras()}\n");
+
+            foreach (Carne carne in carnes) // Mostrar las carnes sin duplicados
+            {
+                rtb_TicketMostrar.AppendText($"-{carne.Kilos.ToString()}KG {carne.TipoDeCarne}\n");
+            }
+
             rtb_TicketMostrar.AppendText("--------------------------------------------------------------------\n");
             rtb_TicketMostrar.AppendText($"SUBTOTAL: {cAux.Gasto}\n");
             rtb_TicketMostrar.Select(rtb_TicketMostrar.TextLength - 1, $"SUBTOTAL: {cAux.Gasto}\n".Length);
             rtb_TicketMostrar.SelectionAlignment = HorizontalAlignment.Right;
+
             if (usoTarjeta)
             {
                 recarga = tAux.AgregarRecarga(cAux.Gasto);
@@ -86,7 +95,7 @@ namespace Form_Login
             }
         }
 
-        private void FormTicket_FormClosing(object sender, FormClosingEventArgs e)
+            private void FormTicket_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }

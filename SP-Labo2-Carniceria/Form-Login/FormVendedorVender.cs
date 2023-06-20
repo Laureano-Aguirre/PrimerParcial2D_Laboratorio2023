@@ -61,10 +61,21 @@ namespace Form_Login
 
             if (dialogResutl == DialogResult.Yes)
             {
-                soundCancelar.Play();
-                FormHeladera frmHeladera = new FormHeladera(vAux);
-                frmHeladera.Show();
-                this.Hide();
+                if(caux is null)
+                {
+                    soundCancelar.Play();
+                    FormHeladera frmHeladera = new FormHeladera(vAux);
+                    frmHeladera.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    //Cliente.LimpiarListaCompras(caux);
+                    soundCancelar.Play();
+                    FormHeladera frmHeladera = new FormHeladera(vAux);
+                    frmHeladera.Show();
+                    this.Hide();
+                }  
             }
         }
 
@@ -78,7 +89,7 @@ namespace Form_Login
             string correo = cmb_VenderSeleccionarCliente.Text;
 
             cmb_VenderSeleccionarCorte.SelectedItem = null;
-            Carne.LimpiarListaCompras();
+            //Cliente.LimpiarListaCompras(caux);
             rtb_VenderMostrarCompra.Clear();
             costoParcial = 0;
             foreach (Persona persona in Persona.ListaPersonas)
@@ -252,7 +263,7 @@ namespace Form_Login
                     if (carne2.Stock > 0 && carne2.Stock >= kilos)
                     {
                         Carne carne1 = new Carne(tipoDeCarne, kilos);
-                        if (carne1.CargarCompra(carne1))
+                        if (caux.CargarCompra(carne1))
                         {
                             foreach (Carne carne in Carne.ListaCarnes)
                             {
@@ -261,7 +272,6 @@ namespace Form_Login
                                     carne.Stock = carne.Stock - kilos;
                                     MessageBox.Show("Agregado al carrito.");
                                     soundAgregar.Play();
-                                    caux.AgregarAlCarrito(caux, carne1);
                                     bool lineaExistente = false;
                                     foreach (string linea in rtb_VenderMostrarCompra.Lines)
                                     {
@@ -284,6 +294,10 @@ namespace Form_Login
                                     btn_VenderAgregar.DialogResult = DialogResult.OK;
                                 }
                             }
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se puedo agregar al carrito, revise el monto del cliente e intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
@@ -315,8 +329,9 @@ namespace Form_Login
                             {
                                 soundVender.Play();
                                 caux.Gasto = costoFinal;
-                                MessageBox.Show($"PRODUCTOS:{Carne.MostrarCompras()}\n" +
+                                MessageBox.Show($"PRODUCTOS:{Cliente.MostrarCompra(caux)}\n" +
                                     $"GASTO: {caux.Gasto}", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                //Cliente.LimpiarListaCompras(caux);
                             }
                             else
                             {

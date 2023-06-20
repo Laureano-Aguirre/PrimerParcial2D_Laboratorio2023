@@ -20,7 +20,7 @@ namespace Form_Login
 
         private void FormHistorialVentas_Load(object sender, EventArgs e)
         {
-            rtb_HistorialVentas.AppendText(Cliente.MostrarCarritoCompras());
+            rtb_HistorialVentas.AppendText(Cliente.MostrarVentas());
         }
 
         private void btn_HistorialVentasAtras_Click(object sender, EventArgs e)
@@ -30,6 +30,16 @@ namespace Form_Login
             {
                 this.Close();
             }
+        }
+
+        private void btn_HistorialVentasGenerarTxt_Click(object sender, EventArgs e)
+        {
+            Archivos.Escribir();
+        }
+
+        private void btn_HistorialVentasSerializarXml_Click(object sender, EventArgs e)
+        {
+            Serializadora.Escribir(Carne.ListaCarnes);
         }
     }
 }

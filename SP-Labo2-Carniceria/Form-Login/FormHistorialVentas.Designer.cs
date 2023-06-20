@@ -30,6 +30,8 @@
         {
             rtb_HistorialVentas = new RichTextBox();
             btn_HistorialVentasAtras = new Button();
+            btn_HistorialVentasGenerarTxt = new Button();
+            btn_HistorialVentasSerializarXml = new Button();
             SuspendLayout();
             // 
             // rtb_HistorialVentas
@@ -51,12 +53,36 @@
             btn_HistorialVentasAtras.UseVisualStyleBackColor = false;
             btn_HistorialVentasAtras.Click += btn_HistorialVentasAtras_Click;
             // 
+            // btn_HistorialVentasGenerarTxt
+            // 
+            btn_HistorialVentasGenerarTxt.BackColor = Color.YellowGreen;
+            btn_HistorialVentasGenerarTxt.Location = new Point(506, 399);
+            btn_HistorialVentasGenerarTxt.Name = "btn_HistorialVentasGenerarTxt";
+            btn_HistorialVentasGenerarTxt.Size = new Size(97, 39);
+            btn_HistorialVentasGenerarTxt.TabIndex = 2;
+            btn_HistorialVentasGenerarTxt.Text = "Generar txt";
+            btn_HistorialVentasGenerarTxt.UseVisualStyleBackColor = false;
+            btn_HistorialVentasGenerarTxt.Click += btn_HistorialVentasGenerarTxt_Click;
+            // 
+            // btn_HistorialVentasSerializarXml
+            // 
+            btn_HistorialVentasSerializarXml.BackColor = Color.LemonChiffon;
+            btn_HistorialVentasSerializarXml.Location = new Point(197, 399);
+            btn_HistorialVentasSerializarXml.Name = "btn_HistorialVentasSerializarXml";
+            btn_HistorialVentasSerializarXml.Size = new Size(97, 39);
+            btn_HistorialVentasSerializarXml.TabIndex = 3;
+            btn_HistorialVentasSerializarXml.Text = "Serializar xml";
+            btn_HistorialVentasSerializarXml.UseVisualStyleBackColor = false;
+            btn_HistorialVentasSerializarXml.Click += btn_HistorialVentasSerializarXml_Click;
+            // 
             // FormHistorialVentas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientActiveCaption;
             ClientSize = new Size(615, 450);
+            Controls.Add(btn_HistorialVentasSerializarXml);
+            Controls.Add(btn_HistorialVentasGenerarTxt);
             Controls.Add(btn_HistorialVentasAtras);
             Controls.Add(rtb_HistorialVentas);
             Name = "FormHistorialVentas";
@@ -69,5 +95,7 @@
 
         private RichTextBox rtb_HistorialVentas;
         private Button btn_HistorialVentasAtras;
+        private Button btn_HistorialVentasGenerarTxt;
+        private Button btn_HistorialVentasSerializarXml;
     }
 }

@@ -5,13 +5,15 @@ namespace Entidades
     public class Carne
     {
         private static List<Carne> carnes = new List<Carne>();
-        private static List<Carne> listaDeCompras = new List<Carne>();
         private string tipoDeCarne;
         private int precioPorKilo;
         private decimal kilos;
         private decimal stock;
 
-        
+        public Carne()
+        {
+            
+        }
         public Carne(string tipoDeCarne, int precioPorKilo)
         {
             this.tipoDeCarne = tipoDeCarne;
@@ -29,8 +31,7 @@ namespace Entidades
         }
 
         static public List<Carne> ListaCarnes { get { return carnes; } }
-        static public List<Carne> ListaDeCompras { get { return listaDeCompras; } }
-        public string TipoDeCarne { get { return this.tipoDeCarne; } }
+        public string TipoDeCarne { get { return this.tipoDeCarne; } set { tipoDeCarne = value; } }
         public decimal Kilos { get { return this.kilos; } set { kilos = value; } }
         public decimal Stock { get { return this.stock; } set { stock = value; } }
         public int PrecioPorKilo { get { return this.precioPorKilo; } set { precioPorKilo = value; } }
@@ -46,16 +47,6 @@ namespace Entidades
             carnes.Add(new Carne("Falda", 1000, 20));
         }
 
-        public bool CargarCompra(Carne carne)
-        {
-            listaDeCompras.Add(carne);
-            return true;
-        }
-
-        public static void LimpiarListaCompras()
-        {
-            listaDeCompras.Clear();
-        }
         public static string MostrarCortes()
         {
             StringBuilder sb = new StringBuilder();
@@ -89,23 +80,26 @@ namespace Entidades
             return (int)(precioFinal = kilos * precioPorKilo);
         }
 
-        public static string MostrarCompras()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("PRODUCTOS: ");
-            foreach (Carne carne in listaDeCompras)
-            {
-                sb.AppendLine($"-{carne.kilos.ToString()}KG {carne.tipoDeCarne}");
-            }
-            return sb.ToString();
-        }
-
         public static bool CargarTipoDeCorte(string corte, int precioPorKilo, decimal stock)
         {
             ListaCarnes.Add(new Carne(corte, precioPorKilo, stock));
 
             return true;
         }
+
+        //public static string MostrarCarneYDescripcion()
+        //{
+        //    StringBuilder sb = new StringBuilder();
+        //    sb.AppendLine("Los cortes de carne son: ");
+        //    foreach (Carne carne in carnes)
+        //    {
+        //        sb.AppendLine(carne.tipoDeCarne);
+        //        sb.AppendLine($"{carne.stock}");
+        //        sb.AppendLine($"{carne.precioPorKilo}");
+        //    }
+
+        //    return sb.ToString();
+        //}
     }
 }
 

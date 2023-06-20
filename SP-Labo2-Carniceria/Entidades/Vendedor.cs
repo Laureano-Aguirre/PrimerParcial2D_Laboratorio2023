@@ -49,10 +49,10 @@ namespace Entidades
 
         public static void HardcodearVendedores()
         {
-            Vendedor v1 = new Vendedor("vendedor1@gmail.com", "vendedor1vendedor");
-            Vendedor v2 = new Vendedor("vendedor2@gmail.com", "vendedor2vendedor");
-            Vendedor v3 = new Vendedor("vendedor3@gmail.com", "vendedor3vendedor");
-            Vendedor v4 = new Vendedor("vendedor4@gmail.com", "vendedor4vendedor");
+            Vendedor v1 = new Vendedor("vendedor1@gmail.com", "Vendedor1vendedor*");
+            Vendedor v2 = new Vendedor("vendedor2@gmail.com", "Vendedor2vendedor$");
+            Vendedor v3 = new Vendedor("vendedor3@gmail.com", "Vendedor3vendedor#");
+            Vendedor v4 = new Vendedor("vendedor4@gmail.com", "Vendedor4vendedor*");
         }
 
         public override string MostrarPersona(Persona persona)

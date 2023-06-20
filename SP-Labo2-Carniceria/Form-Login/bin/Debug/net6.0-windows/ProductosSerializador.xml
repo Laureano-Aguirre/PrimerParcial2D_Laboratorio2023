@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCarne xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Carne>
+    <TipoDeCarne>Tira de asado</TipoDeCarne>
+    <Kilos>0</Kilos>
+    <Stock>20</Stock>
+    <PrecioPorKilo>1800</PrecioPorKilo>
+  </Carne>
+  <Carne>
+    <TipoDeCarne>Colita de cuadril</TipoDeCarne>
+    <Kilos>0</Kilos>
+    <Stock>20</Stock>
+    <PrecioPorKilo>2400</PrecioPorKilo>
+  </Carne>
+  <Carne>
+    <TipoDeCarne>Bola de lomo</TipoDeCarne>
+    <Kilos>0</Kilos>
+    <Stock>20</Stock>
+    <PrecioPorKilo>2100</PrecioPorKilo>
+  </Carne>
+  <Carne>
+    <TipoDeCarne>Bife de chorizo</TipoDeCarne>
+    <Kilos>0</Kilos>
+    <Stock>20</Stock>
+    <PrecioPorKilo>2800</PrecioPorKilo>
+  </Carne>
+  <Carne>
+    <TipoDeCarne>Ojo de bife</TipoDeCarne>
+    <Kilos>0</Kilos>
+    <Stock>20</Stock>
+    <PrecioPorKilo>3000</PrecioPorKilo>
+  </Carne>
+  <Carne>
+    <TipoDeCarne>Entraña</TipoDeCarne>
+    <Kilos>0</Kilos>
+    <Stock>20</Stock>
+    <PrecioPorKilo>2900</PrecioPorKilo>
+  </Carne>
+  <Carne>
+    <TipoDeCarne>Tortuguita</TipoDeCarne>
+    <Kilos>0</Kilos>
+    <Stock>20</Stock>
+    <PrecioPorKilo>1100</PrecioPorKilo>
+  </Carne>
+  <Carne>
+    <TipoDeCarne>Falda</TipoDeCarne>
+    <Kilos>0</Kilos>
+    <Stock>20</Stock>
+    <PrecioPorKilo>1000</PrecioPorKilo>
+  </Carne>
+</ArrayOfCarne>
