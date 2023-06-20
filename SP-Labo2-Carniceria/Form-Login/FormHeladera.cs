@@ -60,7 +60,7 @@ namespace Form_Login
         private void VisibilizarCortes(BindingList<Carne> bindingListaCarnes)
         {
             foreach (Carne carne in bindingListaCarnes)
-            {               
+            {
                 var row = new DataGridViewRow();    // creo las filas para el datagridview
 
                 var tipoDeCarneCell = new DataGridViewTextBoxCell();
@@ -74,7 +74,7 @@ namespace Form_Login
                 var stockCell = new DataGridViewTextBoxCell();
                 stockCell.Value = carne.Stock;
                 row.Cells.Add(stockCell);
-              
+
                 dataGridView1.Rows.Add(row);        //agrego las filas al datagridview
             }
         }
@@ -98,6 +98,12 @@ namespace Form_Login
         {
             FormFacturacion frmFacturacion = new FormFacturacion();
             frmFacturacion.ShowDialog();
+        }
+
+        private void historialDeVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormHistorialVentas frmHistorialVentas = new FormHistorialVentas();
+            frmHistorialVentas.ShowDialog();
         }
     }
 }

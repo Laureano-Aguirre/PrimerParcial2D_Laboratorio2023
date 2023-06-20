@@ -261,6 +261,7 @@ namespace Form_Login
                                     carne.Stock = carne.Stock - kilos;
                                     MessageBox.Show("Agregado al carrito.");
                                     soundAgregar.Play();
+                                    caux.AgregarAlCarrito(caux, carne1);
                                     bool lineaExistente = false;
                                     foreach (string linea in rtb_VenderMostrarCompra.Lines)
                                     {

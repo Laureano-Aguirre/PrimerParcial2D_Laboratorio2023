@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public sealed class Cliente:Persona
+    public sealed class Cliente : Persona
     {
         private decimal monto;
         private decimal gasto;
+        private static Generics<Cliente, Carne> carritoCompra = new Generics<Cliente, Carne>();
 
         public Cliente(string correo, string password): base(correo, password)
         {
@@ -56,7 +57,6 @@ namespace Entidades
             Cliente c2 = new Cliente("cliente2@gmail.com", "Cliente2cliente$", 500, 0);
             Cliente c3 = new Cliente("cliente3@gmail.com", "Cliente3cliente*", 5000, 0);
             Cliente c4 = new Cliente("cliente4@gmail.com", "Cliente4cliente#", 100000, 0);
-
         }
 
         public override string MostrarPersona(Persona persona)
@@ -83,6 +83,25 @@ namespace Entidades
                 {
                     sb.AppendLine($"Correo: {cliente.correo} - Monto: {cliente.monto}");
                 }
+            }
+
+            return sb.ToString();
+        }
+
+        public void AgregarAlCarrito(Cliente cliente, Carne carne)
+        {
+            carritoCompra.Add(cliente, carne);
+        }
+
+        public static string MostrarCarritoCompras()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (Tuple<Cliente, Carne> tuple in carritoCompra)
+            {
+                sb.AppendLine($"CLIENTE: {tuple.Item1.Correo} \n " +
+                    $"COMPRA:\n" +
+                    $"{tuple.Item2.Kilos}KG de {tuple.Item2.TipoDeCarne}");
             }
 
             return sb.ToString();

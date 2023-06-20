@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Venta
+    public class Venta: IMostrable
     {
         private static List<Venta> listaVentas = new List<Venta>();
         private string correoCliente;
@@ -45,6 +45,16 @@ namespace Entidades
         public static decimal CalcularPago(decimal monto, decimal costoTotal)
         {
             return monto - costoTotal;
+        }
+
+        public string Mostrar()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"CORREO CLIENTE: {correoCliente}");
+            sb.AppendLine($"MONTO GASTADO: {gastoCliente}");
+
+            return sb.ToString();
         }
     }
 }

@@ -29,143 +29,144 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHeladera));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.agregarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.precioPorKiloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.verToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.historialDeFacturacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_HeladeraVender = new System.Windows.Forms.Button();
-            this.btn_HeladeraSalir = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.lb_HeladeraBiennvenida = new System.Windows.Forms.Label();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.SuspendLayout();
+            menuStrip1 = new MenuStrip();
+            agregarToolStripMenuItem = new ToolStripMenuItem();
+            stockToolStripMenuItem = new ToolStripMenuItem();
+            modificarToolStripMenuItem = new ToolStripMenuItem();
+            precioPorKiloToolStripMenuItem = new ToolStripMenuItem();
+            verToolStripMenuItem = new ToolStripMenuItem();
+            historialDeFacturacionToolStripMenuItem = new ToolStripMenuItem();
+            historialDeVentasToolStripMenuItem = new ToolStripMenuItem();
+            btn_HeladeraVender = new Button();
+            btn_HeladeraSalir = new Button();
+            dataGridView1 = new DataGridView();
+            lb_HeladeraBiennvenida = new Label();
+            menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            SuspendLayout();
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.agregarToolStripMenuItem,
-            this.modificarToolStripMenuItem,
-            this.verToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(684, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.Items.AddRange(new ToolStripItem[] { agregarToolStripMenuItem, modificarToolStripMenuItem, verToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(684, 24);
+            menuStrip1.TabIndex = 0;
+            menuStrip1.Text = "menuStrip1";
             // 
             // agregarToolStripMenuItem
             // 
-            this.agregarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stockToolStripMenuItem});
-            this.agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            this.agregarToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.agregarToolStripMenuItem.Text = "Agregar";
+            agregarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { stockToolStripMenuItem });
+            agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
+            agregarToolStripMenuItem.Size = new Size(61, 20);
+            agregarToolStripMenuItem.Text = "Agregar";
             // 
             // stockToolStripMenuItem
             // 
-            this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
-            this.stockToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.stockToolStripMenuItem.Text = "Producto";
-            this.stockToolStripMenuItem.Click += new System.EventHandler(this.stockToolStripMenuItem_Click_1);
+            stockToolStripMenuItem.Name = "stockToolStripMenuItem";
+            stockToolStripMenuItem.Size = new Size(123, 22);
+            stockToolStripMenuItem.Text = "Producto";
+            stockToolStripMenuItem.Click += stockToolStripMenuItem_Click_1;
             // 
             // modificarToolStripMenuItem
             // 
-            this.modificarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.precioPorKiloToolStripMenuItem});
-            this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
-            this.modificarToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
-            this.modificarToolStripMenuItem.Text = "Modificar";
+            modificarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { precioPorKiloToolStripMenuItem });
+            modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
+            modificarToolStripMenuItem.Size = new Size(70, 20);
+            modificarToolStripMenuItem.Text = "Modificar";
             // 
             // precioPorKiloToolStripMenuItem
             // 
-            this.precioPorKiloToolStripMenuItem.Name = "precioPorKiloToolStripMenuItem";
-            this.precioPorKiloToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.precioPorKiloToolStripMenuItem.Text = "Producto";
-            this.precioPorKiloToolStripMenuItem.Click += new System.EventHandler(this.precioPorKiloToolStripMenuItem_Click);
+            precioPorKiloToolStripMenuItem.Name = "precioPorKiloToolStripMenuItem";
+            precioPorKiloToolStripMenuItem.Size = new Size(123, 22);
+            precioPorKiloToolStripMenuItem.Text = "Producto";
+            precioPorKiloToolStripMenuItem.Click += precioPorKiloToolStripMenuItem_Click;
             // 
             // verToolStripMenuItem
             // 
-            this.verToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.historialDeFacturacionToolStripMenuItem});
-            this.verToolStripMenuItem.Name = "verToolStripMenuItem";
-            this.verToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
-            this.verToolStripMenuItem.Text = "Ver";
+            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { historialDeFacturacionToolStripMenuItem, historialDeVentasToolStripMenuItem });
+            verToolStripMenuItem.Name = "verToolStripMenuItem";
+            verToolStripMenuItem.Size = new Size(35, 20);
+            verToolStripMenuItem.Text = "Ver";
             // 
             // historialDeFacturacionToolStripMenuItem
             // 
-            this.historialDeFacturacionToolStripMenuItem.Name = "historialDeFacturacionToolStripMenuItem";
-            this.historialDeFacturacionToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.historialDeFacturacionToolStripMenuItem.Text = "Historial de facturacion";
-            this.historialDeFacturacionToolStripMenuItem.Click += new System.EventHandler(this.historialDeFacturacionToolStripMenuItem_Click);
+            historialDeFacturacionToolStripMenuItem.Name = "historialDeFacturacionToolStripMenuItem";
+            historialDeFacturacionToolStripMenuItem.Size = new Size(197, 22);
+            historialDeFacturacionToolStripMenuItem.Text = "Historial de facturacion";
+            historialDeFacturacionToolStripMenuItem.Click += historialDeFacturacionToolStripMenuItem_Click;
+            // 
+            // historialDeVentasToolStripMenuItem
+            // 
+            historialDeVentasToolStripMenuItem.Name = "historialDeVentasToolStripMenuItem";
+            historialDeVentasToolStripMenuItem.Size = new Size(197, 22);
+            historialDeVentasToolStripMenuItem.Text = "Historial de ventas";
+            historialDeVentasToolStripMenuItem.Click += historialDeVentasToolStripMenuItem_Click;
             // 
             // btn_HeladeraVender
             // 
-            this.btn_HeladeraVender.BackColor = System.Drawing.Color.YellowGreen;
-            this.btn_HeladeraVender.Location = new System.Drawing.Point(558, 391);
-            this.btn_HeladeraVender.Name = "btn_HeladeraVender";
-            this.btn_HeladeraVender.Size = new System.Drawing.Size(114, 47);
-            this.btn_HeladeraVender.TabIndex = 1;
-            this.btn_HeladeraVender.Text = "Vender";
-            this.btn_HeladeraVender.UseVisualStyleBackColor = false;
-            this.btn_HeladeraVender.Click += new System.EventHandler(this.btn_HeladeraVender_Click);
+            btn_HeladeraVender.BackColor = Color.YellowGreen;
+            btn_HeladeraVender.Location = new Point(558, 391);
+            btn_HeladeraVender.Name = "btn_HeladeraVender";
+            btn_HeladeraVender.Size = new Size(114, 47);
+            btn_HeladeraVender.TabIndex = 1;
+            btn_HeladeraVender.Text = "Vender";
+            btn_HeladeraVender.UseVisualStyleBackColor = false;
+            btn_HeladeraVender.Click += btn_HeladeraVender_Click;
             // 
             // btn_HeladeraSalir
             // 
-            this.btn_HeladeraSalir.BackColor = System.Drawing.Color.RosyBrown;
-            this.btn_HeladeraSalir.Location = new System.Drawing.Point(12, 391);
-            this.btn_HeladeraSalir.Name = "btn_HeladeraSalir";
-            this.btn_HeladeraSalir.Size = new System.Drawing.Size(114, 47);
-            this.btn_HeladeraSalir.TabIndex = 2;
-            this.btn_HeladeraSalir.Text = "Salir";
-            this.btn_HeladeraSalir.UseVisualStyleBackColor = false;
-            this.btn_HeladeraSalir.Click += new System.EventHandler(this.btn_HeladeraSalir_Click_1);
+            btn_HeladeraSalir.BackColor = Color.RosyBrown;
+            btn_HeladeraSalir.Location = new Point(12, 391);
+            btn_HeladeraSalir.Name = "btn_HeladeraSalir";
+            btn_HeladeraSalir.Size = new Size(114, 47);
+            btn_HeladeraSalir.TabIndex = 2;
+            btn_HeladeraSalir.Text = "Salir";
+            btn_HeladeraSalir.UseVisualStyleBackColor = false;
+            btn_HeladeraSalir.Click += btn_HeladeraSalir_Click_1;
             // 
             // dataGridView1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(95, 92);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(360, 270);
-            this.dataGridView1.TabIndex = 3;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(95, 92);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(360, 270);
+            dataGridView1.TabIndex = 3;
             // 
             // lb_HeladeraBiennvenida
             // 
-            this.lb_HeladeraBiennvenida.AutoSize = true;
-            this.lb_HeladeraBiennvenida.BackColor = System.Drawing.Color.Transparent;
-            this.lb_HeladeraBiennvenida.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lb_HeladeraBiennvenida.Location = new System.Drawing.Point(25, 43);
-            this.lb_HeladeraBiennvenida.Name = "lb_HeladeraBiennvenida";
-            this.lb_HeladeraBiennvenida.Size = new System.Drawing.Size(52, 21);
-            this.lb_HeladeraBiennvenida.TabIndex = 4;
-            this.lb_HeladeraBiennvenida.Text = "label1";
+            lb_HeladeraBiennvenida.AutoSize = true;
+            lb_HeladeraBiennvenida.BackColor = Color.Transparent;
+            lb_HeladeraBiennvenida.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lb_HeladeraBiennvenida.Location = new Point(25, 43);
+            lb_HeladeraBiennvenida.Name = "lb_HeladeraBiennvenida";
+            lb_HeladeraBiennvenida.Size = new Size(52, 21);
+            lb_HeladeraBiennvenida.TabIndex = 4;
+            lb_HeladeraBiennvenida.Text = "label1";
             // 
             // FormHeladera
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 450);
-            this.Controls.Add(this.lb_HeladeraBiennvenida);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btn_HeladeraSalir);
-            this.Controls.Add(this.btn_HeladeraVender);
-            this.Controls.Add(this.menuStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
-            this.Name = "FormHeladera";
-            this.Text = "Heladera";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormHeladera_FormClosing_1);
-            this.Load += new System.EventHandler(this.FormHeladera_Load_1);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(684, 450);
+            Controls.Add(lb_HeladeraBiennvenida);
+            Controls.Add(dataGridView1);
+            Controls.Add(btn_HeladeraSalir);
+            Controls.Add(btn_HeladeraVender);
+            Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStrip1;
+            Name = "FormHeladera";
+            Text = "Heladera";
+            FormClosing += FormHeladera_FormClosing_1;
+            Load += FormHeladera_Load_1;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -181,5 +182,6 @@
         private Label lb_HeladeraBiennvenida;
         private ToolStripMenuItem verToolStripMenuItem;
         private ToolStripMenuItem historialDeFacturacionToolStripMenuItem;
+        private ToolStripMenuItem historialDeVentasToolStripMenuItem;
     }
 }
