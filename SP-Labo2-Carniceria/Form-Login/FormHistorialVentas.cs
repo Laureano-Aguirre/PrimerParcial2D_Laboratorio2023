@@ -39,7 +39,42 @@ namespace Form_Login
 
         private void btn_HistorialVentasSerializarXml_Click(object sender, EventArgs e)
         {
-            Serializadora.Escribir(Carne.ListaCarnes);
+            Serializadora<Carne>.EscribirXml(Carne.ListaCarnes);
+        }
+
+        private void btn_HistorialVentasDeserealizarXml_Click(object sender, EventArgs e)
+        {
+            List<Carne> carnes = new List<Carne>();
+
+            carnes = Serializadora<Carne>.LeerXml();
+            foreach (Carne carne in carnes)
+            {
+                MessageBox.Show($"{carne.TipoDeCarne} {carne.Kilos} {carne.PrecioPorKilo} {carne.Stock}");
+            }
+
+        }
+
+        private void btn_HistorialVentaTipoDePagoXml_Click(object sender, EventArgs e)
+        {
+
+            List<ETipoDePago> listaDePagos = new List<ETipoDePago>();
+
+            listaDePagos.Add(ETipoDePago.Credito);
+            listaDePagos.Add(ETipoDePago.Debito);
+            listaDePagos.Add(ETipoDePago.Efectivo);
+
+            Serializadora<ETipoDePago>.EscribirXml(listaDePagos);
+        }
+
+        private void btn_HistorialVentaPagoDeserializarXml_Click(object sender, EventArgs e)
+        {
+            List<ETipoDePago> listaDePagos = new List<ETipoDePago>();
+
+            listaDePagos = Serializadora<ETipoDePago>.LeerXml();
+            foreach (ETipoDePago tipo in listaDePagos)
+            {
+                MessageBox.Show($"{tipo.ToString()}");
+            }
         }
     }
 }

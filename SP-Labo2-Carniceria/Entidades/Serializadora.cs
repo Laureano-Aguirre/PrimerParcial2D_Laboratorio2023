@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.Windows;
 using System.IO;
+using System.Text.Json;
 
 namespace Entidades
 {
-    public class Serializadora
+    [XmlInclude(typeof(Carne))]
+    [XmlInclude(typeof(ETipoDePago))]
+    public class Serializadora<T>
     {
         private static string ruta = AppDomain.CurrentDomain.BaseDirectory;
 
-
-        public static void Escribir(List<Carne> carnes)
+        public static void EscribirXml(List<T> lista)
         {
-            string nombreArchivo = @"\ProductosSerializador.xml";
+            string nombreArchivo = @"\Serializador.xml";
 
             string completa = ruta + nombreArchivo;
 
@@ -24,13 +26,74 @@ namespace Entidades
             {
                 using (StreamWriter sw = new StreamWriter(completa))
                 {
-                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Carne>));
-                    xmlSerializer.Serialize(sw, carnes);
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
+                    xmlSerializer.Serialize(sw, lista);
                 }
             }
             catch (Exception ex)
             {
-                
+                throw new Exception($"Error en el archivo {completa}");
+            }
+        }
+
+        public static List<T> LeerXml()
+        {
+            string nombreArchivo = @"\Serializador.xml";
+
+            string completa = ruta + nombreArchivo;
+
+            List<T> listaAux = null;
+
+            try
+            {
+                using (StreamReader sr = new StreamReader(completa))
+                {
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
+                    listaAux = (List<T>)xmlSerializer.Deserialize(sr);
+                }
+                return listaAux;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error en el archivo {completa}");
+            }
+        }
+
+        public static void EscribirJson(List<T> lista)
+        {
+            string nombreArchivo = @"\SerializadorJson.json";
+
+            string completa = ruta + nombreArchivo;
+
+            try
+            {
+                string stringJson = JsonSerializer.Serialize(lista);
+                File.WriteAllText(completa, stringJson);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error en el archivo {completa}");
+            }
+        }
+
+        public static List<T> LeerJson()
+        {
+            string nombreArchivo = @"\SerializadorJson.json";
+
+            string completa = ruta + nombreArchivo;
+
+            List<T> listaAux = null;
+
+            try
+            {
+                string strJson = File.ReadAllText(nombreArchivo);
+                listaAux = (List<T>)JsonSerializer.Deserialize<List<T>>(strJson);
+
+                return listaAux;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error en el archivo {completa}");
             }
         }
     }
