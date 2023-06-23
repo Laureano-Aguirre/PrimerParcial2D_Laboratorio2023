@@ -105,5 +105,35 @@ namespace Form_Login
             FormHistorialVentas frmHistorialVentas = new FormHistorialVentas();
             frmHistorialVentas.ShowDialog();
         }
+
+        private void clienteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormVerClientes frmVerClientes = new FormVerClientes();
+            frmVerClientes.ShowDialog();
+        }
+
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAgregarCliente frmAgregarCliente = new FormAgregarCliente();
+            frmAgregarCliente.ShowDialog();
+        }
+
+        private void clienteToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FormBorrarCliente frmBorrarCliente = new FormBorrarCliente();
+            frmBorrarCliente.ShowDialog();
+        }
+
+        private void clienteToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            FormModificarUsuario frmModificarUsuario = new FormModificarUsuario(1);
+            frmModificarUsuario.ShowDialog();
+        }
+
+        private void vendedorToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormModificarUsuario frmModificarUsuario = new FormModificarUsuario(2);
+            frmModificarUsuario.ShowDialog();
+        }
     }
 }

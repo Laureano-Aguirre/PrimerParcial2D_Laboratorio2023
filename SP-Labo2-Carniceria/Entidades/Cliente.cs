@@ -10,13 +10,15 @@ namespace Entidades
     {
         private decimal monto;
         private decimal gasto;
+        private int id;
         private List<Carne> listaDeCompras;
 
-        public Cliente(string correo, string password): base(correo, password)
+        public Cliente(string correo, string password) : base(correo, password)
         {
+
             this.correo = correo;
             this.password = password;
-            monto= 0;
+            monto = 0;
             gasto = 0;
             listaDeCompras = new List<Carne>();
             listaPersonas.Add(this);
@@ -29,12 +31,23 @@ namespace Entidades
             listaDeCompras = new List<Carne>();
             listaPersonas.Add(this);
         }
+
+        public Cliente(int id, string correo, string password,decimal monto, decimal gasto) : base(correo, password)
+        {
+            this.password = password;
+            this.id = id;
+            this.correo = correo;
+            this.monto= monto;
+            this.gasto = gasto;
+        }
+
         public decimal Monto { get { return this.monto; } set { monto = value; } }
         public string Correo { get { return this.correo; }}
-        public string Password { get { return this.password; }}
+        public string Password { get { return this.password; } set { password = value; } }
         public decimal Gasto { get { return this.gasto; } set { gasto = value; } }
 
-        public List<Carne> ListaDeCompras { get => listaDeCompras; } 
+        public List<Carne> ListaDeCompras { get => listaDeCompras; }
+        public int Id { get => id; set => id = value; }
 
 
         /// <summary>
@@ -55,13 +68,13 @@ namespace Entidades
             return false;
         }
 
-        public static void HardocdearClientes()
-        {
-            Cliente c1 = new Cliente("cliente1@gmail.com", "Cliente1cliente*");
-            Cliente c2 = new Cliente("cliente2@gmail.com", "Cliente2cliente$", 500, 0);
-            Cliente c3 = new Cliente("cliente3@gmail.com", "Cliente3cliente*", 5000, 0);
-            Cliente c4 = new Cliente("cliente4@gmail.com", "Cliente4cliente#", 100000, 0);
-        }
+        //public static void HardocdearClientes()
+        //{
+        //    Cliente c1 = new Cliente("cliente1@gmail.com", "Cliente1cliente*");
+        //    Cliente c2 = new Cliente("cliente2@gmail.com", "Cliente2cliente$", 500, 0);
+        //    Cliente c3 = new Cliente("cliente3@gmail.com", "Cliente3cliente*", 5000, 0);
+        //    Cliente c4 = new Cliente("cliente4@gmail.com", "Cliente4cliente#", 100000, 0);
+        //}
 
         public override string MostrarPersona(Persona persona)
         {
@@ -142,6 +155,45 @@ namespace Entidades
             {
                 cliente.ListaDeCompras.Clear();
             }         
+        }
+
+        public static string MostrarClientes(List<Cliente> clientes)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach(Cliente cliente in clientes)
+            {
+                sb.AppendLine($"ID: {cliente.id}");
+                sb.AppendLine($"CORREO: {cliente.correo}");
+                sb.AppendLine($"MONTO: {cliente.monto}");
+                sb.AppendLine($"GASTO: {cliente.gasto}");
+            }
+
+            return sb.ToString();
+        }
+
+        public static bool BuscarPorCorreo(List<Cliente> lista, string correo)
+        {
+            foreach(Cliente cliente in lista)
+            {
+                if(cliente.correo == correo)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static Cliente DevolverCliente(List<Cliente> lista, string correo)
+        {
+            foreach(Cliente cliente in lista)
+            {
+                if (cliente.correo == correo)
+                {
+                    return cliente;
+                }
+            }
+            return null;
         }
 
     }

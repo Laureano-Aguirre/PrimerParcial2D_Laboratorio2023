@@ -86,3 +86,13 @@ C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carnicer
 C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Formularios.genruntimeconfig.cache
 C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\ref\Formularios.dll
 C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormHistorialVentas.resources
+C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormVerClientes.resources
+C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormAgregarCliente.resources
+C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormBorrarCliente.resources
+C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormModificarUsuario.resources

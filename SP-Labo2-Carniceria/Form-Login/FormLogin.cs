@@ -27,7 +27,7 @@ namespace Form_Login
             lb_LoginCorreo.Visible = false;
             lb_LoginPassword.Visible = false;
             Vendedor.HardcodearVendedores();
-            Cliente.HardocdearClientes();
+            //Cliente.HardocdearClientes();
             Carne.CargarCortes();
             Venta.HarcodearVentas();
         }
@@ -110,8 +110,6 @@ namespace Form_Login
         {
             string correo = txb_LoginCorreo.Text;
             string pass = txb_LoginPassword.Text;
-            //Cliente cAux = new Cliente(correo, pass);
-            //Vendedor vAux = new Vendedor(correo, pass);
 
             try
             {
@@ -130,7 +128,7 @@ namespace Form_Login
                         }
                         else if ((Vendedor.BuscarVendedor(correo, pass)) && btn_LoginVendedor.DialogResult == DialogResult.OK)
                         {
-                            Vendedor vendedor = new Vendedor(correo, pass);
+                            Vendedor vendedor = new Vendedor(4,correo, pass);
                             FormHeladera frmHeladera = new FormHeladera(vendedor);
                             soundPlayer2.Play();
                             frmHeladera.Show();

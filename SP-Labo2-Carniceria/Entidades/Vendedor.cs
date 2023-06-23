@@ -9,12 +9,17 @@ namespace Entidades
 
     public sealed class Vendedor : Persona
     {
-        public Vendedor(string correo, string password) : base(correo, password)
+        private int id;
+        public Vendedor(int id, string correo, string password) : base(correo, password)
         {
+            this.id = id;
             this.correo = correo;
             this.password = password;
             listaPersonas.Add(this);
         }
+
+        public string Correo { get { return this.correo; } set { correo = value; } }
+        public string Password { get { return this.password; } set { password = value; } }
         /// <summary>
         /// Busca el vendnedor dentro de la lista de personas, comprobando el correo y contrasenia
         /// </summary>
@@ -49,10 +54,10 @@ namespace Entidades
 
         public static void HardcodearVendedores()
         {
-            Vendedor v1 = new Vendedor("vendedor1@gmail.com", "Vendedor1vendedor*");
-            Vendedor v2 = new Vendedor("vendedor2@gmail.com", "Vendedor2vendedor$");
-            Vendedor v3 = new Vendedor("vendedor3@gmail.com", "Vendedor3vendedor#");
-            Vendedor v4 = new Vendedor("vendedor4@gmail.com", "Vendedor4vendedor*");
+            Vendedor v1 = new Vendedor(0, "vendedor1@gmail.com", "Vendedor1vendedor*");
+            Vendedor v2 = new Vendedor(1,"vendedor2@gmail.com", "Vendedor2vendedor$");
+            Vendedor v3 = new Vendedor(2,"vendedor3@gmail.com", "Vendedor3vendedor#");
+            Vendedor v4 = new Vendedor(3,"vendedor4@gmail.com", "Vendedor4vendedor*");
         }
 
         public override string MostrarPersona(Persona persona)
@@ -63,6 +68,18 @@ namespace Entidades
             
 
             return sb.ToString();
+        }
+
+        public static Vendedor DevolverVendedor(List<Vendedor> lista, string correo)
+        {
+            foreach (Vendedor vendedor in lista)
+            {
+                if (vendedor.correo == correo)
+                {
+                    return vendedor;
+                }
+            }
+            return null;
         }
     }
 }

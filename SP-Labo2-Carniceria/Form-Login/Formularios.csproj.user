@@ -4,6 +4,12 @@
     <Compile Update="FormAgregar.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormAgregarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormBorrarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormComprar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -14,6 +20,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormModificarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormModificarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormTarjeta.cs">
@@ -32,6 +41,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormVendedorVender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormVerClientes.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
