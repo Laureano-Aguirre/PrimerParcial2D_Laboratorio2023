@@ -96,3 +96,4 @@ C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carnicer
 C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormAgregarCliente.resources
 C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormBorrarCliente.resources
 C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormModificarUsuario.resources
+C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormAgregarVendedor.resources

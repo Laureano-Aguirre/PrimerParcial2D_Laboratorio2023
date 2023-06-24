@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -32,12 +33,8 @@ namespace Form_Login
         {
             if (retorno == 1)
             {
-                lb_ModificarUsuarioCorreo.Visible = true;
-                lb_ModificarUsuarioPassword.Visible = true;
-                lb_ModificarUsuarioMonto.Visible = true;
-                txb_ModificarUsuarioCorreo.Visible = true;
-                txb_ModificarUsuarioPassword.Visible = true;
-                txb_ModificarUsuarioMonto.Visible = true;
+                lb_ModificarUsuario.Text = "Correo nuevo";
+
                 List<Cliente> clientes = new List<Cliente>();
 
                 clientes = ConexionDB.LeerClientes();
@@ -49,12 +46,47 @@ namespace Form_Login
             }
             else if (retorno == 2)
             {
-                lb_ModificarUsuarioCorreo.Visible = true;
-                lb_ModificarUsuarioPassword.Visible = true;
-                lb_ModificarUsuarioMonto.Visible = false;
-                txb_ModificarUsuarioCorreo.Visible = true;
-                txb_ModificarUsuarioPassword.Visible = true;
-                txb_ModificarUsuarioMonto.Visible = false;
+                lb_ModificarUsuario.Text = "Password nueva";
+
+                List<Cliente> clientes = new List<Cliente>();
+
+                clientes = ConexionDB.LeerClientes();
+
+                foreach (Cliente cliente in clientes)
+                {
+                    cmb_ModificarUsuario.Items.Add(cliente.Correo);
+                }
+            }
+            else if (retorno == 3)
+            {
+                lb_ModificarUsuario.Text = "Monto nuevo";
+
+                List<Cliente> clientes = new List<Cliente>();
+
+                clientes = ConexionDB.LeerClientes();
+
+                foreach (Cliente cliente in clientes)
+                {
+                    cmb_ModificarUsuario.Items.Add(cliente.Correo);
+                }
+            }
+            else if (retorno == 4)
+            {
+                lb_ModificarUsuario.Text = "Correo nuevo";
+
+                List<Vendedor> vendedores = new List<Vendedor>();
+
+                vendedores = ConexionDB.LeerVendedores();
+
+                foreach (Vendedor vendedor in vendedores)
+                {
+                    cmb_ModificarUsuario.Items.Add(vendedor.Correo);
+                }
+            }
+            else if (retorno == 5)
+            {
+                lb_ModificarUsuario.Text = "Password nueva";
+
                 List<Vendedor> vendedores = new List<Vendedor>();
 
                 vendedores = ConexionDB.LeerVendedores();
@@ -69,11 +101,12 @@ namespace Form_Login
 
         private void cmb_ModificarUsuario_SelectedValueChanged(object sender, EventArgs e)
         {
-            if(retorno == 1)
+            if (retorno == 1 || retorno == 2 || retorno == 3)
             {
                 try
                 {
                     List<Cliente> clientes = new List<Cliente>();
+                    clientes = ConexionDB.LeerClientes();
                     cAux = Cliente.DevolverCliente(clientes, cmb_ModificarUsuario.Text);
 
                     //TODO = corroborar que modifica.
@@ -81,15 +114,16 @@ namespace Form_Login
                 catch (Exception ex)
                 {
 
-                    throw new Exception (ex.Message);
+                    throw new Exception(ex.Message);
                 }
-                
+
             }
-            else if(retorno == 2)
+            else if (retorno == 4 || retorno == 5)
             {
                 try
                 {
                     List<Vendedor> vendedores = new List<Vendedor>();
+                    vendedores = ConexionDB.LeerVendedores();
                     vAux = Vendedor.DevolverVendedor(vendedores, cmb_ModificarUsuario.Text);
 
                     //TODO = corroborar que modifica.
@@ -110,6 +144,133 @@ namespace Form_Login
             {
                 this.Close();
             }
+        }
+
+        private void btn_ModificarUsuarioModificar_Click(object sender, EventArgs e)
+        {
+            if(retorno == 1 || retorno == 2 || retorno == 3)
+            {
+                if (ValidarDatoIngresadoCliente())
+                {
+                    this.Close();
+                }
+            }
+            else if(retorno == 4 || retorno == 5)
+            {
+                if (ValidarDatoIngresadoVendedor())
+                {
+                    this.Close();
+                }
+            }
+        }
+
+        public bool ValidarDatoIngresadoCliente()
+        {
+            if(cAux is null)
+            {
+                MessageBox.Show("Debe elegir un usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+            {
+                if (!(string.IsNullOrEmpty(txb_ModificarUsuario.Text)) && !(string.IsNullOrWhiteSpace(txb_ModificarUsuario.Text)))
+                {
+                    if (lb_ModificarUsuario.Text == "Correo nuevo")
+                    {
+                        ConexionDB.ModificarCorreoCliente(cAux, txb_ModificarUsuario.Text);
+                        MessageBox.Show("Correo actualizado exitosamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
+                    }
+                    else if (lb_ModificarUsuario.Text == "Password nueva")
+                    {
+                        string pass = txb_ModificarUsuario.Text;
+                        if (StringExtension.ContarMinusculas(pass) == 1 && StringExtension.ContarMayusculas(pass) == 1 && StringExtension.ContarCaracteresEspeciales(pass) == 1)
+                        {
+                            ConexionDB.ModificarPasswordCliente(cAux, pass);
+                            MessageBox.Show("Contraseña actualizada correctamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Contraseña invalida. \n Debe contener minusculas \n una mayuscula \n un caracter especial (#, $, @, &, *)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+
+                        }
+                    }
+                    else if (lb_ModificarUsuario.Text == "Monto nuevo")
+                    {
+                        if (decimal.TryParse(txb_ModificarUsuario.Text, out decimal monto))
+                        {
+                            if (monto >= 0)
+                            {
+                                ConexionDB.ModificarMontoCliente(cAux, monto);
+                                MessageBox.Show("Monto actualizado correctamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return true;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Monto invalido, debe ser igual o mayor  a 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Monto invalido. Por favor, intente nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Operacion incorrecta. Revise los datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            
+            return false;
+        }
+
+        public bool ValidarDatoIngresadoVendedor()
+        {
+            if(vAux is null)
+            {
+                MessageBox.Show("Debe elegir un usuario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+            {
+                if (!(string.IsNullOrEmpty(txb_ModificarUsuario.Text)) && !(string.IsNullOrWhiteSpace(txb_ModificarUsuario.Text)))
+                {
+                    if (lb_ModificarUsuario.Text == "Correo nuevo")
+                    {
+                        ConexionDB.ModificarCorreoVendedor(vAux, txb_ModificarUsuario.Text);
+                        MessageBox.Show("Correo actualizado exitosamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return true;
+                    }
+                    else if (lb_ModificarUsuario.Text == "Password nueva")
+                    {
+                        string pass = txb_ModificarUsuario.Text;
+                        if (StringExtension.ContarMinusculas(pass) == 1 && StringExtension.ContarMayusculas(pass) == 1 && StringExtension.ContarCaracteresEspeciales(pass) == 1)
+                        {
+                            ConexionDB.ModificarPasswordVendedor(vAux, pass);
+                            MessageBox.Show("Contraseña actualizada correctamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Contraseña invalida. \n Debe contener minusculas \n una mayuscula \n un caracter especial (#, $, @, &, *)", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return false;
+
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Operacion incorrecta. Revise los datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+            return false;
         }
     }
 }

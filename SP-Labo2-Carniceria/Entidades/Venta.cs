@@ -13,6 +13,10 @@ namespace Entidades
         private decimal montoCliente;
         private decimal gastoCliente;
 
+        public Venta()
+        {
+            
+        }
         public Venta(decimal montoCliente, decimal gastoCliente)
         {
             this.montoCliente = montoCliente;
@@ -51,9 +55,11 @@ namespace Entidades
         {
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine($"CORREO CLIENTE: {correoCliente}");
-            sb.AppendLine($"MONTO GASTADO: {gastoCliente}");
-
+            foreach(Venta venta in listaVentas)
+            {
+                sb.AppendLine($"CORREO CLIENTE: {venta.correoCliente}");
+                sb.AppendLine($"MONTO GASTADO: {venta.gastoCliente}");
+            }
             return sb.ToString();
         }
     }

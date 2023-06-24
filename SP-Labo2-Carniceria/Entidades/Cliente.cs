@@ -21,7 +21,6 @@ namespace Entidades
             monto = 0;
             gasto = 0;
             listaDeCompras = new List<Carne>();
-            listaPersonas.Add(this);
         }
 
         public Cliente(string correo, string password,decimal monto, decimal gasto):base(correo, password)
@@ -29,7 +28,6 @@ namespace Entidades
             this.monto = monto;
             this.gasto = gasto;
             listaDeCompras = new List<Carne>();
-            listaPersonas.Add(this);
         }
 
         public Cliente(int id, string correo, string password,decimal monto, decimal gasto) : base(correo, password)
@@ -39,6 +37,7 @@ namespace Entidades
             this.correo = correo;
             this.monto= monto;
             this.gasto = gasto;
+            listaDeCompras = new List<Carne>();
         }
 
         public decimal Monto { get { return this.monto; } set { monto = value; } }
@@ -56,25 +55,17 @@ namespace Entidades
         /// <param name="correoCliente"></param>
         /// <param name="pass"></param>
         /// <returns></returns>
-        public static bool ValidarCliente(string correoCliente, string pass)
+        public static bool ValidarCliente(List<Cliente> lista, Cliente clienteAux)
         {
-            foreach (Persona persona in listaPersonas)
+            foreach (Cliente cliente in lista)
             {
-                if (persona is Cliente cliente && cliente.correo == correoCliente && cliente.password == pass)
+                if (cliente.correo == clienteAux.correo && cliente.password == clienteAux.password)
                 {
                     return true;
                 }
             }
             return false;
         }
-
-        //public static void HardocdearClientes()
-        //{
-        //    Cliente c1 = new Cliente("cliente1@gmail.com", "Cliente1cliente*");
-        //    Cliente c2 = new Cliente("cliente2@gmail.com", "Cliente2cliente$", 500, 0);
-        //    Cliente c3 = new Cliente("cliente3@gmail.com", "Cliente3cliente*", 5000, 0);
-        //    Cliente c4 = new Cliente("cliente4@gmail.com", "Cliente4cliente#", 100000, 0);
-        //}
 
         public override string MostrarPersona(Persona persona)
         {
@@ -90,16 +81,13 @@ namespace Entidades
         /// Recprre la lista de personas, y trae a los que son de tipo Cliente
         /// </summary>
         /// <returns></returns>
-        public static string ListarClientes()
+        public static string ListarClientes(List<Cliente> lista)
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach(Persona persona in listaPersonas)
+            foreach(Cliente cliente in lista)
             {
-                if(persona is Cliente cliente)
-                {
                     sb.AppendLine($"Correo: {cliente.correo} - Monto: {cliente.monto}");
-                }
             }
 
             return sb.ToString();

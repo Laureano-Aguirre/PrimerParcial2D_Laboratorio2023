@@ -1,6 +1,11 @@
-Correo: cliente4@gmail.com
-PRODUCTOS: 
--1,5KG Bife de chorizo
--1,0KG Tira de asado
-
+CORREO CLIENTE: cliente4@gmail.com
+MONTO GASTADO: 5000
+CORREO CLIENTE: cliente3@gmail.com
+MONTO GASTADO: 1000
+CORREO CLIENTE: cliente2@gmail.com
+MONTO GASTADO: 500
+CORREO CLIENTE: cliente4@gmail.com
+MONTO GASTADO: 50000
+CORREO CLIENTE: cliente1@gmail.com
+MONTO GASTADO: 1000
 

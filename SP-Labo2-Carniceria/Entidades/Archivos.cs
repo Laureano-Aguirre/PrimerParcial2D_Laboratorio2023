@@ -20,7 +20,9 @@ namespace Entidades
             {
                 using (StreamWriter sw = new StreamWriter(completa))
                 {
-                    sw.WriteLine(Cliente.MostrarVentas());
+                    Venta ventaAux = new Venta();
+
+                    sw.WriteLine(ventaAux.Mostrar());
                 }
             }
             catch (Exception ex)

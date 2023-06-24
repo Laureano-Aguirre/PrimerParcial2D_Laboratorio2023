@@ -26,7 +26,7 @@ namespace Form_Login
             btn_LoginAtras.Visible = false;
             lb_LoginCorreo.Visible = false;
             lb_LoginPassword.Visible = false;
-            Vendedor.HardcodearVendedores();
+            //Vendedor.HardcodearVendedores();
             //Cliente.HardocdearClientes();
             Carne.CargarCortes();
             Venta.HarcodearVentas();
@@ -108,6 +108,10 @@ namespace Form_Login
 
         private void btn_LoginIngresar_Click(object sender, EventArgs e)
         {
+            List<Vendedor> vendedores = new List<Vendedor>();
+            vendedores = ConexionDB.LeerVendedores();
+            List<Cliente> clientes = new List<Cliente>();
+            clientes = ConexionDB.LeerClientes();
             string correo = txb_LoginCorreo.Text;
             string pass = txb_LoginPassword.Text;
 
@@ -117,18 +121,18 @@ namespace Form_Login
                 {
                     if (StringExtension.ContarMinusculas(pass) == 1 && StringExtension.ContarMayusculas(pass) == 1 && StringExtension.ContarCaracteresEspeciales(pass) == 1)
                     {
-                        if ((Cliente.ValidarCliente(correo, pass)) && btn_LoginCliente.DialogResult == DialogResult.OK)
+                        Cliente cliente = new Cliente(correo, pass);
+                        Vendedor vendedor = new Vendedor(correo, pass);
+                        if ((Cliente.ValidarCliente(clientes, cliente)) && btn_LoginCliente.DialogResult == DialogResult.OK)
                         {
-                            Cliente cliente = new Cliente(correo, pass);
-
                             Form_MenuCliente frmMenuCliente = new Form_MenuCliente(cliente);
                             soundPlayer1.Play();
                             frmMenuCliente.Show();
                             this.Hide();
                         }
-                        else if ((Vendedor.BuscarVendedor(correo, pass)) && btn_LoginVendedor.DialogResult == DialogResult.OK)
+                        else if ((Vendedor.BuscarVendedor(vendedores, vendedor)) && btn_LoginVendedor.DialogResult == DialogResult.OK)
                         {
-                            Vendedor vendedor = new Vendedor(4,correo, pass);
+                            
                             FormHeladera frmHeladera = new FormHeladera(vendedor);
                             soundPlayer2.Play();
                             frmHeladera.Show();

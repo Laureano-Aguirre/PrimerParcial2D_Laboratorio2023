@@ -38,20 +38,19 @@ namespace Form_Login
             lb_VenderPrecioPorKilo.Visible = false;
             cmb_VenderSeleccionarCorte.DropDownStyle = ComboBoxStyle.DropDown;
             cmb_VenderSeleccionarCorte.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cmb_VenderSeleccionarCorte.AutoCompleteSource = AutoCompleteSource.ListItems;
-            rtb_VendedorVenderClientes.AppendText(Cliente.ListarClientes());
+            cmb_VenderSeleccionarCorte.AutoCompleteSource = AutoCompleteSource.ListItems;      
+            List<Cliente> clientes = new List<Cliente>();
+            clientes = ConexionDB.LeerClientes();
+            rtb_VendedorVenderClientes.AppendText(Cliente.ListarClientes(clientes));
 
             foreach (Carne carne in Carne.ListaCarnes)
             {
                 cmb_VenderSeleccionarCorte.Items.Add(carne.TipoDeCarne);
             }
 
-            foreach (Persona persona in Persona.ListaPersonas)
+            foreach (Cliente cliente in clientes)
             {
-                if (persona is Cliente cliente)
-                {
-                    cmb_VenderSeleccionarCliente.Items.Add(cliente.Correo);
-                }
+                cmb_VenderSeleccionarCliente.Items.Add(cliente.Correo);
             }
         }
 
@@ -61,7 +60,7 @@ namespace Form_Login
 
             if (dialogResutl == DialogResult.Yes)
             {
-                if(caux is null)
+                if (caux is null)
                 {
                     soundCancelar.Play();
                     FormHeladera frmHeladera = new FormHeladera(vAux);
@@ -75,7 +74,7 @@ namespace Form_Login
                     FormHeladera frmHeladera = new FormHeladera(vAux);
                     frmHeladera.Show();
                     this.Hide();
-                }  
+                }
             }
         }
 
@@ -86,27 +85,20 @@ namespace Form_Login
 
         private void cmb_VenderSeleccionarCliente_SelectedValueChanged(object sender, EventArgs e)
         {
-            string correo = cmb_VenderSeleccionarCliente.Text;
-
-            cmb_VenderSeleccionarCorte.SelectedItem = null;
-            //Cliente.LimpiarListaCompras(caux);
             rtb_VenderMostrarCompra.Clear();
             costoParcial = 0;
-            foreach (Persona persona in Persona.ListaPersonas)
-            {
-                if (persona is Cliente cliente)
-                {
-                    if (cliente.Correo == correo)
-                    {
-                        caux = cliente;
-                    }
-                }
-            }
+            cmb_VenderSeleccionarCorte.SelectedItem = null;
+
+            string correo = cmb_VenderSeleccionarCliente.Text;
+            List<Cliente> clientes = new List<Cliente>();
+            clientes = ConexionDB.LeerClientes();
+            caux = Cliente.DevolverCliente(clientes, correo);
+  
         }
 
         private void cmb_VenderSeleccionarCorte_SelectedValueChanged(object sender, EventArgs e)
         {
-            nud_VenderKilos.Value = 0;    
+            nud_VenderKilos.Value = 0;
             lb_VenderPrecioPorKilo.Text = (Carne.CargarPrecioPorKilo(cmb_VenderSeleccionarCorte.Text)).ToString();
             lb_VenderPrecioPorKilo.Visible = true;
         }
@@ -126,7 +118,7 @@ namespace Form_Login
 
         private void btn_VenderAgregar_Click(object sender, EventArgs e)
         {
-            
+
             if (!(string.IsNullOrEmpty(cmb_VenderSeleccionarCliente.Text)))
             {
                 if (ValidarCorte())
@@ -151,7 +143,7 @@ namespace Form_Login
                 MessageBox.Show("Debe elegir un cliente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
-        }           
+        }
 
         private void btn_VenderEfectivo_Click(object sender, EventArgs e)
         {
@@ -162,7 +154,7 @@ namespace Form_Login
             {
                 if (ValidarKilo())
                 {
-                    ValidarEfectivo(monto,  costoFinal);
+                    ValidarEfectivo(monto, costoFinal);
                 }
                 else
                 {
@@ -178,7 +170,7 @@ namespace Form_Login
 
         private void btn_VendedorVender_Click(object sender, EventArgs e)
         {
-            
+
             bool pudoCambiarCostoFinal = decimal.TryParse(lb_VenderEnZocaloCostoParcial.Text, out decimal costoFinal);
             if (!(string.IsNullOrEmpty(cmb_VenderSeleccionarCliente.Text)))
             {
@@ -327,6 +319,9 @@ namespace Form_Login
                             Venta venta = new Venta(caux.Correo, caux.Monto, costoFinal);
                             if (venta.CargarVenta(venta))
                             {
+                                caux.Monto -= costoFinal;
+                                ConexionDB.ModificarMontoCliente(caux, caux.Monto);
+                                ConexionDB.ModificarGastoCliente(caux, caux.Gasto + costoFinal);
                                 soundVender.Play();
                                 caux.Gasto = costoFinal;
                                 MessageBox.Show($"PRODUCTOS:{Cliente.MostrarCompra(caux)}\n" +

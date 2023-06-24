@@ -88,7 +88,7 @@
             Controls.Add(lb_BorrarCliente);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormBorrarCliente";
-            Text = "Borrar cliente";
+            Text = "Borrar usuario";
             Load += FormBorrarCliente_Load;
             ResumeLayout(false);
             PerformLayout();

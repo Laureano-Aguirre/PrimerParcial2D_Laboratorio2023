@@ -20,7 +20,9 @@ namespace Form_Login
 
         private void FormHistorialVentas_Load(object sender, EventArgs e)
         {
-            rtb_HistorialVentas.AppendText(Cliente.MostrarVentas());
+            //rtb_HistorialVentas.AppendText(Cliente.MostrarVentas());
+            Venta venta = new Venta();
+            rtb_HistorialVentas.AppendText(venta.Mostrar());
         }
 
         private void btn_HistorialVentasAtras_Click(object sender, EventArgs e)

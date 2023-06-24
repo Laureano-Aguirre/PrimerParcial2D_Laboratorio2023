@@ -21,7 +21,7 @@ namespace Form_Login
         {
             this.BackgroundImage = Image.FromFile(@"imagenes\img-Heladera2.png");
             this.BackgroundImageLayout = ImageLayout.Stretch;
-            lb_HeladeraBiennvenida.Text = $"Bienvenido {vAux.MostrarPersona(vAux)} !";
+            lb_HeladeraBiennvenida.Text = $"Bienvenido {vAux.Mostrar()} !";
             dataGridView1.AutoGenerateColumns = false;
             soundVender = new SoundPlayer(@"sonidos\sonido-monedas.wav");
             soundCancelar = new SoundPlayer(@"sonidos\sonido-meVoy.wav");
@@ -120,20 +120,50 @@ namespace Form_Login
 
         private void clienteToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            FormBorrarCliente frmBorrarCliente = new FormBorrarCliente();
+            FormBorrarCliente frmBorrarCliente = new FormBorrarCliente(1);
             frmBorrarCliente.ShowDialog();
         }
 
-        private void clienteToolStripMenuItem3_Click(object sender, EventArgs e)
+        private void correoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormModificarUsuario frmModificarUsuario = new FormModificarUsuario(1);
             frmModificarUsuario.ShowDialog();
         }
 
-        private void vendedorToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void passwordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormModificarUsuario frmModificarUsuario = new FormModificarUsuario(2);
             frmModificarUsuario.ShowDialog();
+        }
+
+        private void montoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormModificarUsuario frmModificarUsuario = new FormModificarUsuario(3);
+            frmModificarUsuario.ShowDialog();
+        }
+
+        private void correoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormModificarUsuario frmModificarUsuario = new FormModificarUsuario(4);
+            frmModificarUsuario.ShowDialog();
+        }
+
+        private void passwordToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormModificarUsuario frmModificarUsuario = new FormModificarUsuario(5);
+            frmModificarUsuario.ShowDialog();
+        }
+
+        private void vendedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormBorrarCliente frmBorrarCliente = new FormBorrarCliente(2);
+            frmBorrarCliente.ShowDialog();
+        }
+
+        private void vendedorToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            FormAgregarVendedor frmAgregarVendedor = new FormAgregarVendedor();
+            frmAgregarVendedor.ShowDialog();
         }
     }
 }

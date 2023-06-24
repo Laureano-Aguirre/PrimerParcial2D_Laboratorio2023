@@ -15,6 +15,7 @@ namespace Form_Login
     public partial class Form_MenuCliente : Form
     {
         Cliente cAux;
+        Cliente cliente1;
         private SoundPlayer soundPlayer1;
         private SoundPlayer soundPlayer2;
         public Form_MenuCliente(Cliente cliente)
@@ -40,6 +41,10 @@ namespace Form_Login
             lb_MenuPrinHora.BackColor = Color.Transparent;
             lb_MenPrinBienvenido.BackColor = Color.Transparent;
             txb_MenPrinMonto.MaxLength = 6;
+            List<Cliente> clientes = new List<Cliente>();
+
+            clientes = ConexionDB.LeerClientes();
+            cliente1 = Cliente.DevolverCliente(clientes, cAux.Correo);
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -97,8 +102,9 @@ namespace Form_Login
             {
                 soundPlayer1.Play();
                 decimal.TryParse(txb_MenPrinMonto.Text, out decimal monto);
-                cAux.Monto = monto;
-                FormComprar frmComprar = new FormComprar(cAux);
+                cliente1.Monto = monto;
+                ConexionDB.ModificarMontoCliente(cliente1, monto);
+                FormComprar frmComprar = new FormComprar(cliente1);
                 frmComprar.Show();
                 this.Hide();
             }
