@@ -3,14 +3,17 @@ using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Media;
+using System.Collections.Generic;
 
 namespace Form_Login
 {
-
     public partial class Form1 : Form
     {
         private SoundPlayer soundPlayer1;
         private SoundPlayer soundPlayer2;
+        public delegate void EventoInicioSesion(object sender, EventArgs e);        //definimos el tipo de delegado
+        public event EventoInicioSesion InicioSesionExitoso;                        //declaramos el evento relacionado al tipo de delegado anterior
+
         public Form1()
         {
             InitializeComponent();
@@ -26,10 +29,11 @@ namespace Form_Login
             btn_LoginAtras.Visible = false;
             lb_LoginCorreo.Visible = false;
             lb_LoginPassword.Visible = false;
-            //Vendedor.HardcodearVendedores();
-            //Cliente.HardocdearClientes();
+
             Carne.CargarCortes();
             Venta.HarcodearVentas();
+
+            InicioSesionExitoso += OnInicioSesionExitoso;       //agregamos al metodo como manejador para el evento.
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -37,8 +41,6 @@ namespace Form_Login
             this.BackgroundImage = Image.FromFile(@"imagenes\img-login.png");
             this.BackgroundImageLayout = ImageLayout.Stretch;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            
-
         }
 
         private void btn_LoginCliente_Click(object sender, EventArgs e)
@@ -59,9 +61,6 @@ namespace Form_Login
             btn_LoginVendedor.DialogResult = DialogResult.OK;
         }
 
-        /// <summary>
-        /// Muestra y esconde los controladores
-        /// </summary>
         private void Visibilizacion()
         {
             txb_LoginCorreo.Visible = true;
@@ -75,12 +74,6 @@ namespace Form_Login
             pb_Usuario.Visible = true;
         }
 
-        /// <summary>
-        /// Valida que los datos ingresados por el usuario no sean nulos
-        /// </summary>
-        /// <param name="mail"></param>
-        /// <param name="pass"></param>
-        /// <returns></returns>
         private bool ValidarDatos(string mail, string pass)
         {
             bool esValido = true;
@@ -98,7 +91,7 @@ namespace Form_Login
                 esValido = false;
             }
 
-            if (!(esValido))
+            if (!esValido)
             {
                 MessageBox.Show(sb.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -108,10 +101,8 @@ namespace Form_Login
 
         private void btn_LoginIngresar_Click(object sender, EventArgs e)
         {
-            List<Vendedor> vendedores = new List<Vendedor>();
-            vendedores = ConexionDB.LeerVendedores();
-            List<Cliente> clientes = new List<Cliente>();
-            clientes = ConexionDB.LeerClientes();
+            List<Vendedor> vendedores = ConexionDB.LeerVendedores();
+            List<Cliente> clientes = ConexionDB.LeerClientes();
             string correo = txb_LoginCorreo.Text;
             string pass = txb_LoginPassword.Text;
 
@@ -123,16 +114,17 @@ namespace Form_Login
                     {
                         Cliente cliente = new Cliente(correo, pass);
                         Vendedor vendedor = new Vendedor(correo, pass);
-                        if ((Cliente.ValidarCliente(clientes, cliente)) && btn_LoginCliente.DialogResult == DialogResult.OK)
+                        if (Cliente.ValidarCliente(clientes, cliente) && btn_LoginCliente.DialogResult == DialogResult.OK)
                         {
+                            InicioSesionExitoso?.Invoke(this, EventArgs.Empty);              //notifico a los manejadores que el login fue correcto
                             Form_MenuCliente frmMenuCliente = new Form_MenuCliente(cliente);
                             soundPlayer1.Play();
                             frmMenuCliente.Show();
                             this.Hide();
                         }
-                        else if ((Vendedor.BuscarVendedor(vendedores, vendedor)) && btn_LoginVendedor.DialogResult == DialogResult.OK)
+                        else if (Vendedor.BuscarVendedor(vendedores, vendedor) && btn_LoginVendedor.DialogResult == DialogResult.OK)
                         {
-                            
+                            InicioSesionExitoso?.Invoke(this, EventArgs.Empty);
                             FormHeladera frmHeladera = new FormHeladera(vendedor);
                             soundPlayer2.Play();
                             frmHeladera.Show();
@@ -140,25 +132,25 @@ namespace Form_Login
                         }
                         else
                         {
-                            throw new Exception ("usuario incorrecto.");
+                            throw new Exception("Usuario incorrecto.");
                         }
                     }
                     else
                     {
-                        throw new Exception ("contraseña incorrecta.");                        
+                        throw new Exception("Contraseña incorrecta.");
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}");
             }
-            
+
         }
 
         private void btn_LoginAtras_Click(object sender, EventArgs e)
         {
-            
+
             pb_Usuario.Visible = false;
             txb_LoginCorreo.Visible = false;
             txb_LoginPassword.Visible = false;
@@ -173,6 +165,12 @@ namespace Form_Login
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void OnInicioSesionExitoso(object sender, EventArgs e)
+        {
+            //cuando se dispare el evento que maneja este metodo, aparecerá un messagebox confirmando que se inicio sesión correctamente
+            MessageBox.Show("Inicio de sesión exitoso", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);     
         }
     }
 }
