@@ -38,20 +38,29 @@ namespace Form_Login
             lb_VenderPrecioPorKilo.Visible = false;
             cmb_VenderSeleccionarCorte.DropDownStyle = ComboBoxStyle.DropDown;
             cmb_VenderSeleccionarCorte.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cmb_VenderSeleccionarCorte.AutoCompleteSource = AutoCompleteSource.ListItems;      
-            List<Cliente> clientes = new List<Cliente>();
-            clientes = ConexionDB.LeerClientes();
-            rtb_VendedorVenderClientes.AppendText(Cliente.ListarClientes(clientes));
-
-            foreach (Carne carne in Carne.ListaCarnes)
+            cmb_VenderSeleccionarCorte.AutoCompleteSource = AutoCompleteSource.ListItems;
+            try
             {
-                cmb_VenderSeleccionarCorte.Items.Add(carne.TipoDeCarne);
-            }
+                List<Cliente> clientes = new List<Cliente>();
+                clientes = ConexionDB.LeerClientes();
+                rtb_VendedorVenderClientes.AppendText(Cliente.ListarClientes(clientes));
 
-            foreach (Cliente cliente in clientes)
-            {
-                cmb_VenderSeleccionarCliente.Items.Add(cliente.Correo);
+                foreach (Carne carne in Carne.ListaCarnes)
+                {
+                    cmb_VenderSeleccionarCorte.Items.Add(carne.TipoDeCarne);
+                }
+
+                foreach (Cliente cliente in clientes)
+                {
+                    cmb_VenderSeleccionarCliente.Items.Add(cliente.Correo);
+                }
             }
+            catch (ExcepcionPropia ex)
+            {
+
+                MessageBox.Show($"Error al querer leer los clientes. Por favor, intentelo mas tarde. \n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void btn_VendedorVenderCancelar_Click(object sender, EventArgs e)
@@ -69,7 +78,6 @@ namespace Form_Login
                 }
                 else
                 {
-                    //Cliente.LimpiarListaCompras(caux);
                     soundCancelar.Play();
                     FormHeladera frmHeladera = new FormHeladera(vAux);
                     frmHeladera.Show();
@@ -91,9 +99,15 @@ namespace Form_Login
 
             string correo = cmb_VenderSeleccionarCliente.Text;
             List<Cliente> clientes = new List<Cliente>();
-            clientes = ConexionDB.LeerClientes();
-            caux = Cliente.DevolverCliente(clientes, correo);
-  
+            try
+            {
+                clientes = ConexionDB.LeerClientes();
+                caux = Cliente.DevolverCliente(clientes, correo);
+            }
+            catch (ExcepcionPropia ex)
+            {
+                MessageBox.Show($"Error al querer leer los clientes. Por favor, intentelo mas tarde. \n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
         }
 
         private void cmb_VenderSeleccionarCorte_SelectedValueChanged(object sender, EventArgs e)
@@ -319,15 +333,22 @@ namespace Form_Login
                             Venta venta = new Venta(caux.Correo, costoFinal);
                             if (venta.CargarVenta(venta))
                             {
-                                ConexionDB.AgregarVenta(venta);
-                                caux.Monto -= costoFinal;
-                                ConexionDB.ModificarMontoCliente(caux, caux.Monto);
-                                ConexionDB.ModificarGastoCliente(caux, caux.Gasto + costoFinal);
-                                soundVender.Play();
-                                caux.Gasto = costoFinal;
-                                MessageBox.Show($"PRODUCTOS:{Cliente.MostrarCompra(caux)}\n" +
-                                    $"GASTO: {caux.Gasto}", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                //Cliente.LimpiarListaCompras(caux);
+                                try
+                                {
+                                    ConexionDB.AgregarVenta(venta);
+                                    caux.Monto -= costoFinal;
+                                    ConexionDB.ModificarMontoCliente(caux, caux.Monto);
+                                    ConexionDB.ModificarGastoCliente(caux, caux.Gasto + costoFinal);
+                                    soundVender.Play();
+                                    caux.Gasto = costoFinal;
+                                    MessageBox.Show($"PRODUCTOS:{Cliente.MostrarCompra(caux)}\n" +
+                                        $"GASTO: {caux.Gasto}", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                catch (ExcepcionPropia ex)
+                                {
+                                    MessageBox.Show($"Error al vender el producto.\n Error: {{ex.Message}}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                
                             }
                             else
                             {

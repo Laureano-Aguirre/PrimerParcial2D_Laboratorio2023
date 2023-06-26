@@ -22,7 +22,7 @@ namespace Form_Login
         {
             //rtb_HistorialVentas.AppendText(Cliente.MostrarVentas());
             Venta venta = new Venta();
-            
+
             rtb_HistorialVentas.AppendText(venta.Mostrar());
         }
 
@@ -37,23 +37,49 @@ namespace Form_Login
 
         private void btn_HistorialVentasGenerarTxt_Click(object sender, EventArgs e)
         {
-            Archivos.Escribir();
+            try
+            {
+                Archivos.Escribir();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error al querer escribir las ventas en el archivo. Por favor, intentelo mas tarde \n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btn_HistorialVentasSerializarXml_Click(object sender, EventArgs e)
         {
-            Serializadora<Carne>.EscribirXml(Carne.ListaCarnes);
+            try
+            {
+                Serializadora<Carne>.EscribirXml(Carne.ListaCarnes);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error al querer serializar. Por favor, intentelo ams tarde. \n Mensaje del erorr: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btn_HistorialVentasDeserealizarXml_Click(object sender, EventArgs e)
         {
             List<Carne> carnes = new List<Carne>();
-
-            carnes = Serializadora<Carne>.LeerXml();
-            foreach (Carne carne in carnes)
+            try
             {
-                MessageBox.Show($"{carne.TipoDeCarne} {carne.Kilos} {carne.PrecioPorKilo} {carne.Stock}");
+                carnes = Serializadora<Carne>.LeerXml();
+                foreach (Carne carne in carnes)
+                {
+                    MessageBox.Show($"{carne.TipoDeCarne} {carne.Kilos} {carne.PrecioPorKilo} {carne.Stock}");
+                }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error al querer deserializar. Por favor, intentelo ams tarde. \n Mensaje del erorr: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
         }
 
@@ -66,17 +92,104 @@ namespace Form_Login
             listaDePagos.Add(ETipoDePago.Debito);
             listaDePagos.Add(ETipoDePago.Efectivo);
 
-            Serializadora<ETipoDePago>.EscribirXml(listaDePagos);
+            try
+            {
+                Serializadora<ETipoDePago>.EscribirXml(listaDePagos);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error al querer serializar. Por favor, intentelo ams tarde. \n Mensaje del erorr: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void btn_HistorialVentaPagoDeserializarXml_Click(object sender, EventArgs e)
         {
             List<ETipoDePago> listaDePagos = new List<ETipoDePago>();
 
-            listaDePagos = Serializadora<ETipoDePago>.LeerXml();
-            foreach (ETipoDePago tipo in listaDePagos)
+            try
             {
-                MessageBox.Show($"{tipo.ToString()}");
+                listaDePagos = Serializadora<ETipoDePago>.LeerXml();
+                foreach (ETipoDePago tipo in listaDePagos)
+                {
+                    MessageBox.Show($"{tipo.ToString()}");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error al querer serializar. Por favor, intentelo ams tarde. \n Mensaje del erorr: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void btn_HistorialVentasSerializarJson_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Serializadora<Carne>.EscribirJson(Carne.ListaCarnes);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error al querer serializar. Por favor, intentelo ams tarde. \n Mensaje del erorr: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_HistorialVentasDeserealizarJson_Click(object sender, EventArgs e)
+        {
+            List<Carne> carnes = new List<Carne>();
+            try
+            {
+                carnes = Serializadora<Carne>.LeerJson();
+                foreach (Carne carne in carnes)
+                {
+                    MessageBox.Show($"{carne.TipoDeCarne} {carne.Kilos} {carne.PrecioPorKilo} {carne.Stock}");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error al querer deserializar. Por favor, intentelo ams tarde. \n Mensaje del erorr: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_HistorialVentaTipoDePagoJson_Click(object sender, EventArgs e)
+        {
+            List<ETipoDePago> listaDePagos = new List<ETipoDePago>();
+
+            listaDePagos.Add(ETipoDePago.Credito);
+            listaDePagos.Add(ETipoDePago.Debito);
+            listaDePagos.Add(ETipoDePago.Efectivo);
+
+            try
+            {
+                Serializadora<ETipoDePago>.EscribirJson(listaDePagos);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error al querer serializar. Por favor, intentelo ams tarde. \n Mensaje del erorr: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btn_HistorialVentaPagoDeserializarJson_Click(object sender, EventArgs e)
+        {
+            List<ETipoDePago> listaDePagos = new List<ETipoDePago>();
+
+            try
+            {
+                listaDePagos = Serializadora<ETipoDePago>.LeerJson();
+                foreach (ETipoDePago tipo in listaDePagos)
+                {
+                    MessageBox.Show($"{tipo.ToString()}");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error al querer serializar. Por favor, intentelo ams tarde. \n Mensaje del erorr: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

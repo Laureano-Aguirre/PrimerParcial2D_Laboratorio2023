@@ -31,27 +31,43 @@ namespace Form_Login
         {
             if(retorno == 1) //si es cliente
             {
-                lb_BorrarCliente.Text = "Seleccione el cliente que desea eliminar:";
-                List<Cliente> clientes = new List<Cliente>();
-
-                clientes = ConexionDB.LeerClientes();
-
-                foreach (Cliente cliente in clientes)
+                try
                 {
-                    cmb_BorrarClienteLista.Items.Add(cliente.Correo);
+                    lb_BorrarCliente.Text = "Seleccione el cliente que desea eliminar:";
+                    List<Cliente> clientes = new List<Cliente>();
+
+                    clientes = ConexionDB.LeerClientes();
+
+                    foreach (Cliente cliente in clientes)
+                    {
+                        cmb_BorrarClienteLista.Items.Add(cliente.Correo);
+                    }
                 }
+                catch (ExcepcionPropia ex)
+                {
+                    MessageBox.Show($"Error al querer leer los usuarios. Por favor, intentelo mas tarde. \n Mensaje de error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
             else if(retorno == 2) // si es vendedor
             {
-                lb_BorrarCliente.Text = "Seleccione el vendedor que desea eliminar:";
-                List<Vendedor> vendedores = new List<Vendedor>();
-
-                vendedores = ConexionDB.LeerVendedores();
-
-                foreach(Vendedor vendedor in vendedores)
+                try
                 {
-                    cmb_BorrarClienteLista.Items.Add(vendedor.Correo);
+                    lb_BorrarCliente.Text = "Seleccione el vendedor que desea eliminar:";
+                    List<Vendedor> vendedores = new List<Vendedor>();
+
+                    vendedores = ConexionDB.LeerVendedores();
+
+                    foreach (Vendedor vendedor in vendedores)
+                    {
+                        cmb_BorrarClienteLista.Items.Add(vendedor.Correo);
+                    }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al querer leer los usuarios. Por favor, intentelo mas tarde. \n Mensaje de error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+               
             }
             
         }
@@ -68,33 +84,44 @@ namespace Form_Login
 
         private void cmb_BorrarClienteLista_SelectedValueChanged(object sender, EventArgs e)
         {
-            if(retorno == 1)
+            try
             {
-                List<Cliente> clientes = new List<Cliente>();
-                clientes = ConexionDB.LeerClientes();
-
-                foreach (Cliente cliente in clientes)
+                if (retorno == 1)
                 {
-                    if (cliente.Correo == cmb_BorrarClienteLista.Text)
+                    List<Cliente> clientes = new List<Cliente>();
+                    clientes = ConexionDB.LeerClientes();
+
+                    foreach (Cliente cliente in clientes)
                     {
-                        cAux = cliente;
-                        break;
+                        if (cliente.Correo == cmb_BorrarClienteLista.Text)
+                        {
+                            cAux = cliente;
+                            break;
+                        }
                     }
                 }
-            } else if(retorno == 2)
-            {
-                List<Vendedor> vendedores = new List<Vendedor>();
-                vendedores = ConexionDB.LeerVendedores();
-
-                foreach (Vendedor vendedor in vendedores)
+                else if (retorno == 2)
                 {
-                    if (vendedor.Correo == cmb_BorrarClienteLista.Text)
+                    List<Vendedor> vendedores = new List<Vendedor>();
+
+                    vendedores = ConexionDB.LeerVendedores();
+
+                    foreach (Vendedor vendedor in vendedores)
                     {
-                        vAux = vendedor;
-                        break;
+                        if (vendedor.Correo == cmb_BorrarClienteLista.Text)
+                        {
+                            vAux = vendedor;
+                            break;
+                        }
                     }
                 }
             }
+            catch (ExcepcionPropia ex)
+            {
+
+                MessageBox.Show($"Error al querer leer los usuarios. Por favor, intentelo mas tarde. \n Mensaje d el error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
            
         }
 

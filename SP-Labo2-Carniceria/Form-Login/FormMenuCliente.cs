@@ -42,9 +42,16 @@ namespace Form_Login
             lb_MenPrinBienvenido.BackColor = Color.Transparent;
             txb_MenPrinMonto.MaxLength = 6;
             List<Cliente> clientes = new List<Cliente>();
-
-            clientes = ConexionDB.LeerClientes();
-            cliente1 = Cliente.DevolverCliente(clientes, cAux.Correo);
+            try
+            {
+                clientes = ConexionDB.LeerClientes();
+                cliente1 = Cliente.DevolverCliente(clientes, cAux.Correo);
+            }
+            catch (ExcepcionPropia ex)
+            {
+                MessageBox.Show($"Error al querer leer los clientes. Por favor, intentelo mas tarde. \n Mensaje de error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
         private void timer1_Tick(object sender, EventArgs e)
         {

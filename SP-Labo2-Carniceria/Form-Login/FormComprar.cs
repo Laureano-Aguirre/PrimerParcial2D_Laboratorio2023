@@ -52,13 +52,22 @@ namespace Form_Login
             btn_CompraAgregar.DialogResult = DialogResult.None;
             List<Cliente> clientes = new List<Cliente>();
 
-            clientes = ConexionDB.LeerClientes();
-            cliente1 = Cliente.DevolverCliente(clientes, caux.Correo);
-
-            foreach (Carne carne in Carne.ListaCarnes)
+            try
             {
-                cmb_CompraCortes.Items.Add(carne.TipoDeCarne);
+                clientes = ConexionDB.LeerClientes();
+                cliente1 = Cliente.DevolverCliente(clientes, caux.Correo);
+
+                foreach (Carne carne in Carne.ListaCarnes)
+                {
+                    cmb_CompraCortes.Items.Add(carne.TipoDeCarne);
+                }
             }
+            catch (ExcepcionPropia ex)
+            {
+
+                MessageBox.Show($"Error al leer los clientes. Por favor, intentelo mas tarde. \n", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void FormComprar_FormClosing(object sender, FormClosingEventArgs e)

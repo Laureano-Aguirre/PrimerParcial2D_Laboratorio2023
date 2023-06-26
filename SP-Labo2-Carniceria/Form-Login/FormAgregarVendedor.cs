@@ -71,19 +71,27 @@ namespace Form_Login
                 Vendedor vendedorNuevo = new Vendedor(correo, password);
 
                 List<Vendedor> vendedores = new List<Vendedor>();
-                vendedores = ConexionDB.LeerVendedores();
-                bool existe = Vendedor.BuscarPorCorreo(vendedores, vendedorNuevo.Correo);
-                if (existe)
+                try
                 {
-                    MessageBox.Show("El vendedor que intenta agregar, ya existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.Close();
+                    vendedores = ConexionDB.LeerVendedores();
+                    bool existe = Vendedor.BuscarPorCorreo(vendedores, vendedorNuevo.Correo);
+                    if (existe)
+                    {
+                        MessageBox.Show("El vendedor que intenta agregar, ya existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Close();
+                    }
+                    else
+                    {
+                        ConexionDB.AgregarVendedor(vendedorNuevo);
+                        MessageBox.Show("El vendedor fue agregado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        this.Close();
+                    }
                 }
-                else
+                catch (ExcepcionPropia ex)
                 {
-                    ConexionDB.AgregarVendedor(vendedorNuevo);
-                    MessageBox.Show("El vendedor fue agregado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.Close();
+                    MessageBox.Show($"Error al querer agregar al usuario. Por favor, intentelo mas tarde. \n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                
             }
         }
     }

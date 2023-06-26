@@ -32,7 +32,7 @@ namespace Entidades
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error en el archivo {completa}");
+                throw new Exception($"{ex.Message}");
             }
         }
 
@@ -55,7 +55,7 @@ namespace Entidades
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error en el archivo {completa}");
+                throw new Exception($"{ex.Message}");
             }
         }
 
@@ -72,7 +72,7 @@ namespace Entidades
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error en el archivo {completa}");
+                throw new Exception($"{ex.Message}");
             }
         }
 
@@ -86,14 +86,14 @@ namespace Entidades
 
             try
             {
-                string strJson = File.ReadAllText(nombreArchivo);
+                string strJson = File.ReadAllText(completa);
                 listaAux = (List<T>)JsonSerializer.Deserialize<List<T>>(strJson);
 
                 return listaAux;
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error en el archivo {completa}");
+                throw new Exception($"{ex.Message}");
             }
         }
     }

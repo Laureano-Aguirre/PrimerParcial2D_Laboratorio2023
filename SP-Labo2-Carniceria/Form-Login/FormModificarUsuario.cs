@@ -33,70 +33,108 @@ namespace Form_Login
         {
             if (retorno == 1)
             {
-                lb_ModificarUsuario.Text = "Correo nuevo";
-
-                List<Cliente> clientes = new List<Cliente>();
-
-                clientes = ConexionDB.LeerClientes();
-
-                foreach (Cliente cliente in clientes)
+                try
                 {
-                    cmb_ModificarUsuario.Items.Add(cliente.Correo);
+                    lb_ModificarUsuario.Text = "Correo nuevo";
+
+                    List<Cliente> clientes = new List<Cliente>();
+
+                    clientes = ConexionDB.LeerClientes();
+
+                    foreach (Cliente cliente in clientes)
+                    {
+                        cmb_ModificarUsuario.Items.Add(cliente.Correo);
+                    }
                 }
+                catch (ExcepcionPropia ex)
+                {
+                    MessageBox.Show($"Error al querer leer los clientes. Por favor, intentelo mas tarde.\n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
             else if (retorno == 2)
             {
-                lb_ModificarUsuario.Text = "Password nueva";
-
-                List<Cliente> clientes = new List<Cliente>();
-
-                clientes = ConexionDB.LeerClientes();
-
-                foreach (Cliente cliente in clientes)
+                try
                 {
-                    cmb_ModificarUsuario.Items.Add(cliente.Correo);
+                    lb_ModificarUsuario.Text = "Password nueva";
+
+                    List<Cliente> clientes = new List<Cliente>();
+
+                    clientes = ConexionDB.LeerClientes();
+
+                    foreach (Cliente cliente in clientes)
+                    {
+                        cmb_ModificarUsuario.Items.Add(cliente.Correo);
+                    }
                 }
+                catch (ExcepcionPropia ex)
+                {
+
+                    MessageBox.Show($"Error al querer leer los clientes. Por favor, intentelo mas tarde.\n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }      
             }
             else if (retorno == 3)
             {
-                lb_ModificarUsuario.Text = "Monto nuevo";
-
-                List<Cliente> clientes = new List<Cliente>();
-
-                clientes = ConexionDB.LeerClientes();
-
-                foreach (Cliente cliente in clientes)
+                try
                 {
-                    cmb_ModificarUsuario.Items.Add(cliente.Correo);
+                    lb_ModificarUsuario.Text = "Monto nuevo";
+
+                    List<Cliente> clientes = new List<Cliente>();
+
+                    clientes = ConexionDB.LeerClientes();
+
+                    foreach (Cliente cliente in clientes)
+                    {
+                        cmb_ModificarUsuario.Items.Add(cliente.Correo);
+                    }
+                }
+                catch (ExcepcionPropia ex)
+                {
+                    MessageBox.Show($"Error al querer leer los clientes. Por favor, intentelo mas tarde.\n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else if (retorno == 4)
             {
-                lb_ModificarUsuario.Text = "Correo nuevo";
-
-                List<Vendedor> vendedores = new List<Vendedor>();
-
-                vendedores = ConexionDB.LeerVendedores();
-
-                foreach (Vendedor vendedor in vendedores)
+                try
                 {
-                    cmb_ModificarUsuario.Items.Add(vendedor.Correo);
+                    lb_ModificarUsuario.Text = "Correo nuevo";
+
+                    List<Vendedor> vendedores = new List<Vendedor>();
+
+                    vendedores = ConexionDB.LeerVendedores();
+
+                    foreach (Vendedor vendedor in vendedores)
+                    {
+                        cmb_ModificarUsuario.Items.Add(vendedor.Correo);
+                    }
+                }
+                catch (ExcepcionPropia ex)
+                {
+
+                    MessageBox.Show($"Error al querer leer los vendedores. Por favor, intentelo mas tarde.\n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else if (retorno == 5)
             {
-                lb_ModificarUsuario.Text = "Password nueva";
-
-                List<Vendedor> vendedores = new List<Vendedor>();
-
-                vendedores = ConexionDB.LeerVendedores();
-
-                foreach (Vendedor vendedor in vendedores)
+                try
                 {
-                    cmb_ModificarUsuario.Items.Add(vendedor.Correo);
-                }
-            }
+                    lb_ModificarUsuario.Text = "Password nueva";
 
+                    List<Vendedor> vendedores = new List<Vendedor>();
+
+                    vendedores = ConexionDB.LeerVendedores();
+
+                    foreach (Vendedor vendedor in vendedores)
+                    {
+                        cmb_ModificarUsuario.Items.Add(vendedor.Correo);
+                    }
+                }
+                catch (ExcepcionPropia ex)
+                {
+                    MessageBox.Show($"Error al querer leer los vendedores. Por favor, intentelo mas tarde.\n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }               
+            }
         }
 
         private void cmb_ModificarUsuario_SelectedValueChanged(object sender, EventArgs e)
@@ -113,8 +151,7 @@ namespace Form_Login
                 }
                 catch (Exception ex)
                 {
-
-                    throw new Exception(ex.Message);
+                    MessageBox.Show($"Error al querer leer los clientes. Por favor, intentelo mas tarde.\n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -131,7 +168,7 @@ namespace Form_Login
                 catch (Exception ex)
                 {
 
-                    throw new Exception(ex.Message);
+                    MessageBox.Show($"Error al querer leer los vendedores. Por favor, intentelo mas tarde.\n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -177,18 +214,35 @@ namespace Form_Login
                 {
                     if (lb_ModificarUsuario.Text == "Correo nuevo")
                     {
-                        ConexionDB.ModificarCorreoCliente(cAux, txb_ModificarUsuario.Text);
-                        MessageBox.Show("Correo actualizado exitosamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return true;
+                        try
+                        {
+                            ConexionDB.ModificarCorreoCliente(cAux, txb_ModificarUsuario.Text);
+                            MessageBox.Show("Correo actualizado exitosamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return true;
+                        }
+                        catch (ExcepcionPropia ex)
+                        {
+
+                            MessageBox.Show($"Error al querer modificar el correo del cliente. Por favor, intentelo mas tarde.\n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }                      
                     }
                     else if (lb_ModificarUsuario.Text == "Password nueva")
                     {
                         string pass = txb_ModificarUsuario.Text;
                         if (StringExtension.ContarMinusculas(pass) == 1 && StringExtension.ContarMayusculas(pass) == 1 && StringExtension.ContarCaracteresEspeciales(pass) == 1)
                         {
-                            ConexionDB.ModificarPasswordCliente(cAux, pass);
-                            MessageBox.Show("Contraseña actualizada correctamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return true;
+                            try
+                            {
+                                ConexionDB.ModificarPasswordCliente(cAux, pass);
+                                MessageBox.Show("Contraseña actualizada correctamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return true;
+                            }
+                            catch (ExcepcionPropia ex)
+                            {
+
+                                MessageBox.Show($"Error al querer modificar la contraseña del cliente. Por favor, intentelo mas tarde.\n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+
                         }
                         else
                         {
@@ -203,9 +257,16 @@ namespace Form_Login
                         {
                             if (monto >= 0)
                             {
-                                ConexionDB.ModificarMontoCliente(cAux, monto);
-                                MessageBox.Show("Monto actualizado correctamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                return true;
+                                try
+                                {
+                                    ConexionDB.ModificarMontoCliente(cAux, monto);
+                                    MessageBox.Show("Monto actualizado correctamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    return true;
+                                }
+                                catch (ExcepcionPropia ex)
+                                {
+                                    MessageBox.Show($"Error al querer modificar el monto del cliente. Por favor, intentelo mas tarde.\n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }    
                             }
                             else
                             {
@@ -243,18 +304,34 @@ namespace Form_Login
                 {
                     if (lb_ModificarUsuario.Text == "Correo nuevo")
                     {
-                        ConexionDB.ModificarCorreoVendedor(vAux, txb_ModificarUsuario.Text);
-                        MessageBox.Show("Correo actualizado exitosamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return true;
+                        try
+                        {
+                            ConexionDB.ModificarCorreoVendedor(vAux, txb_ModificarUsuario.Text);
+                            MessageBox.Show("Correo actualizado exitosamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return true;
+                        }
+                        catch (ExcepcionPropia ex)
+                        {
+
+                            MessageBox.Show($"Error al querer modificar el correo del vendedor. Por favor, intentelo mas tarde.\n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }            
                     }
                     else if (lb_ModificarUsuario.Text == "Password nueva")
                     {
                         string pass = txb_ModificarUsuario.Text;
                         if (StringExtension.ContarMinusculas(pass) == 1 && StringExtension.ContarMayusculas(pass) == 1 && StringExtension.ContarCaracteresEspeciales(pass) == 1)
                         {
-                            ConexionDB.ModificarPasswordVendedor(vAux, pass);
-                            MessageBox.Show("Contraseña actualizada correctamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return true;
+                            try
+                            {
+                                ConexionDB.ModificarPasswordVendedor(vAux, pass);
+                                MessageBox.Show("Contraseña actualizada correctamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return true;
+                            }
+                            catch (ExcepcionPropia ex)
+                            {
+
+                                MessageBox.Show($"Error al querer modificar la contraseña del vendedor. Por favor, intentelo mas tarde.\n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }             
                         }
                         else
                         {

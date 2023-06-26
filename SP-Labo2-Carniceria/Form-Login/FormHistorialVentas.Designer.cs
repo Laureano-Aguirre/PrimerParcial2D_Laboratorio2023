@@ -35,6 +35,10 @@
             btn_HistorialVentasDeserealizarXml = new Button();
             btn_HistorialVentaTipoDePagoXml = new Button();
             btn_HistorialVentaPagoDeserializarXml = new Button();
+            btn_HistorialVentaPagoDeserializarJson = new Button();
+            btn_HistorialVentaTipoDePagoJson = new Button();
+            btn_HistorialVentasDeserealizarJson = new Button();
+            btn_HistorialVentasSerializarJson = new Button();
             SuspendLayout();
             // 
             // rtb_HistorialVentas
@@ -49,7 +53,7 @@
             // btn_HistorialVentasAtras
             // 
             btn_HistorialVentasAtras.BackColor = Color.RosyBrown;
-            btn_HistorialVentasAtras.Location = new Point(12, 436);
+            btn_HistorialVentasAtras.Location = new Point(12, 481);
             btn_HistorialVentasAtras.Name = "btn_HistorialVentasAtras";
             btn_HistorialVentasAtras.Size = new Size(97, 39);
             btn_HistorialVentasAtras.TabIndex = 1;
@@ -60,7 +64,7 @@
             // btn_HistorialVentasGenerarTxt
             // 
             btn_HistorialVentasGenerarTxt.BackColor = Color.YellowGreen;
-            btn_HistorialVentasGenerarTxt.Location = new Point(557, 436);
+            btn_HistorialVentasGenerarTxt.Location = new Point(557, 481);
             btn_HistorialVentasGenerarTxt.Name = "btn_HistorialVentasGenerarTxt";
             btn_HistorialVentasGenerarTxt.Size = new Size(97, 39);
             btn_HistorialVentasGenerarTxt.TabIndex = 2;
@@ -71,9 +75,9 @@
             // btn_HistorialVentasSerializarXml
             // 
             btn_HistorialVentasSerializarXml.BackColor = Color.LemonChiffon;
-            btn_HistorialVentasSerializarXml.Location = new Point(133, 436);
+            btn_HistorialVentasSerializarXml.Location = new Point(133, 458);
             btn_HistorialVentasSerializarXml.Name = "btn_HistorialVentasSerializarXml";
-            btn_HistorialVentasSerializarXml.Size = new Size(84, 39);
+            btn_HistorialVentasSerializarXml.Size = new Size(84, 62);
             btn_HistorialVentasSerializarXml.TabIndex = 3;
             btn_HistorialVentasSerializarXml.Text = "Serializar productos xml";
             btn_HistorialVentasSerializarXml.UseVisualStyleBackColor = false;
@@ -82,9 +86,9 @@
             // btn_HistorialVentasDeserealizarXml
             // 
             btn_HistorialVentasDeserealizarXml.BackColor = Color.LemonChiffon;
-            btn_HistorialVentasDeserealizarXml.Location = new Point(234, 436);
+            btn_HistorialVentasDeserealizarXml.Location = new Point(234, 458);
             btn_HistorialVentasDeserealizarXml.Name = "btn_HistorialVentasDeserealizarXml";
-            btn_HistorialVentasDeserealizarXml.Size = new Size(84, 39);
+            btn_HistorialVentasDeserealizarXml.Size = new Size(84, 62);
             btn_HistorialVentasDeserealizarXml.TabIndex = 4;
             btn_HistorialVentasDeserealizarXml.Text = "Deserializar productos xml";
             btn_HistorialVentasDeserealizarXml.UseVisualStyleBackColor = false;
@@ -93,31 +97,79 @@
             // btn_HistorialVentaTipoDePagoXml
             // 
             btn_HistorialVentaTipoDePagoXml.BackColor = Color.LemonChiffon;
-            btn_HistorialVentaTipoDePagoXml.Location = new Point(337, 436);
+            btn_HistorialVentaTipoDePagoXml.Location = new Point(337, 458);
             btn_HistorialVentaTipoDePagoXml.Name = "btn_HistorialVentaTipoDePagoXml";
-            btn_HistorialVentaTipoDePagoXml.Size = new Size(84, 39);
+            btn_HistorialVentaTipoDePagoXml.Size = new Size(84, 62);
             btn_HistorialVentaTipoDePagoXml.TabIndex = 5;
-            btn_HistorialVentaTipoDePagoXml.Text = "Serializar tipo de pago";
+            btn_HistorialVentaTipoDePagoXml.Text = "Serializar tipo de pago xml";
             btn_HistorialVentaTipoDePagoXml.UseVisualStyleBackColor = false;
             btn_HistorialVentaTipoDePagoXml.Click += btn_HistorialVentaTipoDePagoXml_Click;
             // 
             // btn_HistorialVentaPagoDeserializarXml
             // 
             btn_HistorialVentaPagoDeserializarXml.BackColor = Color.LemonChiffon;
-            btn_HistorialVentaPagoDeserializarXml.Location = new Point(446, 436);
+            btn_HistorialVentaPagoDeserializarXml.Location = new Point(446, 458);
             btn_HistorialVentaPagoDeserializarXml.Name = "btn_HistorialVentaPagoDeserializarXml";
-            btn_HistorialVentaPagoDeserializarXml.Size = new Size(84, 39);
+            btn_HistorialVentaPagoDeserializarXml.Size = new Size(84, 62);
             btn_HistorialVentaPagoDeserializarXml.TabIndex = 6;
-            btn_HistorialVentaPagoDeserializarXml.Text = "Deserealizar tipo de pago";
+            btn_HistorialVentaPagoDeserializarXml.Text = "Deserealizar tipo de pago xml";
             btn_HistorialVentaPagoDeserializarXml.UseVisualStyleBackColor = false;
             btn_HistorialVentaPagoDeserializarXml.Click += btn_HistorialVentaPagoDeserializarXml_Click;
+            // 
+            // btn_HistorialVentaPagoDeserializarJson
+            // 
+            btn_HistorialVentaPagoDeserializarJson.BackColor = Color.LemonChiffon;
+            btn_HistorialVentaPagoDeserializarJson.Location = new Point(446, 378);
+            btn_HistorialVentaPagoDeserializarJson.Name = "btn_HistorialVentaPagoDeserializarJson";
+            btn_HistorialVentaPagoDeserializarJson.Size = new Size(84, 74);
+            btn_HistorialVentaPagoDeserializarJson.TabIndex = 10;
+            btn_HistorialVentaPagoDeserializarJson.Text = "Deserealizar tipo de pago json";
+            btn_HistorialVentaPagoDeserializarJson.UseVisualStyleBackColor = false;
+            btn_HistorialVentaPagoDeserializarJson.Click += btn_HistorialVentaPagoDeserializarJson_Click;
+            // 
+            // btn_HistorialVentaTipoDePagoJson
+            // 
+            btn_HistorialVentaTipoDePagoJson.BackColor = Color.LemonChiffon;
+            btn_HistorialVentaTipoDePagoJson.Location = new Point(337, 378);
+            btn_HistorialVentaTipoDePagoJson.Name = "btn_HistorialVentaTipoDePagoJson";
+            btn_HistorialVentaTipoDePagoJson.Size = new Size(84, 74);
+            btn_HistorialVentaTipoDePagoJson.TabIndex = 9;
+            btn_HistorialVentaTipoDePagoJson.Text = "Serializar tipo de pago json";
+            btn_HistorialVentaTipoDePagoJson.UseVisualStyleBackColor = false;
+            btn_HistorialVentaTipoDePagoJson.Click += btn_HistorialVentaTipoDePagoJson_Click;
+            // 
+            // btn_HistorialVentasDeserealizarJson
+            // 
+            btn_HistorialVentasDeserealizarJson.BackColor = Color.LemonChiffon;
+            btn_HistorialVentasDeserealizarJson.Location = new Point(234, 378);
+            btn_HistorialVentasDeserealizarJson.Name = "btn_HistorialVentasDeserealizarJson";
+            btn_HistorialVentasDeserealizarJson.Size = new Size(84, 74);
+            btn_HistorialVentasDeserealizarJson.TabIndex = 8;
+            btn_HistorialVentasDeserealizarJson.Text = "Deserializar productos json";
+            btn_HistorialVentasDeserealizarJson.UseVisualStyleBackColor = false;
+            btn_HistorialVentasDeserealizarJson.Click += btn_HistorialVentasDeserealizarJson_Click;
+            // 
+            // btn_HistorialVentasSerializarJson
+            // 
+            btn_HistorialVentasSerializarJson.BackColor = Color.LemonChiffon;
+            btn_HistorialVentasSerializarJson.Location = new Point(133, 378);
+            btn_HistorialVentasSerializarJson.Name = "btn_HistorialVentasSerializarJson";
+            btn_HistorialVentasSerializarJson.Size = new Size(84, 74);
+            btn_HistorialVentasSerializarJson.TabIndex = 7;
+            btn_HistorialVentasSerializarJson.Text = "Serializar productos json";
+            btn_HistorialVentasSerializarJson.UseVisualStyleBackColor = false;
+            btn_HistorialVentasSerializarJson.Click += btn_HistorialVentasSerializarJson_Click;
             // 
             // FormHistorialVentas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientActiveCaption;
-            ClientSize = new Size(666, 498);
+            ClientSize = new Size(666, 532);
+            Controls.Add(btn_HistorialVentaPagoDeserializarJson);
+            Controls.Add(btn_HistorialVentaTipoDePagoJson);
+            Controls.Add(btn_HistorialVentasDeserealizarJson);
+            Controls.Add(btn_HistorialVentasSerializarJson);
             Controls.Add(btn_HistorialVentaPagoDeserializarXml);
             Controls.Add(btn_HistorialVentaTipoDePagoXml);
             Controls.Add(btn_HistorialVentasDeserealizarXml);
@@ -140,5 +192,9 @@
         private Button btn_HistorialVentasDeserealizarXml;
         private Button btn_HistorialVentaTipoDePagoXml;
         private Button btn_HistorialVentaPagoDeserializarXml;
+        private Button btn_HistorialVentaPagoDeserializarJson;
+        private Button btn_HistorialVentaTipoDePagoJson;
+        private Button btn_HistorialVentasDeserealizarJson;
+        private Button btn_HistorialVentasSerializarJson;
     }
 }
