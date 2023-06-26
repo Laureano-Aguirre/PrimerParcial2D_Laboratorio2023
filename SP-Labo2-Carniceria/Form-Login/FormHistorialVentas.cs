@@ -22,6 +22,7 @@ namespace Form_Login
         {
             //rtb_HistorialVentas.AppendText(Cliente.MostrarVentas());
             Venta venta = new Venta();
+            
             rtb_HistorialVentas.AppendText(venta.Mostrar());
         }
 

@@ -316,9 +316,10 @@ namespace Form_Login
                     {
                         if (Venta.CalcularPago(monto, costoFinal) >= 0)
                         {
-                            Venta venta = new Venta(caux.Correo, caux.Monto, costoFinal);
+                            Venta venta = new Venta(caux.Correo, costoFinal);
                             if (venta.CargarVenta(venta))
                             {
+                                ConexionDB.AgregarVenta(venta);
                                 caux.Monto -= costoFinal;
                                 ConexionDB.ModificarMontoCliente(caux, caux.Monto);
                                 ConexionDB.ModificarGastoCliente(caux, caux.Gasto + costoFinal);

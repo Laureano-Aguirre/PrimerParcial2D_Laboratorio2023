@@ -20,14 +20,14 @@ namespace Entidades
             {
                 using (StreamWriter sw = new StreamWriter(completa))
                 {
-                    Venta ventaAux = new Venta();
-
-                    sw.WriteLine(ventaAux.Mostrar());
+                    List<Venta> ventas = new List<Venta>();
+                    ventas = ConexionDB.LeerVentas();
+                    sw.WriteLine(Venta.MostrarVentasTxt(ventas));
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error en el archivo {completa}");
+                throw new Exception($"{ex.Message}");
             }    
         }
     }

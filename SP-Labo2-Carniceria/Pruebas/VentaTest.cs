@@ -15,7 +15,7 @@ namespace Pruebas
         public void CargarVenta_DebeAgregarVenta_ListaNoVacia()
         {
             // Arrange
-            Venta venta = new Venta("cliente1@gmail.com", 5000, 1000);
+            Venta venta = new Venta("cliente1@gmail.com", 1000);
 
             // Act
             bool resultado = venta.CargarVenta(venta);

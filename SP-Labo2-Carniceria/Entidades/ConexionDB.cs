@@ -305,5 +305,58 @@ namespace Entidades
             }
         }
 
+        public static List<Venta> LeerVentas()
+        {
+            List<Venta> ventas = new List<Venta>();
+
+            try
+            {
+                connection.Open();
+
+                command.CommandText = "SELECT ID_VENTA, CORREO_CLIENTE, GASTO_CLIENTE FROM VENTAS ";
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ventas.Add(new Venta(Convert.ToInt32(reader["ID_VENTA"]), reader["CORREO_CLIENTE"].ToString(), Convert.ToDecimal(reader["GASTO_CLIENTE"])));
+                    }
+                }
+                return ventas;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public static void AgregarVenta(Venta venta)
+        {
+            try
+            {
+                command.Parameters.Clear();
+                connection.Open();
+
+                command.CommandText = "INSERT INTO VENTAS (CORREO_CLIENTE, GASTO_CLIENTE) VALUES (@correo_cliente, @gasto_cliente)";
+                command.Parameters.AddWithValue("@correo_cliente", venta.Cliente);
+                command.Parameters.AddWithValue("@gasto_cliente", venta.Gasto);
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
     }
 }

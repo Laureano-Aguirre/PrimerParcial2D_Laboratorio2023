@@ -25,7 +25,6 @@ namespace Form_Login
             dgb_Facturaciones.AutoGenerateColumns = false;
 
             dgb_Facturaciones.Columns.Add("Cliente", "Cliente");
-            dgb_Facturaciones.Columns.Add("Monto", "Monto inicial");
             dgb_Facturaciones.Columns.Add("Gasto", "Total gastado");
             BindingList<Venta> bindingListaVentas = new BindingList<Venta>(Venta.ListaVentas);
 
@@ -45,10 +44,6 @@ namespace Form_Login
                 var clienteCell = new DataGridViewTextBoxCell();
                 clienteCell.Value = venta.Cliente;
                 row.Cells.Add(clienteCell);     //agrego las celdas a las filas
-
-                var montoCell = new DataGridViewTextBoxCell();
-                montoCell.Value = venta.Monto;
-                row.Cells.Add(montoCell);
 
                 var gastoClienteCell = new DataGridViewTextBoxCell();
                 gastoClienteCell.Value = venta.Gasto;

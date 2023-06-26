@@ -10,34 +10,38 @@ namespace Entidades
     {
         private static List<Venta> listaVentas = new List<Venta>();
         private string correoCliente;
-        private decimal montoCliente;
         private decimal gastoCliente;
+        private int id;
 
         public Venta()
         {
             
         }
-        public Venta(decimal montoCliente, decimal gastoCliente)
+        public Venta(string correoCliente)
         {
-            this.montoCliente = montoCliente;
+            this.correoCliente = correoCliente;
+            
+        }
+
+        public Venta(string correoCliente,decimal gastoCliente) : this( correoCliente)
+        {
             this.gastoCliente = gastoCliente;
         }
 
-        public Venta(string correoCliente, decimal montoCliente, decimal gastoCliente) : this(montoCliente, gastoCliente)
+        public Venta(int id, string correoCliente, decimal gastoCliente): this(correoCliente, gastoCliente)
         {
-            this.correoCliente = correoCliente;    
+            this.id = id;
         }
 
         public static List<Venta> ListaVentas { get { return listaVentas; } }
         public string Cliente { get { return correoCliente; } }
-        public decimal Monto { get { return montoCliente; } }
         public decimal Gasto { get { return gastoCliente; } }
         public static void HarcodearVentas()
         {
-            listaVentas.Add(new Venta("cliente4@gmail.com", 100000, 5000));
-            listaVentas.Add(new Venta("cliente3@gmail.com", 5000, 1000));
-            listaVentas.Add(new Venta("cliente2@gmail.com", 500, 500));
-            listaVentas.Add(new Venta("cliente4@gmail.com", 100000, 50000));
+            listaVentas.Add(new Venta("cliente4@gmail.com", 5000));
+            listaVentas.Add(new Venta("cliente3@gmail.com", 1000));
+            listaVentas.Add(new Venta("cliente2@gmail.com", 500));
+            listaVentas.Add(new Venta("cliente4@gmail.com", 50000));
         }
 
         public bool CargarVenta(Venta venta)
@@ -56,6 +60,18 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
 
             foreach(Venta venta in listaVentas)
+            {
+                sb.AppendLine($"CORREO CLIENTE: {venta.correoCliente}");
+                sb.AppendLine($"MONTO GASTADO: {venta.gastoCliente}");
+            }
+            return sb.ToString();
+        }
+
+        public static string MostrarVentasTxt(List<Venta> lista)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (Venta venta in lista)
             {
                 sb.AppendLine($"CORREO CLIENTE: {venta.correoCliente}");
                 sb.AppendLine($"MONTO GASTADO: {venta.gastoCliente}");

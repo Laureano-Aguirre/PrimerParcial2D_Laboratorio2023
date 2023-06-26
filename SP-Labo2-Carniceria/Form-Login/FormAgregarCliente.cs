@@ -34,33 +34,43 @@ namespace Form_Login
 
         private void btn_AgregarClienteAgregar_Click(object sender, EventArgs e)
         {
-            
-            if(ValidarDatos())
+
+            try
             {
-                string correo = txb_AgregarClienteCorreo.Text;
-                string password = txb_AgregarClientePassword.Text;
-                decimal monto = Convert.ToDecimal(txb_AgregarClienteMonto.Text);
-                decimal gasto = Convert.ToDecimal(txb_AgregarClienteGasto.Text);
-
-                Cliente clienteNuevo = new Cliente(correo, password, monto, gasto);
-
-                List<Cliente> clientes = new List<Cliente>();
-
-                clientes = ConexionDB.LeerClientes();
-
-                bool existe = Cliente.BuscarPorCorreo(clientes, clienteNuevo.Correo);
-                if(existe)
+                if (ValidarDatos())
                 {
-                    MessageBox.Show("El cliente que intenta agregar, ya existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.Close();
-                }
-                else
-                {
-                    ConexionDB.AgregarCliente(clienteNuevo);
-                    MessageBox.Show("El cliente fue agregado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.Close();
+                    string correo = txb_AgregarClienteCorreo.Text;
+                    string password = txb_AgregarClientePassword.Text;
+                    decimal monto = Convert.ToDecimal(txb_AgregarClienteMonto.Text);
+                    decimal gasto = Convert.ToDecimal(txb_AgregarClienteGasto.Text);
+
+                    Cliente clienteNuevo = new Cliente(correo, password, monto, gasto);
+
+                    List<Cliente> clientes = new List<Cliente>();
+
+                    clientes = ConexionDB.LeerClientes();
+
+                    bool existe = Cliente.BuscarPorCorreo(clientes, clienteNuevo.Correo);
+                    if (existe)
+                    {
+                        MessageBox.Show("El cliente que intenta agregar, ya existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Close();
+                    }
+                    else
+                    {
+                        ConexionDB.AgregarCliente(clienteNuevo);
+                        MessageBox.Show("El cliente fue agregado con exito.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        this.Close();
+                    }
                 }
             }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error al querer agregar el cliente, por favor, intente mas tarde. \n" +
+                    $"Mensaje de error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
 
             
         }

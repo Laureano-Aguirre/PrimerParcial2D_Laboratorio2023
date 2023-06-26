@@ -101,13 +101,13 @@ namespace Form_Login
 
         private void btn_LoginIngresar_Click(object sender, EventArgs e)
         {
-            List<Vendedor> vendedores = ConexionDB.LeerVendedores();
-            List<Cliente> clientes = ConexionDB.LeerClientes();
-            string correo = txb_LoginCorreo.Text;
-            string pass = txb_LoginPassword.Text;
 
             try
             {
+                List<Vendedor> vendedores = ConexionDB.LeerVendedores();
+                List<Cliente> clientes = ConexionDB.LeerClientes();
+                string correo = txb_LoginCorreo.Text;
+                string pass = txb_LoginPassword.Text;
                 if (ValidarDatos(correo, pass))
                 {
                     if (StringExtension.ContarMinusculas(pass) == 1 && StringExtension.ContarMayusculas(pass) == 1 && StringExtension.ContarCaracteresEspeciales(pass) == 1)
@@ -116,7 +116,11 @@ namespace Form_Login
                         Vendedor vendedor = new Vendedor(correo, pass);
                         if (Cliente.ValidarCliente(clientes, cliente) && btn_LoginCliente.DialogResult == DialogResult.OK)
                         {
-                            InicioSesionExitoso?.Invoke(this, EventArgs.Empty);              //notifico a los manejadores que el login fue correcto
+                            Thread inicioSesionThread = new Thread(() =>
+                            {
+                                InicioSesionExitoso?.Invoke(this, EventArgs.Empty);             //notifico a los manejadores que el login fue correcto
+                            });
+                            inicioSesionThread.Start();              
                             Form_MenuCliente frmMenuCliente = new Form_MenuCliente(cliente);
                             soundPlayer1.Play();
                             frmMenuCliente.Show();
@@ -124,7 +128,11 @@ namespace Form_Login
                         }
                         else if (Vendedor.BuscarVendedor(vendedores, vendedor) && btn_LoginVendedor.DialogResult == DialogResult.OK)
                         {
-                            InicioSesionExitoso?.Invoke(this, EventArgs.Empty);
+                            Thread inicioSesionThread = new Thread(() =>
+                            {
+                                InicioSesionExitoso?.Invoke(this, EventArgs.Empty);
+                            });
+                            inicioSesionThread.Start();
                             FormHeladera frmHeladera = new FormHeladera(vendedor);
                             soundPlayer2.Play();
                             frmHeladera.Show();
@@ -132,19 +140,20 @@ namespace Form_Login
                         }
                         else
                         {
-                            throw new Exception("Usuario incorrecto.");
+                            throw new ExcepcionPropia("usuario incorrecto.");
                         }
                     }
                     else
                     {
-                        throw new Exception("Contraseña incorrecta.");
+                        throw new ExcepcionPropia("contraseña incorrecta.");
                     }
                 }
             }
-            catch (Exception ex)
+            catch (ExcepcionPropia ex)
             {
                 MessageBox.Show($"Error: {ex.Message}");
             }
+            
 
         }
 
