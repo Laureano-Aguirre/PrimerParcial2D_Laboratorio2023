@@ -33,7 +33,7 @@ namespace Form_Login
             catch (ExcepcionPropia ex)
             {
                 MessageBox.Show($"Error al leer los clientes. Por favor, intentelo mas tarde.\n Mensaje del error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }   
+            }
         }
 
         private void btn_VerClientesAtras_Click(object sender, EventArgs e)

@@ -216,9 +216,20 @@ namespace Form_Login
                     {
                         try
                         {
-                            ConexionDB.ModificarCorreoCliente(cAux, txb_ModificarUsuario.Text);
-                            MessageBox.Show("Correo actualizado exitosamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return true;
+
+                            List<Cliente> clientes = ConexionDB.LeerClientes();                     
+
+                            bool existe = Cliente.BuscarPorCorreo(clientes, txb_ModificarUsuario.Text);
+                            if(existe)
+                            {
+                                MessageBox.Show("El correo al que intenta actualizar, ya se encuentra en uso, por favor, proporcione uno nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                ConexionDB.ModificarCorreoCliente(cAux, txb_ModificarUsuario.Text);
+                                MessageBox.Show("Correo actualizado exitosamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return true;
+                            }  
                         }
                         catch (ExcepcionPropia ex)
                         {
@@ -306,9 +317,19 @@ namespace Form_Login
                     {
                         try
                         {
-                            ConexionDB.ModificarCorreoVendedor(vAux, txb_ModificarUsuario.Text);
-                            MessageBox.Show("Correo actualizado exitosamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return true;
+                            List<Vendedor> vendedores = ConexionDB.LeerVendedores();
+
+                            bool existe = Vendedor.BuscarPorCorreo(vendedores, txb_ModificarUsuario.Text);
+                            if(existe)
+                            {
+                                MessageBox.Show("El correo al que intenta actualizar, ya se encuentra en uso, por favor, proporcione uno nuevo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                ConexionDB.ModificarCorreoVendedor(vAux, txb_ModificarUsuario.Text);
+                                MessageBox.Show("Correo actualizado exitosamente. Volverá al inicio.", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return true;
+                            }                            
                         }
                         catch (ExcepcionPropia ex)
                         {

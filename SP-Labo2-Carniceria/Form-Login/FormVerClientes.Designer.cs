@@ -36,6 +36,7 @@
             // 
             rtb_VerClientes.Location = new Point(12, 30);
             rtb_VerClientes.Name = "rtb_VerClientes";
+            rtb_VerClientes.ReadOnly = true;
             rtb_VerClientes.Size = new Size(484, 202);
             rtb_VerClientes.TabIndex = 0;
             rtb_VerClientes.Text = "";

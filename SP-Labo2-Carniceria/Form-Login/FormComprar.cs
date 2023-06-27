@@ -381,43 +381,55 @@ namespace Form_Login
         /// <param name="costoFinal"></param>
         private void ValidarPago(decimal monto, decimal costoFinal)
         {
-            if (Venta.CalcularPago(monto, costoFinal) >= 0)
+            try
             {
-                caux.Gasto = costoFinal;
-                if ((btn_CompraEfectivo.DialogResult == DialogResult.OK) || (btn_CompraCredito.DialogResult == DialogResult.OK) || (btn_CompraDebito.DialogResult == DialogResult.OK))
+                if (Venta.CalcularPago(monto, costoFinal) >= 0)
                 {
-                    DialogResult dialogresult = MessageBox.Show("Desea confirmar la compra?", "Confirmar compra", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-
-                    if (dialogresult == DialogResult.Yes)
+                    caux.Gasto = costoFinal;
+                    if ((btn_CompraEfectivo.DialogResult == DialogResult.OK) || (btn_CompraCredito.DialogResult == DialogResult.OK) || (btn_CompraDebito.DialogResult == DialogResult.OK))
                     {
-                        cliente1.Monto -= costoFinal;
-                        ConexionDB.ModificarMontoCliente(cliente1, cliente1.Monto);
-                        //cliente1.Gasto += costoFinal;
-                        ConexionDB.ModificarGastoCliente(cliente1, cliente1.Gasto + costoFinal);
-                        soundPagar.Play();
-                        FormTicket frmTicket = new FormTicket(cliente1, costoFinal);
-                        frmTicket.ShowDialog();
+                        DialogResult dialogresult = MessageBox.Show("Desea confirmar la compra?", "Confirmar compra", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+                        if (dialogresult == DialogResult.Yes)
+                        {
+                            Venta venta = new Venta(caux.Correo, costoFinal);
+                            if (venta.CargarVenta(venta))
+                            {
+                                ConexionDB.AgregarVenta(venta);
+                                cliente1.Monto -= costoFinal;
+                                ConexionDB.ModificarMontoCliente(cliente1, cliente1.Monto);
+                                ConexionDB.ModificarGastoCliente(cliente1, cliente1.Gasto + costoFinal);
+                                soundPagar.Play();
+                                FormTicket frmTicket = new FormTicket(cliente1, costoFinal);
+                                frmTicket.ShowDialog();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Compra cancelada.", "Cancelacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Compra cancelada.", "Cancelacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Seleccione un metodo de pago.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-
                 }
                 else
                 {
-                    MessageBox.Show("Seleccione un metodo de pago.", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
+                "Por favor, ingrese un nuevo monto y vuelva a comprar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Cliente.LimpiarListaCompras(cliente1);
+                    this.Hide();
+                    Form_MenuCliente frmMenuCliente = new Form_MenuCliente(caux);
+                    frmMenuCliente.Show();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("No tiene suficiente dinero para poder realizar la operacion.\n" +
-            "Por favor, ingrese un nuevo monto y vuelva a comprar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                Cliente.LimpiarListaCompras(cliente1);
-                this.Hide();
-                Form_MenuCliente frmMenuCliente = new Form_MenuCliente(caux);
-                frmMenuCliente.Show();
+
+                MessageBox.Show($"Error al intentar comprar, por favor, intentelo más tarde\n Mensaje del error:{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
         private int ValidarMetodoPagoTarjeta()

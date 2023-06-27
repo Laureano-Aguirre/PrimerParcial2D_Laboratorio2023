@@ -48,7 +48,7 @@ namespace Form_Login
             Visibilizacion();
             soundPlayer1.Play();
             txb_LoginCorreo.Text = "cliente1@gmail.com";
-            txb_LoginPassword.Text = "Cliente1cliente*";
+            txb_LoginPassword.Text = "Cliente5cliente*";
             btn_LoginCliente.DialogResult = DialogResult.OK;
         }
 
@@ -140,12 +140,12 @@ namespace Form_Login
                         }
                         else
                         {
-                            throw new ExcepcionPropia("usuario incorrecto.");
+                            throw new ExcepcionPropia("datos incorrectos.");
                         }
                     }
                     else
                     {
-                        throw new ExcepcionPropia("contraseña incorrecta.");
+                        throw new ExcepcionPropia("contraseña invalida. \n Debe contener minusculas \n una mayuscula \n un caracter especial (#, $, @, &, *).");
                     }
                 }
             }
