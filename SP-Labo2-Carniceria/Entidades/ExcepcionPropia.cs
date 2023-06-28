@@ -8,9 +8,6 @@ namespace Entidades
 {
     public class ExcepcionPropia:Exception
     {
-
-       
-
         public ExcepcionPropia(string mensaje)
             : base(mensaje)
         {
