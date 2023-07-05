@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YCcPKiVQSuSBq5EcCdl1JzLI8wKt301HP5/vUHJpKTLNUa1xu8wkYVo7uxREkJshsJ/Hlg8VHXC78TUlRRd+Tg==",
+  "dgSpecHash": "5zWGzxcTLgcU2UBRbz/oGm4JaUKH1LBr1B/0asSCMcA+xZ8ycMF7VkFVjAsthoFzbC+KGTnxxhSVyyijLLdFLQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Pruebas\\Pruebas.csproj",
+  "projectFilePath": "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Pruebas\\Pruebas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrador\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\Administrador\\.nuget\\packages\\microsoft.codecoverage\\17.6.2\\microsoft.codecoverage.17.6.2.nupkg.sha512",

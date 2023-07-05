@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/gFvQeY75GtdE9CenrZqMMCcquULTpsJrVOONPKDZjQInJXhePulIZHgJJjLzGnWcjdz4Pde5b5662lSF1s8NA==",
+  "dgSpecHash": "ZEkD5kmfBCR9I4ZIRKGb7vkkO3JIE43MF1DiPMCBvyPsQCn1RT/FAPQHIDReIIN6flFTBNPdLdXtK+WJNYeYHA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Form-Login\\Formularios.csproj",
+  "projectFilePath": "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Form-Login\\Formularios.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrador\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Administrador\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

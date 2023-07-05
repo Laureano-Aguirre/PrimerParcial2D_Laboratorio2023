@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Form-Login\\Formularios.csproj": {}
+    "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Form-Login\\Formularios.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj": {
+    "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj",
+        "projectUniqueName": "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj",
         "projectName": "Entidades",
-        "projectPath": "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj",
+        "projectPath": "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj",
         "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\obj\\",
+        "outputPath": "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrador\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -61,18 +61,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Form-Login\\Formularios.csproj": {
+    "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Form-Login\\Formularios.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Form-Login\\Formularios.csproj",
+        "projectUniqueName": "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Form-Login\\Formularios.csproj",
         "projectName": "Formularios",
-        "projectPath": "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Form-Login\\Formularios.csproj",
+        "projectPath": "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Form-Login\\Formularios.csproj",
         "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Form-Login\\obj\\",
+        "outputPath": "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Form-Login\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrador\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -89,8 +89,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj": {
-                "projectPath": "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj"
+              "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj": {
+                "projectPath": "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj"
               }
             }
           }
@@ -123,7 +123,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }

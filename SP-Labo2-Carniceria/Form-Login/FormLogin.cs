@@ -48,7 +48,7 @@ namespace Form_Login
             Visibilizacion();
             soundPlayer1.Play();
             txb_LoginCorreo.Text = "cliente1@gmail.com";
-            txb_LoginPassword.Text = "Cliente5cliente*";
+            txb_LoginPassword.Text = "Cliente1cliente*";
             btn_LoginCliente.DialogResult = DialogResult.OK;
         }
 

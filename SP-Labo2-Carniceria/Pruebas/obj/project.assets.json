@@ -1542,11 +1542,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Pruebas\\Pruebas.csproj",
+      "projectUniqueName": "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Pruebas\\Pruebas.csproj",
       "projectName": "Pruebas",
-      "projectPath": "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Pruebas\\Pruebas.csproj",
+      "projectPath": "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Pruebas\\Pruebas.csproj",
       "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Pruebas\\obj\\",
+      "outputPath": "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Pruebas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Administrador\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1563,8 +1563,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj": {
-              "projectPath": "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj"
+            "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj": {
+              "projectPath": "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj"
             }
           }
         }
@@ -1612,7 +1612,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

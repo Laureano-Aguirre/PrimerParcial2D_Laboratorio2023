@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P47pSzOWrhcno6cY/OGsqbJnOHscL9cC4L+G7vNPfYbb6pJnuBQwg4r4Y0INjaHD2G+cRw+bshTtSPUsT6/XmQ==",
+  "dgSpecHash": "Bd0jCV5X5PWKHMi6BpfNNgQ//s6jSyjkLfSKmtWl5qPacyvvct0/EGGY0N6jcGWsdYvxPFa8WrRzyMyHvN3zgA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrador\\Desktop\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj",
+  "projectFilePath": "C:\\Users\\Administrador\\Desktop\\PROYECTOS VISUAL\\PrimerParcial2D_Laboratorio2023\\SP-Labo2-Carniceria\\Entidades\\Entidades.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrador\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Administrador\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

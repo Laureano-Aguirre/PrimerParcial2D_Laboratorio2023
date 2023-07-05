@@ -97,3 +97,45 @@ C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carnicer
 C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormBorrarCliente.resources
 C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormModificarUsuario.resources
 C:\Users\Administrador\Desktop\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormAgregarVendedor.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\Formularios.exe
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\Formularios.deps.json
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\Formularios.runtimeconfig.json
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\Formularios.dll
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\Formularios.pdb
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\Entidades.dll
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\bin\Debug\net6.0-windows\Entidades.pdb
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Formularios.csproj.AssemblyReference.cache
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormAgregar.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormAgregarCliente.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormAgregarVendedor.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormBorrarCliente.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormComprar.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormFacturacion.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormHeladera.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormHistorialVentas.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.Form1.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.Form_MenuCliente.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormModificarProducto.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormModificarUsuario.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormTarjeta.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormTicket.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormVendedorVender.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.FormVerClientes.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Form_Login.Properties.Resources.resources
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Formularios.csproj.GenerateResource.cache
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Formularios.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Formularios.AssemblyInfoInputs.cache
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Formularios.AssemblyInfo.cs
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Formularios.csproj.CoreCompileInputs.cache
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Formularios.csproj.CopyComplete
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Formularios.dll
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\refint\Formularios.dll
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Formularios.pdb
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\Formularios.genruntimeconfig.cache
+C:\Users\Administrador\Desktop\PROYECTOS VISUAL\PrimerParcial2D_Laboratorio2023\SP-Labo2-Carniceria\Form-Login\obj\Debug\net6.0-windows\ref\Formularios.dll
